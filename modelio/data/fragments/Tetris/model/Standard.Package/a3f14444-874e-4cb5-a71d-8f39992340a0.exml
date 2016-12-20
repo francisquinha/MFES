@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="tetris" version="4">
+  <OBJECT>
+    <ID name="tetris" mc="Standard.Package" uid="a3f14444-874e-4cb5-a71d-8f39992340a0"/>
+    <PID name="Tetris" mc="Standard.Project" uid="310ffa29-7adb-4b3c-93f1-365f4396b834"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[tetris]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Board" mc="Standard.Class" uid="3c444197-f78a-405c-98de-2b07d2c24d64"/>
+        <COMPID name="Cell" mc="Standard.Class" uid="36eca430-b6f2-4cfc-9f3b-52f85199fd96"/>
+        <COMPID name="Game" mc="Standard.Class" uid="888dbcd5-9a59-4ef4-8206-76ca8723f456"/>
+        <COMPID name="Tetramino" mc="Standard.Class" uid="8ab8916d-d90b-41bf-9f58-4e2c35d18aff"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="tetris Class diagram" mc="Standard.ClassDiagram" uid="98dc443e-9e13-4402-9404-1e863f2e87e6"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

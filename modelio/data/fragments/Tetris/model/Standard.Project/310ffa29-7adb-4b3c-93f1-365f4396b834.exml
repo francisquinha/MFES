@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Tetris" version="4">
+  <OBJECT>
+    <ID name="Tetris" mc="Standard.Project" uid="310ffa29-7adb-4b3c-93f1-365f4396b834"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[Tetris]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="tetris" mc="Standard.Package" uid="a3f14444-874e-4cb5-a71d-8f39992340a0"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="Tetris" mc="Infrastructure.DiagramSet" uid="c7467b6c-41ea-4a3c-ab5a-dc3d428d6628"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
