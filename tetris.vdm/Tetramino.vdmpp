@@ -1,11 +1,11 @@
 class Tetramino
 instance variables
-  color:seq of (char);
-  orientation:seq of (char);
-  mino0:seq of (char);
-  mino1:seq of (char);
-  mino2:seq of (char);
-  mino3:seq of (char);
+  color:seq of (char) 			:= "";
+  orientation:seq of (char) := "";
+  mino0:seq of (char) 			:= "";
+  mino1:seq of (char) 			:= "";
+  mino2:seq of (char) 			:= "";
+  mino3:seq of (char) 			:= "";
 
 operations
   public  moveDown : ()  ==> bool

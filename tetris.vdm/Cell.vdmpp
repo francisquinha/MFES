@@ -1,11 +1,11 @@
 class Cell
 instance variables
-  row:int;
-  column:int;
-  pieceId:int;
+  row:int 	 := 0;
+  column:int := 0;
+  pieceId:int:= 0;
 
 operations
-  public  removePiece : ()  ==> ?
+  public  removePiece : ()  ==> bool
   removePiece() ==
     is not yet specified;
 

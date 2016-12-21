@@ -1,8 +1,8 @@
 class Board
 instance variables
-  null:set of (Cell);
-  rows:int;
-  columns:int;
+  -- null:set of (Cell);
+  rows:int := 0;
+  columns:int := 0;
 
 operations
   public  checkRow : int ==> bool

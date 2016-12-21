@@ -1,6 +1,6 @@
 class Game
 instance variables
-  level:int;
+  level:int := 0;
 
 operations
   public  startGame : ()  ==> bool
