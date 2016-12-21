@@ -1,0 +1,15 @@
+class Game
+instance variables
+  level:int;
+
+operations
+  public  startGame : ()  ==> bool
+  startGame() ==
+    is not yet specified;
+
+  public  endGame : ()  ==> int
+  endGame() ==
+    is not yet specified;
+
+
+end Game

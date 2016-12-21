@@ -1,0 +1,21 @@
+class Cell
+instance variables
+  row:int;
+  column:int;
+  pieceId:int;
+
+operations
+  public  removePiece : ()  ==> ?
+  removePiece() ==
+    is not yet specified;
+
+  public  setPiece : int ==> bool
+  setPiece(pos) ==
+    is not yet specified;
+
+  public  getPiece : ()  ==> int
+  getPiece() ==
+    is not yet specified;
+
+
+end Cell

@@ -1,0 +1,13 @@
+class Board
+instance variables
+  null:set of (Cell);
+  rows:int;
+  columns:int;
+
+operations
+  public  checkRow : int ==> bool
+  checkRow(row) ==
+    is not yet specified;
+
+
+end Board
