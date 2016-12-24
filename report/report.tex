@@ -71,67 +71,122 @@ One meritorious reference to Alexey Pajitnov because he his the person who devel
 \textcolor{red}{maybe put some image here}
 \subsection{List of requirements}
 
-jpojpij
+\begin{table}[h]
+	\centering
+	%\caption{My caption}
+	\label{list-of-requirements}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Id} & \textbf{Priority} & \textbf{Description} \\ \hline
+		R1 & Mandatory         &                      \\ \hline
+		R2 & Mandatory         &                      \\ \hline
+		R3 & Mandatory         &                      \\ \hline
+		R4 & Mandatory         &                      \\ \hline
+		R5 & Mandatory         &                      \\ \hline
+	\end{tabular}
+\end{table}
 
+These requirements are directly translated onto use cases as shown next.
 \section{Visual UML model} 
 
-ijiojioj
 
 \subsection{Use case model}
 
-pojopjop
+\begin{center}
+	\includegraphics[scale=0.4]{resources/img/use_cases}
+	\label{use-cases}
+\end{center}
+
+The main use cases are described below: 
+
+
+\begin{table}[h]
+	\centering
+%	\caption{Use case 1}
+	\label{use-case1}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Scenario}        & \textbf{Scenario name} \\ \hline
+		\textbf{Description}     &                        \\ \hline
+		\textbf{Pre-conditions}  &                        \\ \hline
+		\textbf{Post-conditions} &                        \\ \hline
+		\textbf{Steps}           &                        \\ \hline
+		\textbf{Exceptions}      &                        \\ \hline
+	\end{tabular}
+\end{table}
 
 \subsection{Class model}
 
-jojijio
+\begin{center}
+	\includegraphics[scale=0.4]{resources/img/uml}
+	\label{uml}
+\end{center}
+
+\begin{table}[!h]
+	\centering
+	\label{description-classes}
+	\begin{tabular}{|l|l|}
+	\hline
+	\multicolumn{1}{|c|}{\textbf{Class}} & \multicolumn{1}{|c|}{\textbf{Description}}	\\	\hline
+	Game	&	Core model; defines the state variables and operations available to the players.	\\	\hline
+	Board	&	Defines a game environment for playing. \\	\hline
+	Cell	&	Defines the place on board where each piece of tetrominoes can stay. 	\\	\hline
+	Tetromino	&	Defines one piece to play with.	\\	\hline
+	\end{tabular}
+	\caption{Description of classes}
+\end{table}
 
 \section{Formal VDM++ model}
 
-dsffds
+todo
 
 \subsection{Class Game}
 
-fdsfds
+todo
 
 \subsection{Class Board}
 
-dfsfds
+todo
 
 \subsection{Class Cell}
 
-dfsfs
+todo
 
-\subsection{Class Tetramino}
+\subsection{Class Tetromino}
 
-sdfds
+todo
 
 \section{Model validation}
 
-fds
+todo
 
 \subsection{Class MyTestCase} 
 
-sfds
+todo
 
 \subsection{Class TestGame} 
 
-sdfs
+todo
 
 \section{Model verification}
 
-sdfs
+todo
 
 \subsection{Example of domain verification} 
 
-sdfs
+todo
 
 \subsection{Example of invariant verification} 
 
-sdfs
+todo
 
 \section{Conclusions} 
 
-dsfsf
+The model that was developed by us covers all the requirements included implicitly on the theme project.
+In the final and after model verifications, we all see the game developed in VDM++ like one of the projects more consistent and safer that we have ever developed. 
+In addition it is noticed that all the elements of the group have already had contact in the past with the game and they continue to enthuse now with this version developed by us. Maybe in the future we can all add more features to this.
+This project took approximately 16 hours to develop.
+
 
 \section{References}
 
@@ -143,7 +198,7 @@ dsfsf
 \newpage
 \appendix
 \section{Source Code}
-
+\textcolor{red}{maybe not necessary because of section3}
 \section{The 7 tetrominoes}
 
 \begin{center}
