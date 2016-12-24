@@ -1,25 +1,66 @@
 class Board
-
-	instance variables
-		rows		:int 		:= 0;
-		columns		:int 		:= 0;
-		startTag	:seq of char:="<!";
-		endTag		:seq of char:="!>\n";
-		bottomLine	:seq of char:="=============";
 	
+	types
+		public String = seq of char;
+	
+	instance variables
+		private startTag		:String					:="<!";
+		private endTag			:String					:="!>\n";
+		private bottomLine		:String					:="============";
+		private emptyCell		:char					:='□';
+	  	private filledcell		:char					:='■';
+		
+		private rows			:int 					:= 0;
+		private columns			:int 					:= 0;
+		private row1			:seq of int 			:= [];
+		
+		private iterator		:int					:= 1;
+		private matrix 			:map seq of int to int	:= {|->};
+		
+		private pieceOperation	:int					:=0;
+		
+		
 	operations
+		------------------------------------------------------------ initBoard
 		public  initBoard : () ==> ()
 		initBoard() ==
-		(
+		(			
 			IO`print("# call 'Board:initBoard'\n\n");
 			
-			for x=1 to 12 do(
-				IO`print(startTag ^ "□□□□□□□□□□□□□" ^ endTag);
-	  		);
-
-			IO`print(startTag ^ bottomLine ^ endTag);
+			for x=1 to 12 do( 
+		  		for y=1 to 12 do (
+		  				matrix := matrix ++ {[x,y] |-> 0 };
+		  		);
+				IO`print(startTag ^ "□□□□□□□□□□□□" ^ endTag);
+		  	);
+				
+			IO`print(startTag ^ bottomLine ^ endTag);	
 		);
-	
+		--pre len row1 <=0
+		--post len row1 =12;
+		
+		------------------------------------------------------------ set and remove piece
+		public setPiece : String * seq of int * seq of int * seq of int * seq of int ==> ()
+		setPiece(option, coord1, coord2, coord3, coord4) ==
+		(
+			(if(option = "set") then
+				pieceOperation := 1
+			elseif (option = "remove") then
+				pieceOperation := 0
+			);
+			
+			matrix := matrix ++ {coord1 |-> pieceOperation};
+			matrix := matrix ++ {coord2 |-> pieceOperation};
+			matrix := matrix ++ {coord3 |-> pieceOperation};
+			matrix := matrix ++ {coord4 |-> pieceOperation};
+		);
+		
+		------------------------------------------------------------ getPiece
+		public  getPiece : ()  ==> int
+			getPiece() ==
+			is not yet specified;
+		
+		------------------------------------------------------------ checkRow
 		public  checkRow : int ==> bool
 		checkRow(row) ==
 		is not yet specified;

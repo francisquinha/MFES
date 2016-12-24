@@ -1,13 +1,12 @@
 class Cell
 
+
+-- Penso que estas operações podiam estar todas em Game.vdmpp !!!!
 	instance variables
 	  row		:int	:= 0;
 	  column	:int	:= 0;
 	  pieceId	:int	:= 0;
-	
-	  emptyCell	:char	:='□';
-	  Filledcell:char	:='■';
-	  
+		  
 	operations
 	  public  removePiece : ()  ==> bool
 	  removePiece() ==
