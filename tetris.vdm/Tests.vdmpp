@@ -1,28 +1,53 @@
 class Tests
 
 	types
-	-- TODO Define types here
-
+		public String = seq of char;
+		
 	values
 	-- TODO Define values here
 
 	instance variables
-		game : Game := new Game();
-
+		public matrix 		:map seq of nat to nat	:= {|->};
+		public printBoard	:String					:= "";
+		
 	operations
+	
+		------------------------------------------------------------ addPiece_test
+		private addPiece_test: () ==> ()
+		addPiece_test() ==
+		(
+			dcl game1: Game := new Game();
+			
+			IO`print("\n# addPiece_test\n");
+						
+			--inital matrix
+				IO`print("\n-> Initial matrix\n");
+			matrix:= game1.board.getBoard();
+				IO`print(matrix);
+			
+			--print board	
+			printBoard:= game1.board.getBoardPrint("init",[0,0],[0,0],[0,0],[0,0]);
+				IO`print("\n\n" ^ printBoard);
+					
+			--add piece
+				IO`print("-> Add piece on the matrix\n");
+			game1.board.setPiece("set",[0,2],[1,2],[2,2],[3,2]);
+			
+			--get matrix after add piece
+			matrix:= game1.board.getBoard();
+				IO`print(matrix);
+			
+			--print board
+			printBoard:= game1.board.getBoardPrint("set",[0,2],[1,2],[2,2],[3,2]);
+				IO`print("\n\n" ^ printBoard);
+		);       
 
-        private gameType1: () ==> ()
-        gameType1() ==
-        (
-        	game.startGame();
-        );
-
-		-- main tests
+		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
 		main() ==
 		(
-			IO`print("\n# INIT TESTS\n\n");
-		  	new Tests().gameType1();
+			IO`print("\nINIT TESTS\n");
+		  	new Tests().addPiece_test();
 		);
 
 	functions

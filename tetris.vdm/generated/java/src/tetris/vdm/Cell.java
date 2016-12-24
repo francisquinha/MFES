@@ -8,8 +8,6 @@ public class Cell {
   private Number row = 0L;
   private Number column = 0L;
   private Number pieceId = 0L;
-  private Character emptyCell = '□';
-  private Character Filledcell = '■';
 
   public Boolean removePiece() {
 
@@ -37,10 +35,6 @@ public class Cell {
         + Utils.toString(column)
         + ", pieceId := "
         + Utils.toString(pieceId)
-        + ", emptyCell := "
-        + Utils.toString(emptyCell)
-        + ", Filledcell := "
-        + Utils.toString(Filledcell)
         + "}";
   }
 }

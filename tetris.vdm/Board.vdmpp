@@ -7,42 +7,91 @@ class Board
 		private startTag		:String					:="<!";
 		private endTag			:String					:="!>\n";
 		private bottomLine		:String					:="============";
-		private emptyCell		:char					:='□';
-	  	private filledcell		:char					:='■';
+		private emptyCell		:String					:="□";
+	  	private filledcell		:String					:="■";
 		
 		private rows			:int 					:= 0;
 		private columns			:int 					:= 0;
-		private row1			:seq of int 			:= [];
+		private printRow		:String					:= "";
+		private printBoard		:String					:= "";
 		
 		private iterator		:int					:= 1;
-		private matrix 			:map seq of int to int	:= {|->};
+		private matrix 			:map seq of nat to nat	:= {|->};
 		
 		private pieceOperation	:int					:=0;
 		
 		
 	operations
+		------------------------------------------------------------ Board
+		public Board : () ==> Board
+		Board() ==(
+		
+			self.initBoard();
+		);
+		
 		------------------------------------------------------------ initBoard
 		public  initBoard : () ==> ()
-		initBoard() ==
-		(			
-			IO`print("# call 'Board:initBoard'\n\n");
-			
-			for x=1 to 12 do( 
-		  		for y=1 to 12 do (
+		initBoard() ==(		
+						
+			for x=0 to 11 do( 
+		  		for y=0 to 11 do (
 		  				matrix := matrix ++ {[x,y] |-> 0 };
 		  		);
-				IO`print(startTag ^ "□□□□□□□□□□□□" ^ endTag);
-		  	);
-				
-			IO`print(startTag ^ bottomLine ^ endTag);	
+		  	);			
 		);
-		--pre len row1 <=0
+		--pre len matrix <=0
 		--post len row1 =12;
 		
+		------------------------------------------------------------ printBoard
+		public getBoardPrint : String * seq of nat * seq of nat * seq of nat * seq of nat ==> String
+		getBoardPrint(option, coord1, coord2, coord3, coord4) ==(	
+
+			printBoard:= "";
+		
+			if(option = "set") then(
+				for x=0 to 11 do(
+				
+					printBoard := printBoard ^ startTag;
+				 
+		  			for y=0 to 11 do (
+		  			
+		  				if( (coord1(1) = x and coord1(2) = y) or
+		  					(coord2(1) = x and coord2(2) = y) or
+		  					(coord3(1) = x and coord3(2) = y) or
+		  					(coord4(1) = x and coord4(2) = y) ) then
+		  					 
+		  					printBoard := printBoard ^ filledcell
+		  				else
+		  					printBoard := printBoard ^ emptyCell;
+		  			);
+		  			printBoard := printBoard ^  endTag;
+		  		);
+		 		return printBoard;		  							  						
+			)
+			
+			elseif (option = "init") then(
+				for x=0 to 11 do
+					printBoard := printBoard ^ startTag ^ "□□□□□□□□□□□□" ^ endTag;					
+			  	
+			  	printBoard := printBoard ^ startTag ^ bottomLine ^ endTag ^ "\n" ;
+			  	
+			  	return printBoard;
+			);
+			
+			return "";			
+		);
+		
+		------------------------------------------------------------ get matrix board
+		public  getBoard : ()  ==> map seq of nat to nat
+		getBoard() ==(
+		
+			return self.matrix;
+		);
+		
 		------------------------------------------------------------ set and remove piece
-		public setPiece : String * seq of int * seq of int * seq of int * seq of int ==> ()
-		setPiece(option, coord1, coord2, coord3, coord4) ==
-		(
+		public setPiece : String * seq of nat * seq of nat * seq of nat * seq of nat ==> ()
+		setPiece(option, coord1, coord2, coord3, coord4) ==(
+		
 			(if(option = "set") then
 				pieceOperation := 1
 			elseif (option = "remove") then
@@ -62,7 +111,7 @@ class Board
 		
 		------------------------------------------------------------ checkRow
 		public  checkRow : int ==> bool
-		checkRow(row) ==
-		is not yet specified;
+			checkRow(row) ==
+			is not yet specified;
 
 end Board

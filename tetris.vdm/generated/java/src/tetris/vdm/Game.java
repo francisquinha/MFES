@@ -5,21 +5,28 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class Game {
-  private Number level = 0L;
-  private Board board = new Board();
+  public Number level = 0L;
+  public Board board;
+
+  public void cg_init_Game_1() {
+
+    board = new Board();
+  }
+
+  public Game() {
+
+    cg_init_Game_1();
+  }
 
   public void startGame() {
 
-    IO.print("# call 'Game:startGame'\n");
-    board.initBoard();
+    throw new UnsupportedOperationException();
   }
 
   public Number endGame() {
 
     throw new UnsupportedOperationException();
   }
-
-  public Game() {}
 
   public String toString() {
 

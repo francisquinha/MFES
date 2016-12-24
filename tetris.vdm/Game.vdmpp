@@ -1,17 +1,23 @@
 class Game
 
 	instance variables
-	  level	:int	:= 0;
-	  board :Board	:= new Board();
+	  public level	:int	:= 0;
+	  public board: Board;
 	  
-	
+	 
 	operations
+		public Game : () ==> Game
+		Game() ==
+		(
+			board := new Board();	
+		);
+		
 		public startGame:() ==> ()
 		startGame()==
-		(
-			IO`print("# call 'Game:startGame'\n");
-			board.initBoard();
-		);
+			    is not yet specified;
+
+			--IO`print("# call 'Game:startGame'\n");
+			--board.initBoard();
 	
 	  public endGame:() ==> int
 	  endGame()==
