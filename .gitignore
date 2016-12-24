@@ -17,5 +17,6 @@ hs_err_pid*
 # Modelio
 .runtime/
 
-# Overture
+# Eclipse
 .metadata/
+coverage/

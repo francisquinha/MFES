@@ -1,15 +1,21 @@
 class Game
-instance variables
-  level:int := 0;
 
-operations
-  public  startGame : ()  ==> bool
-  startGame() ==
-    is not yet specified;
-
-  public  endGame : ()  ==> int
-  endGame() ==
-    is not yet specified;
+	instance variables
+	  level	:int	:= 0;
+	  board :Board	:= new Board();
+	  
+	
+	operations
+		public startGame:() ==> ()
+		startGame()==
+		(
+			IO`print("# call 'Game:startGame'\n");
+			board.initBoard();
+		);
+	
+	  public endGame:() ==> int
+	  endGame()==
+	    is not yet specified;
 
 
 end Game

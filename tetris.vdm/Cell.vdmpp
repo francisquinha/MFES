@@ -1,21 +1,24 @@
 class Cell
-instance variables
-  row:int 	 := 0;
-  column:int := 0;
-  pieceId:int:= 0;
 
-operations
-  public  removePiece : ()  ==> bool
-  removePiece() ==
-    is not yet specified;
-
-  public  setPiece : int ==> bool
-  setPiece(pos) ==
-    is not yet specified;
-
-  public  getPiece : ()  ==> int
-  getPiece() ==
-    is not yet specified;
-
+	instance variables
+	  row		:int	:= 0;
+	  column	:int	:= 0;
+	  pieceId	:int	:= 0;
+	
+	  emptyCell	:char	:='□';
+	  Filledcell:char	:='■';
+	  
+	operations
+	  public  removePiece : ()  ==> bool
+	  removePiece() ==
+	    is not yet specified;
+	
+	  public  setPiece : int ==> bool
+	  setPiece(pos) ==
+	    is not yet specified;
+	
+	  public  getPiece : ()  ==> int
+	  getPiece() ==
+	    is not yet specified;
 
 end Cell

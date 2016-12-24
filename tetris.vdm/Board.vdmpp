@@ -1,13 +1,27 @@
 class Board
-instance variables
-  -- null:set of (Cell);
-  rows:int := 0;
-  columns:int := 0;
 
-operations
-  public  checkRow : int ==> bool
-  checkRow(row) ==
-    is not yet specified;
+	instance variables
+		rows		:int 		:= 0;
+		columns		:int 		:= 0;
+		startTag	:seq of char:="<!";
+		endTag		:seq of char:="!>\n";
+		bottomLine	:seq of char:="=============";
+	
+	operations
+		public  initBoard : () ==> ()
+		initBoard() ==
+		(
+			IO`print("# call 'Board:initBoard'\n\n");
+			
+			for x=1 to 12 do(
+				IO`print(startTag ^ "□□□□□□□□□□□□□" ^ endTag);
+	  		);
 
+			IO`print(startTag ^ bottomLine ^ endTag);
+		);
+	
+		public  checkRow : int ==> bool
+		checkRow(row) ==
+		is not yet specified;
 
 end Board

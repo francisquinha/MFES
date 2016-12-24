@@ -1,0 +1,33 @@
+class Tests
+
+	types
+	-- TODO Define types here
+	
+	values
+	-- TODO Define values here
+	
+	instance variables
+		game : Game := new Game();
+	
+	operations
+	
+        private gameType1: () ==> ()
+        gameType1() ==
+        (
+        	game.startGame();
+        );
+	
+		-- main tests
+		public static main: () ==> ()
+		main() ==
+		(
+			IO`print("\n# INIT TESTS\n\n");
+		  	new Tests().gameType1();
+		);
+		
+	functions
+	-- TODO Define functiones here
+	traces
+	-- TODO Define Combinatorial Test Traces here
+
+end Tests
