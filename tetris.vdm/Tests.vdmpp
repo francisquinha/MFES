@@ -27,7 +27,7 @@ class Tests
 				IO`print(matrix);
 			
 			--print board	
-			printBoard:= game1.board.getBoardPrint("init",[0,0],[0,0],[0,0],[0,0]);
+			printBoard:= game1.board.getBoardPrint();
 				IO`print("\n\n" ^ printBoard);
 					
 			--add piece
@@ -39,8 +39,33 @@ class Tests
 				IO`print(matrix);
 			
 			--print board
-			printBoard:= game1.board.getBoardPrint("set",[0,2],[1,2],[2,2],[3,2]);
+			printBoard:= game1.board.getBoardPrint();
 				IO`print("\n\n" ^ printBoard);
+				
+			--automaticallyMovePiece
+				IO`print("\n-> automaticallyMovePiece\n");
+			game1.board.automaticallyMovePiece();
+	
+			--get matrix after add piece
+			matrix:= game1.board.getBoard();
+				IO`print(matrix);
+				
+			--print board
+			printBoard:= game1.board.getBoardPrint();
+				IO`print("\n\n" ^ printBoard);
+				
+			--automaticallyMovePiece
+				IO`print("\n-> automaticallyMovePiece\n");
+			game1.board.automaticallyMovePiece();
+	
+			--get matrix after add piece
+			matrix:= game1.board.getBoard();
+				IO`print(matrix);
+				
+			--print board
+			printBoard:= game1.board.getBoardPrint();
+				IO`print("\n\n" ^ printBoard);
+		
 		);       
 
 		------------------------------------------------------------ timer_test
@@ -66,6 +91,7 @@ class Tests
 					);					
 				);
 		);
+		
 
 
 		------------------------------------------------------------ MAIN TESTS
@@ -74,7 +100,7 @@ class Tests
 		(
 			IO`print("\nINIT TESTS\n");
 		  	new Tests().addPiece_test();
-		  	new Tests().timer_test();
+		  	--new Tests().timer_test();
 		  	
 		);
 
