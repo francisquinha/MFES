@@ -12,31 +12,37 @@ public class TestTetris extends TestCaseExtra {
   private void addPiece_test() {
 
     Game game1 = new Game();
-    IO.print("\n# addPiece_test\n");
-    IO.print("\n-> Initial matrix\n");
+    IO.println("# Test 1 - Add random piece; move the piece manually/automatically\n");
+    IO.println("-> Initial matrix");
     matrix = game1.board.getBoard();
-    IO.print(Utils.copy(matrix));
+    IO.println(Utils.copy(matrix));
     printBoard = game1.board.getBoardPrint();
-    IO.print("\n\n" + printBoard);
-    IO.print("-> Add piece on the matrix\n");
+    IO.println(printBoard);
+    IO.println("-> Add piece on the matrix");
     game1.board.cell_setPiece(
         "set", SeqUtil.seq(0L, 2L), SeqUtil.seq(1L, 2L), SeqUtil.seq(2L, 2L), SeqUtil.seq(3L, 2L));
     matrix = game1.board.getBoard();
-    IO.print(Utils.copy(matrix));
+    IO.println(Utils.copy(matrix));
     printBoard = game1.board.getBoardPrint();
-    IO.print("\n\n" + printBoard);
-    IO.print("\n-> automaticallyMovePiece\n");
+    IO.println(printBoard);
+    IO.println("-> Move piece automatically");
     game1.board.cell_automaticallyMovePiece();
     matrix = game1.board.getBoard();
-    IO.print(Utils.copy(matrix));
+    IO.println(Utils.copy(matrix));
     printBoard = game1.board.getBoardPrint();
-    IO.print("\n\n" + printBoard);
-    IO.print("\n-> automaticallyMovePiece\n");
+    IO.println(printBoard);
+    IO.println("-> Move piece automatically (second call)");
     game1.board.cell_automaticallyMovePiece();
     matrix = game1.board.getBoard();
-    IO.print(Utils.copy(matrix));
+    IO.println(Utils.copy(matrix));
     printBoard = game1.board.getBoardPrint();
-    IO.print("\n\n" + printBoard);
+    IO.println(printBoard);
+    IO.println("-> Move piece manually (keyboard click simulation)");
+    game1.board.cell_manuallyMovePiece("moveRight", 8L);
+    matrix = game1.board.getBoard();
+    IO.println(Utils.copy(matrix));
+    printBoard = game1.board.getBoardPrint();
+    IO.println(printBoard);
   }
 
   private void timer_test() {
@@ -68,7 +74,7 @@ public class TestTetris extends TestCaseExtra {
 
   public static void main() {
 
-    IO.print("\nINIT TESTS\n");
+    IO.print("\n##### TESTS #####\n");
     new TestTetris().addPiece_test();
   }
 

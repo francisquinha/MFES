@@ -66,6 +66,51 @@ public class Cell {
     return Utils.copy(tempMatrix);
   }
 
+  public VDMMap manuallyMovePiece(
+      final String option,
+      final Number numberOfClicks,
+      final VDMMap get_tempMatrix,
+      final VDMMap get_matrix) {
+
+    matrix = Utils.copy(get_matrix);
+    tempMatrix = Utils.copy(get_tempMatrix);
+    if (Utils.equals(option, "moveRight")) {
+      long toVar_10 = totalRows.longValue();
+
+      for (Long i = 0L; i <= toVar_10; i++) {
+        long toVar_9 = totalColumns.longValue();
+
+        for (Long j = 0L; j <= toVar_9; j++) {
+          if (Utils.equals(((Number) Utils.get(matrix, SeqUtil.seq(i, j))), forMoveCell)) {
+            Utils.mapSeqUpdate(
+                tempMatrix,
+                SeqUtil.seq(i, j.longValue() + numberOfClicks.longValue()),
+                forMoveCell);
+          }
+        }
+      }
+
+    } else if (Utils.equals(option, "moveLeft")) {
+      long toVar_12 = totalRows.longValue();
+
+      for (Long i = 0L; i <= toVar_12; i++) {
+        long toVar_11 = totalColumns.longValue();
+
+        for (Long j = 0L; j <= toVar_11; j++) {
+          if (Utils.equals(((Number) Utils.get(matrix, SeqUtil.seq(i, j))), forMoveCell)) {
+            Utils.mapSeqUpdate(
+                tempMatrix,
+                SeqUtil.seq(i, j.longValue() - numberOfClicks.longValue()),
+                forMoveCell);
+          }
+        }
+      }
+    }
+
+    matrix = Utils.copy(tempMatrix);
+    return Utils.copy(tempMatrix);
+  }
+
   public Cell() {}
 
   public String toString() {

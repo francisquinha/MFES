@@ -8,70 +8,72 @@ class TestTetris is subclass of TestCaseExtra
 		public printBoard	:String					:= "";
 		public endGame		:bool					:=false;
 		
+		public movePiece	:bool					:=true;
+		
 	operations
 		------------------------------------------------------------ addPiece_test
 		private addPiece_test: () ==> ()
 		addPiece_test() ==(
 		
 			dcl game1: Game := new Game();
-			IO`print("\n# Test 1 - Add random piece; move the piece manually/automatically;  \n");
+			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
 						
 			--inital matrix
-				IO`print("\n-> Initial matrix\n");
+			IO`println("-> Initial matrix");
 			matrix:= game1.board.getBoard();
-				IO`print(matrix);
+			IO`println(matrix);
 			
 			--print board	
 			printBoard:= game1.board.getBoardPrint();
-				IO`print("\n\n" ^ printBoard);
+			IO`println(printBoard);
 					
 			--add piece
-				IO`print("\n-> Add piece on the matrix\n");
+			IO`println("-> Add piece on the matrix");
 			game1.board.cell_setPiece("set",[0,2],[1,2],[2,2],[3,2]);
 			
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
-				IO`print(matrix);
+			IO`println(matrix);
 			
 			--print board
 			printBoard:= game1.board.getBoardPrint();
-				IO`print("\n\n" ^ printBoard);
+			IO`println(printBoard);
 				
 			--automaticallyMovePiece
-				IO`print("\n-> Move piece automatically\n");
-			game1.board.cell_automaticallyMovePiece();
+			IO`println("-> Move piece automatically");
+			movePiece:= game1.board.cell_automaticallyMovePiece();
 	
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
-				IO`print(matrix);
+			IO`println(matrix);
 				
 			--print board
 			printBoard:= game1.board.getBoardPrint();
-				IO`print("\n\n" ^ printBoard);
+			IO`println(printBoard);
 				
 			--automaticallyMovePiece
-				IO`print("\n-> Move piece automatically (second call)\n");
-			game1.board.cell_automaticallyMovePiece();
+			IO`println("-> Move piece automatically (second call)");
+			movePiece:= game1.board.cell_automaticallyMovePiece();
 	
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
-				IO`print(matrix);
+			IO`println(matrix);
 				
 			--print board
 			printBoard:= game1.board.getBoardPrint();
-				IO`print("\n\n" ^ printBoard);
+			IO`println(printBoard);
 				
 			--manually
-				IO`print("\n-> Move piece manually (keyboard click simulation)\n");
+			IO`println("-> Move piece manually (keyboard click simulation)");
 			game1.board.cell_manuallyMovePiece("moveRight", 8);
 	
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
-				IO`print(matrix);
+			IO`println(matrix);
 				
 			--print board
 			printBoard:= game1.board.getBoardPrint();
-				IO`print("\n\n" ^ printBoard);
+			IO`println(printBoard);
 		);       
 
 		------------------------------------------------------------ timer_test

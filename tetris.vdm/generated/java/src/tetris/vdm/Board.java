@@ -5,11 +5,11 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class Board {
-  private String print_startTag = "<!";
-  private String print_endTag = "!>\n";
-  private String print_bottomLine = "============";
-  private String print_emptyCell = "□";
-  private String print_filledcell = "■";
+  private String print_startTag = "▕";
+  private String print_endTag = "▏\n";
+  private String print_bottomLine = " ▔▔▔▔▔▔▔▔▔▔▔▔";
+  private String print_emptyCell = "░";
+  private String print_filledcell = "█";
   private String print_board = "";
   private Number totalRows = 11L;
   private Number totalColumns = 11L;
@@ -64,7 +64,7 @@ public class Board {
 
   public String getBoardPrint() {
 
-    print_board = "";
+    print_board = "\n";
     long toVar_6 = totalRows.longValue();
 
     for (Long i = 0L; i <= toVar_6; i++) {
@@ -88,7 +88,7 @@ public class Board {
       }
       print_board = print_board + print_endTag;
     }
-    return print_board + print_startTag + print_bottomLine + print_endTag;
+    return print_board + print_bottomLine;
   }
 
   public VDMMap getBoard() {
@@ -119,6 +119,14 @@ public class Board {
     Cell cell = new Cell();
     this.initBoard("tempMatrix");
     matrix = cell.automaticallyMovePiece(Utils.copy(tempMatrix), Utils.copy(matrix));
+  }
+
+  public void cell_manuallyMovePiece(final String option, final Number numberOfClicks) {
+
+    Cell cell = new Cell();
+    this.initBoard("tempMatrix");
+    matrix =
+        cell.manuallyMovePiece(option, numberOfClicks, Utils.copy(tempMatrix), Utils.copy(matrix));
   }
 
   public Boolean checkRow(final Number row) {

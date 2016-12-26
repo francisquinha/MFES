@@ -6,11 +6,11 @@ class Board
 		public t_coord	= seq of nat;
 		
 	instance variables
-		private print_startTag		:String		:="<!";
-		private print_endTag		:String		:="!>\n";
-		private print_bottomLine	:String		:="============";
-		private print_emptyCell		:String		:="□";
-	  	private print_filledcell	:String		:="■";
+		private print_startTag		:String		:="▕";
+		private print_endTag		:String		:="▏\n";
+		private print_bottomLine	:String		:=" ▔▔▔▔▔▔▔▔▔▔▔▔";
+		private print_emptyCell		:String		:="░";
+	  	private print_filledcell	:String		:="█";
 		private print_board			:String		:= "";
 		
 		private totalRows			:nat 		:= 11;
@@ -57,7 +57,7 @@ class Board
 		public getBoardPrint : () ==> String
 		getBoardPrint() ==(	
 
-			print_board	:= "";
+			print_board	:= "\n";
 								
 			for i=0 to totalRows do(
 				print_board := print_board ^ print_startTag;
@@ -71,7 +71,7 @@ class Board
 	  			);
 	  			print_board := print_board ^  print_endTag;
 	  		);
-	 		return print_board ^ print_startTag ^ print_bottomLine ^ print_endTag;	  							  							
+	 		return print_board ^ print_bottomLine ;	  							  							
 		);
 		
 		------------------------------------------------------------ get matrix board
@@ -89,12 +89,17 @@ class Board
 		);
 
 		------------------------------------------------------------ cell_automaticallyMovePiece
-		public cell_automaticallyMovePiece : () ==> ()
+		public cell_automaticallyMovePiece : () ==> bool
 		cell_automaticallyMovePiece() ==(		
 			dcl cell: Cell := new Cell();
-
+			
+			-- TODO: check if is on the last row
+			-- TODO: dynamic row
+			
 			self.initBoard("tempMatrix");
-			matrix := cell.automaticallyMovePiece(tempMatrix, matrix);  					
+			matrix := cell.automaticallyMovePiece(tempMatrix, matrix);
+			
+			return true;  					
 		);
 		
 		------------------------------------------------------------ cell_manuallyMovePiece
