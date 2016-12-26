@@ -9,6 +9,8 @@ class Tests
 	instance variables
 		public matrix 		:map seq of nat to nat	:= {|->};
 		public printBoard	:String					:= "";
+		public endGame		:bool					:=false;
+		
 		
 	operations
 	
@@ -17,7 +19,6 @@ class Tests
 		addPiece_test() ==
 		(
 			dcl game1: Game := new Game();
-			
 			IO`print("\n# addPiece_test\n");
 						
 			--inital matrix
@@ -42,12 +43,39 @@ class Tests
 				IO`print("\n\n" ^ printBoard);
 		);       
 
+		------------------------------------------------------------ timer_test
+		private timer_test: () ==> ()
+		timer_test() ==
+		(
+			dcl timer: Timer := new Timer();
+			IO`print("\n# timer_test\n");
+				
+				while not endGame do (
+				
+					timer.incTimers();
+					
+					if (timer.getTimer("time") = 100000) then(
+						IO`print("-> END \n");
+						timer.resetTimer("all");
+						endGame := true;
+					);
+					
+					if(timer.getTimer("step") = 20000) then(
+						IO`print("-> Matrix \n");
+						timer.resetTimer("step");
+					);					
+				);
+		);
+
+
 		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
 		main() ==
 		(
 			IO`print("\nINIT TESTS\n");
 		  	new Tests().addPiece_test();
+		  	new Tests().timer_test();
+		  	
 		);
 
 	functions
