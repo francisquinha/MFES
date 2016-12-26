@@ -4,24 +4,13 @@ class Game
 	  public level	:int	:= 0;
 	  public board: Board;
 	  
-	 
 	operations
 		public Game : () ==> Game
 		Game() ==
-		(
-			board := new Board();	
-		);
-		
-		public startGame:() ==> ()
-		startGame()==
-			    is not yet specified;
+			board := new Board();	-- startGame
 
-			--IO`print("# call 'Game:startGame'\n");
-			--board.initBoard();
-	
 	  public endGame:() ==> int
 	  endGame()==
 	    is not yet specified;
-
 
 end Game

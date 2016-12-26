@@ -2,22 +2,17 @@ class Tests
 
 	types
 		public String = seq of char;
-		
-	values
-	-- TODO Define values here
 
 	instance variables
 		public matrix 		:map seq of nat to nat	:= {|->};
 		public printBoard	:String					:= "";
 		public endGame		:bool					:=false;
 		
-		
 	operations
-	
 		------------------------------------------------------------ addPiece_test
 		private addPiece_test: () ==> ()
-		addPiece_test() ==
-		(
+		addPiece_test() ==(
+		
 			dcl game1: Game := new Game();
 			IO`print("\n# addPiece_test\n");
 						
@@ -32,7 +27,7 @@ class Tests
 					
 			--add piece
 				IO`print("-> Add piece on the matrix\n");
-			game1.board.setPiece("set",[0,2],[1,2],[2,2],[3,2]);
+			game1.board.cell_setPiece("set",[0,2],[1,2],[2,2],[3,2]);
 			
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
@@ -44,7 +39,7 @@ class Tests
 				
 			--automaticallyMovePiece
 				IO`print("\n-> automaticallyMovePiece\n");
-			game1.board.automaticallyMovePiece();
+			game1.board.cell_automaticallyMovePiece();
 	
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
@@ -56,7 +51,7 @@ class Tests
 				
 			--automaticallyMovePiece
 				IO`print("\n-> automaticallyMovePiece\n");
-			game1.board.automaticallyMovePiece();
+			game1.board.cell_automaticallyMovePiece();
 	
 			--get matrix after add piece
 			matrix:= game1.board.getBoard();
@@ -65,13 +60,12 @@ class Tests
 			--print board
 			printBoard:= game1.board.getBoardPrint();
 				IO`print("\n\n" ^ printBoard);
-		
 		);       
 
 		------------------------------------------------------------ timer_test
 		private timer_test: () ==> ()
-		timer_test() ==
-		(
+		timer_test() ==(
+		
 			dcl timer: Timer := new Timer();
 			IO`print("\n# timer_test\n");
 				
@@ -92,21 +86,13 @@ class Tests
 				);
 		);
 		
-
-
 		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
-		main() ==
-		(
+		main() ==(
+		
 			IO`print("\nINIT TESTS\n");
 		  	new Tests().addPiece_test();
-		  	--new Tests().timer_test();
-		  	
+		  	--new Tests().timer_test();  	
 		);
-
-	functions
-	-- TODO Define functiones here
-	traces
-	-- TODO Define Combinatorial Test Traces here
-
+		
 end Tests

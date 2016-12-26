@@ -1,23 +1,62 @@
 class Cell
 
+	types
+		public String 	= seq of char;
+		public t_matrix	= map seq of nat to nat;
+		public t_coord	= seq of nat;
 
--- Penso que estas operações podiam estar todas em Game.vdmpp !!!!
 	instance variables
-	  row		:int	:= 0;
-	  column	:int	:= 0;
-	  pieceId	:int	:= 0;
-		  
-	operations
-	  public  removePiece : ()  ==> bool
-	  removePiece() ==
-	    is not yet specified;
-	
-	  public  setPiece : int ==> bool
-	  setPiece(pos) ==
-	    is not yet specified;
-	
-	  public  getPiece : ()  ==> int
-	  getPiece() ==
-	    is not yet specified;
+		private totalRows			:nat 		:= 11;
+		private totalColumns		:nat 		:= 11;
+		
+		private emptyCell			:nat		:=0;
+		private forMoveCell			:nat		:=1;
+		private filledCell			:nat		:=2;
+		private tempCell			:nat		:=9;
 
+		private matrix 				:t_matrix	:= {|->};
+		private tempMatrix			:t_matrix	:= {|->};
+		private pieceOperation		:nat	:= 0;
+		
+		  
+	operations	
+		------------------------------------------------------------ add and remove piece
+		public setPiece : String * t_coord * t_coord * t_coord * t_coord * t_matrix ==> (t_matrix)
+		setPiece(option, coord1, coord2, coord3, coord4, get_matrix) ==(
+			
+			matrix := get_matrix;
+					
+			(if(option = "set") then
+				pieceOperation := forMoveCell
+			elseif (option = "remove") then
+				pieceOperation := emptyCell
+			);
+			
+			matrix := matrix ++ {coord1 |-> pieceOperation};
+			matrix := matrix ++ {coord2 |-> pieceOperation};
+			matrix := matrix ++ {coord3 |-> pieceOperation};
+			matrix := matrix ++ {coord4 |-> pieceOperation};
+			
+			return matrix;
+		);
+				
+		------------------------------------------------------------ automaticallyMovePiece
+		public automaticallyMovePiece : t_matrix * t_matrix ==> (t_matrix)
+		automaticallyMovePiece(get_tempMatrix, get_matrix) ==(
+ 		
+			matrix 		:= get_matrix;
+			tempMatrix := get_tempMatrix;
+ 		
+			-- move piece
+			for i=0 to totalRows do(
+	  			for j=0 to totalColumns do (
+  				  	 				  		  				  	
+					if (matrix([i,j]) = forMoveCell) then(
+						tempMatrix([i+1,j]) := forMoveCell;
+					);		
+  				);  			
+	  		);
+	  		matrix:= tempMatrix;	
+	  		return tempMatrix;
+		);
 end Cell

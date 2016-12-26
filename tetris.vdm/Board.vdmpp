@@ -1,31 +1,30 @@
 class Board
 	
 	types
-		public String = seq of char;
+		public String 	= seq of char;
+		public t_matrix	= map seq of nat to nat;
+		public t_coord	= seq of nat;
 		
 	instance variables
-		private print_startTag		:String					:="<!";
-		private print_endTag		:String					:="!>\n";
-		private print_bottomLine	:String					:="============";
-		private print_emptyCell		:String					:="□";
-	  	private print_filledcell	:String					:="■";
-		private print_board			:String					:= "";
+		private print_startTag		:String		:="<!";
+		private print_endTag		:String		:="!>\n";
+		private print_bottomLine	:String		:="============";
+		private print_emptyCell		:String		:="□";
+	  	private print_filledcell	:String		:="■";
+		private print_board			:String		:= "";
 		
-		private totalRows			:nat 					:= 11;
-		private totalColumns		:nat 					:= 11;
-		private iterator			:nat					:= 0;
+		private totalRows			:nat 		:= 11;
+		private totalColumns		:nat 		:= 11;
+		private iterator			:nat		:= 0;
 		
-		private matrix 				:map seq of nat to nat	:= {|->};
-		private tempMatrix			:map seq of nat to nat	:= {|->};
+		private matrix 				:t_matrix	:= {|->};
+		private tempMatrix			:t_matrix	:= {|->};
 		
-		private emptyCell			:nat					:=0;
-		private forMoveCell			:nat					:=1;
-		private filledCell			:nat					:=2;
-		private tempCell			:nat					:=9;
-		
-		
-		private pieceOperation		:nat					:=0;
-		
+		private emptyCell			:nat		:=0;
+		private forMoveCell			:nat		:=1;
+		private filledCell			:nat		:=2;
+		private tempCell			:nat		:=9;
+				
 	operations
 		------------------------------------------------------------ Board
 		public Board : () ==> Board
@@ -38,22 +37,22 @@ class Board
 		initBoard(option) ==(		
 					
 			(if(option = "matrix") then
-				for x=0 to 11 do( 
-					for y=0 to 11 do (
+				for x=0 to totalRows do( 
+					for y=0 to totalColumns do (
 						matrix := matrix ++ {[x,y] |-> 0 };
 					);
 				)	
 			elseif (option = "tempMatrix") then
-				for x=0 to 11 do( 
-					for y=0 to 11 do (
+				for x=0 to totalRows do( 
+					for y=0 to totalColumns do (
 						tempMatrix := tempMatrix ++ {[x,y] |-> 0 };
 					);
 				)	
 			);		
 		);
-		--pre len matrix <=0
 		--post len row1 =12;
-		
+		--pre len matrix <=0
+
 		------------------------------------------------------------ printBoard
 		public getBoardPrint : () ==> String
 		getBoardPrint() ==(	
@@ -64,10 +63,9 @@ class Board
 				print_board := print_board ^ print_startTag;
 	  			for j=0 to totalColumns do (
 	  			
-	  				if (matrix([i,j]) = forMoveCell or
-	  					matrix([i,j]) = filledCell ) then
-	  					 
+	  				if (matrix([i,j]) = forMoveCell or matrix([i,j]) = filledCell ) then
 	  					print_board := print_board ^ print_filledcell
+	  					
 	  				else
 	  					print_board := print_board ^ print_emptyCell;
 	  			);
@@ -83,44 +81,21 @@ class Board
 		);
 		
 		------------------------------------------------------------ set and remove piece
-		public setPiece : String * seq of nat * seq of nat * seq of nat * seq of nat ==> ()
-		setPiece(option, coord1, coord2, coord3, coord4) ==(
+		public cell_setPiece : String * t_coord * t_coord * t_coord * t_coord ==> ()
+		cell_setPiece(option, coord1, coord2, coord3, coord4) ==(
 		
-			(if(option = "set") then
-				pieceOperation := forMoveCell
-			elseif (option = "remove") then
-				pieceOperation := emptyCell
-			);
-			
-			matrix := matrix ++ {coord1 |-> pieceOperation};
-			matrix := matrix ++ {coord2 |-> pieceOperation};
-			matrix := matrix ++ {coord3 |-> pieceOperation};
-			matrix := matrix ++ {coord4 |-> pieceOperation};
+			dcl cell: Cell := new Cell();
+			matrix:= cell.setPiece(option, coord1, coord2, coord3, coord4, matrix)
 		);
 
-		------------------------------------------------------------ getPiece
-		public automaticallyMovePiece : () ==> ()
-		automaticallyMovePiece() ==(
-		
+		------------------------------------------------------------ automaticallyMovePiece
+		public cell_automaticallyMovePiece : () ==> ()
+		cell_automaticallyMovePiece() ==(		
+			dcl cell: Cell := new Cell();
+
 			self.initBoard("tempMatrix");
-  		
-				-- move piece
-				for i=0 to totalRows do(
-		  			for j=0 to totalColumns do (
-	  				  	 				  		  				  	
-						if (matrix([i,j]) = forMoveCell) then(
-							tempMatrix([i+1,j]) := forMoveCell;
-						);		
-	  				);  			
-		  		);  		
-				-- remove temp
-		  		matrix:= tempMatrix;
+			matrix := cell.automaticallyMovePiece(tempMatrix, matrix);  					
 		);
-		
-		------------------------------------------------------------ getPiece
-		public  getPiece : ()  ==> int
-			getPiece() ==
-			is not yet specified;
 		
 		------------------------------------------------------------ checkRow
 		public  checkRow : int ==> bool
