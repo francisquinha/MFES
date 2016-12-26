@@ -2,30 +2,30 @@ class Board
 	
 	types
 		public String = seq of char;
-	
+		
 	instance variables
-		private startTag		:String					:="<!";
-		private endTag			:String					:="!>\n";
-		private bottomLine		:String					:="============";
-		private emptyCell		:String					:="□";
-	  	private filledcell		:String					:="■";
+		private print_startTag		:String					:="<!";
+		private print_endTag		:String					:="!>\n";
+		private print_bottomLine	:String					:="============";
+		private print_emptyCell		:String					:="□";
+	  	private print_filledcell	:String					:="■";
+		private print_board			:String					:= "";
 		
-		private rows			:int 					:= 0;
-		private columns			:int 					:= 0;
-		private printRow		:String					:= "";
-		private printBoard		:String					:= "";
+		private totalRows			:nat 					:= 11;
+		private totalColumns		:nat 					:= 11;
+		private iterator			:nat					:= 0;
 		
-		private iterator		:int					:= 1;
-		private matrix 			:map seq of nat to nat	:= {|->};
+		private matrix 				:map seq of nat to nat	:= {|->};
+		private emptyCell			:nat					:=0;
+		private forMoveCell			:nat					:=1;
+		private filledCell			:nat					:=2;
 		
-		private pieceOperation	:int					:=0;
-		
+		private pieceOperation		:nat					:=0;
 		
 	operations
 		------------------------------------------------------------ Board
 		public Board : () ==> Board
-		Board() ==(
-		
+		Board() ==(	
 			self.initBoard();
 		);
 		
@@ -46,45 +46,45 @@ class Board
 		public getBoardPrint : String * seq of nat * seq of nat * seq of nat * seq of nat ==> String
 		getBoardPrint(option, coord1, coord2, coord3, coord4) ==(	
 
-			printBoard:= "";
-		
+			print_board	:= "";
+			iterator	:= 0;
+					
 			if(option = "set") then(
-				for x=0 to 11 do(
-				
-					printBoard := printBoard ^ startTag;
-				 
-		  			for y=0 to 11 do (
+			
+				for i=0 to totalRows do(
+					print_board := print_board ^ print_startTag;
+		  			for j=0 to totalColumns do (
 		  			
-		  				if( (coord1(1) = x and coord1(2) = y) or
-		  					(coord2(1) = x and coord2(2) = y) or
-		  					(coord3(1) = x and coord3(2) = y) or
-		  					(coord4(1) = x and coord4(2) = y) ) then
+		  				if( (coord1(1) = i and coord1(2) = j) or
+		  					(coord2(1) = i and coord2(2) = j) or
+		  					(coord3(1) = i and coord3(2) = j) or
+		  					(coord4(1) = i and coord4(2) = j) ) then
 		  					 
-		  					printBoard := printBoard ^ filledcell
+		  					print_board := print_board ^ print_filledcell
 		  				else
-		  					printBoard := printBoard ^ emptyCell;
+		  					print_board := print_board ^ print_emptyCell;
 		  			);
-		  			printBoard := printBoard ^  endTag;
+		  			print_board := print_board ^  print_endTag;
 		  		);
-		 		return printBoard ^ startTag ^ bottomLine ^ endTag;	  							  						
+		 		return print_board ^ print_startTag ^ print_bottomLine ^ print_endTag;	  							  						
 			)
 			
 			elseif (option = "init") then(
-				for x=0 to 11 do
-					printBoard := printBoard ^ startTag ^ "□□□□□□□□□□□□" ^ endTag;					
-			  	
-			  	printBoard := printBoard ^ startTag ^ bottomLine ^ endTag ^ "\n" ;
-			  	
-			  	return printBoard;
-			);
 			
+				while iterator <= totalRows do(
+					print_board := print_board ^ print_startTag ^ "□□□□□□□□□□□□" ^ print_endTag;					
+			  		iterator := iterator + 1;
+			  	);
+			  	print_board := print_board ^ print_startTag ^ print_bottomLine ^ print_endTag ^ "\n" ;
+			  	
+			  	return print_board;
+			);
 			return "";			
 		);
 		
 		------------------------------------------------------------ get matrix board
 		public  getBoard : ()  ==> map seq of nat to nat
-		getBoard() ==(
-		
+		getBoard() ==(	
 			return self.matrix;
 		);
 		
@@ -93,9 +93,9 @@ class Board
 		setPiece(option, coord1, coord2, coord3, coord4) ==(
 		
 			(if(option = "set") then
-				pieceOperation := 1
+				pieceOperation := forMoveCell
 			elseif (option = "remove") then
-				pieceOperation := 0
+				pieceOperation := emptyCell
 			);
 			
 			matrix := matrix ++ {coord1 |-> pieceOperation};
