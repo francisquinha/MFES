@@ -80,7 +80,7 @@ class Board
 			return self.matrix;
 		);
 		
-		------------------------------------------------------------ set and remove piece
+		------------------------------------------------------------ cell_setPiece
 		public cell_setPiece : String * t_coord * t_coord * t_coord * t_coord ==> ()
 		cell_setPiece(option, coord1, coord2, coord3, coord4) ==(
 		
@@ -88,13 +88,22 @@ class Board
 			matrix:= cell.setPiece(option, coord1, coord2, coord3, coord4, matrix)
 		);
 
-		------------------------------------------------------------ automaticallyMovePiece
+		------------------------------------------------------------ cell_automaticallyMovePiece
 		public cell_automaticallyMovePiece : () ==> ()
 		cell_automaticallyMovePiece() ==(		
 			dcl cell: Cell := new Cell();
 
 			self.initBoard("tempMatrix");
 			matrix := cell.automaticallyMovePiece(tempMatrix, matrix);  					
+		);
+		
+		------------------------------------------------------------ cell_manuallyMovePiece
+		public cell_manuallyMovePiece : String * nat ==> ()
+		cell_manuallyMovePiece(option, numberOfClicks) ==(		
+			dcl cell: Cell := new Cell();
+
+			self.initBoard("tempMatrix");
+			matrix := cell.manuallyMovePiece(option, numberOfClicks, tempMatrix, matrix);  					
 		);
 		
 		------------------------------------------------------------ checkRow

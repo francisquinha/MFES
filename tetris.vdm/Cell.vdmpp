@@ -16,9 +16,8 @@ class Cell
 
 		private matrix 				:t_matrix	:= {|->};
 		private tempMatrix			:t_matrix	:= {|->};
-		private pieceOperation		:nat	:= 0;
-		
-		  
+		private pieceOperation		:nat		:= 0;
+						  
 	operations	
 		------------------------------------------------------------ add and remove piece
 		public setPiece : String * t_coord * t_coord * t_coord * t_coord * t_matrix ==> (t_matrix)
@@ -45,7 +44,7 @@ class Cell
 		automaticallyMovePiece(get_tempMatrix, get_matrix) ==(
  		
 			matrix 		:= get_matrix;
-			tempMatrix := get_tempMatrix;
+			tempMatrix 	:= get_tempMatrix;
  		
 			-- move piece
 			for i=0 to totalRows do(
@@ -56,6 +55,37 @@ class Cell
 					);		
   				);  			
 	  		);
+	  		matrix:= tempMatrix;	
+	  		return tempMatrix;
+		);
+		
+		------------------------------------------------------------ manualMovePiece
+		public manuallyMovePiece : String * nat * t_matrix * t_matrix ==> (t_matrix)
+		manuallyMovePiece(option, numberOfClicks, get_tempMatrix, get_matrix) ==(
+ 		
+			matrix 		:= get_matrix;
+			tempMatrix 	:= get_tempMatrix;
+			
+			if(option = "moveRight") then(
+				for i=0 to totalRows do(
+		  			for j=0 to totalColumns do (
+	  				  	 				  		  				  	
+						if (matrix([i,j]) = forMoveCell) then(
+							tempMatrix([i,j+numberOfClicks]) := forMoveCell;
+						);		
+	  				);  			
+		  		);
+		  	)
+			elseif (option = "moveLeft") then(
+				for i=0 to totalRows do(
+		  			for j=0 to totalColumns do (
+	  				  	 				  		  				  	
+						if (matrix([i,j]) = forMoveCell) then(
+							tempMatrix([i,j-numberOfClicks]) := forMoveCell;
+						);		
+	  				);  			
+		  		);
+			);
 	  		matrix:= tempMatrix;	
 	  		return tempMatrix;
 		);
