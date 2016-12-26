@@ -1,4 +1,4 @@
-class Tests
+class TestTetris is subclass of TestCaseExtra
 
 	types
 		public String = seq of char;
@@ -91,8 +91,8 @@ class Tests
 		main() ==(
 		
 			IO`print("\nINIT TESTS\n");
-		  	new Tests().addPiece_test();
+		  	new TestTetris().addPiece_test();
 		  	--new Tests().timer_test();  	
 		);
 		
-end Tests
+end TestTetris

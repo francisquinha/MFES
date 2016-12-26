@@ -1,8 +1,8 @@
-import tetris.vdm.Tests;
+import tetris.vdm.TestTetris;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Tests.main();
+		TestTetris.main();
 	}
 }

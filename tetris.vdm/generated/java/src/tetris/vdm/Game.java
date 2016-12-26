@@ -18,11 +18,6 @@ public class Game {
     cg_init_Game_1();
   }
 
-  public void startGame() {
-
-    throw new UnsupportedOperationException();
-  }
-
   public Number endGame() {
 
     throw new UnsupportedOperationException();
