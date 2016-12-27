@@ -1,28 +1,28 @@
 class Tetramino
-instance variables
-  color:seq of (char) 			:= "";
-  orientation:seq of (char) := "";
-  mino0:seq of (char) 			:= "";
-  mino1:seq of (char) 			:= "";
-  mino2:seq of (char) 			:= "";
-  mino3:seq of (char) 			:= "";
 
-operations
-  public  moveDown : ()  ==> bool
-  moveDown() ==
-    is not yet specified;
-
-  public  moveLeft : ()  ==> bool
-  moveLeft() ==
-    is not yet specified;
-
-  public  moveRight : ()  ==> bool
-  moveRight() ==
-    is not yet specified;
-
-  public  rotate : ()  ==> bool
-  rotate() ==
-    is not yet specified;
-
+	instance variables
+		color:seq of (char) 		:= "";
+		orientation:seq of (char)	:= "";
+		mino0:seq of (char) 		:= "";
+		mino1:seq of (char) 		:= "";
+		mino2:seq of (char) 		:= "";
+		mino3:seq of (char) 		:= "";
+	
+	operations
+		public  moveDown : ()  ==> bool
+		moveDown() ==
+			is not yet specified;
+		
+		public  moveLeft : ()  ==> bool
+		moveLeft() ==
+			is not yet specified;
+		
+		public  moveRight : ()  ==> bool
+		moveRight() ==
+			is not yet specified;
+		
+		public  rotate : ()  ==> bool
+		rotate() ==
+			is not yet specified;
 
 end Tetramino

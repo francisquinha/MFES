@@ -1,112 +1,96 @@
 class TestTetris is subclass of TestCaseExtra
 
-	types
-		public String = seq of char;
-
 	instance variables
-		public matrix 		:map seq of nat to nat	:= {|->};
-		public printBoard	:String					:= "";
-		public endGame		:bool					:=false;
-		
-		public movePiece	:bool					:=true;
+		public matrix 		:TestCaseExtra`t_matrix	:= {|->};
+		public printBoard	:TestCaseExtra`String	:= "";
 		
 	operations
-		------------------------------------------------------------ addPiece_test
-		private addPiece_test: () ==> ()
-		addPiece_test() ==(
+		------------------------------------------------------------ initaMatrix_test
+		private initalMatrix_test: (Game) ==> ()
+		initalMatrix_test(game) ==(
 		
-			dcl game1: Game := new Game();
-			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
-						
-			--inital matrix
 			IO`println("-> Initial matrix");
-			matrix:= game1.board.getBoard();
-			IO`println(matrix);
+			matrix:= game.board.getBoard("printMatrix");
 			
 			--print board	
-			printBoard:= game1.board.getBoardPrint();
-			IO`println(printBoard);
-					
-			--add piece
+			printBoard:= game.board.getBoardPrint("printBoard");
+		); 
+	
+		------------------------------------------------------------ addPiece_test
+		private addPiece_test: (Game) ==> ()
+		addPiece_test(game) ==(		
+			
 			IO`println("-> Add piece on the matrix");
-			game1.board.cell_setPiece("set",[0,2],[1,2],[2,2],[3,2]);
+			game.board.cell_setPiece("set",[0,2],[1,2],[2,2],[3,2]);
+	
+			--get matrix after add piece
+			matrix:= game.board.getBoard("printMatrix" );
 			
-			--get matrix after add piece
-			matrix:= game1.board.getBoard();
-			IO`println(matrix);
-			
 			--print board
-			printBoard:= game1.board.getBoardPrint();
-			IO`println(printBoard);
-				
-			--automaticallyMovePiece
-			IO`println("-> Move piece automatically");
-			movePiece:= game1.board.cell_automaticallyMovePiece();
-	
-			--get matrix after add piece
-			matrix:= game1.board.getBoard();
-			IO`println(matrix);
-				
-			--print board
-			printBoard:= game1.board.getBoardPrint();
-			IO`println(printBoard);
-				
-			--automaticallyMovePiece
-			IO`println("-> Move piece automatically (second call)");
-			movePiece:= game1.board.cell_automaticallyMovePiece();
-	
-			--get matrix after add piece
-			matrix:= game1.board.getBoard();
-			IO`println(matrix);
-				
-			--print board
-			printBoard:= game1.board.getBoardPrint();
-			IO`println(printBoard);
-				
-			--manually
-			IO`println("-> Move piece manually (keyboard click simulation)");
-			game1.board.cell_manuallyMovePiece("moveRight", 8);
-	
-			--get matrix after add piece
-			matrix:= game1.board.getBoard();
-			IO`println(matrix);
-				
-			--print board
-			printBoard:= game1.board.getBoardPrint();
-			IO`println(printBoard);
-		);       
-
-		------------------------------------------------------------ timer_test
-		private timer_test: () ==> ()
-		timer_test() ==(
-		
-			dcl timer: Timer := new Timer();
-			IO`print("\n# timer_test\n");
-				
-				while not endGame do (
-				
-					timer.incTimers();
-					
-					if (timer.getTimer("time") = 100000) then(
-						IO`print("-> END \n");
-						timer.resetTimer("all");
-						endGame := true;
-					);
-					
-					if(timer.getTimer("step") = 20000) then(
-						IO`print("-> Matrix \n");
-						timer.resetTimer("step");
-					);					
-				);
+			printBoard:= game.board.getBoardPrint("printBoard");
 		);
 		
+		------------------------------------------------------------ automaticallyMovePiece_test
+		private automaticallyMovePiece_test: Game *nat ==> ()
+		automaticallyMovePiece_test(game, numberOfTimes) ==(
+		
+			dcl timer		:Timer	:= new Timer();
+			dcl endLoop		:bool	:= false;	
+			dcl movePiece	:bool	:= true;
+					
+			IO`println("-> Move piece automatically (dummy timer)");
+			
+			while not endLoop do (
+			
+				timer.incTimers();
+				
+				if (timer.getTimer("time") = 20000*(numberOfTimes+1)) then(
+					timer.resetTimer("all");
+					endLoop := true;
+				);
+				
+				if(timer.getTimer("step") = 20000) then(
+					
+					movePiece:= game.board.cell_automaticallyMovePiece();
+			
+					--get matrix after automaticallyMove
+					matrix:= game.board.getBoard("printMatrix");
+						
+					--print board
+					printBoard:= game.board.getBoardPrint("printBoard");
+				
+					timer.resetTimer("step");
+				);					
+			);
+		);
+		
+		------------------------------------------------------------ manuallyMovePiece_test
+		private manuallyMovePiece_test: (Game) ==> ()
+		manuallyMovePiece_test(game) ==(
+			
+			IO`println("-> Move piece manually (keyboard click simulation)");
+			game.board.cell_manuallyMovePiece("moveRight", 8);
+	
+			--get matrix after manually move piece
+			matrix:= game.board.getBoard("printMatrix");
+				
+			--print board
+			printBoard:= game.board.getBoardPrint("printBoard");
+		);
+				
 		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
 		main() ==(
 		
+			dcl game1: Game := new Game();
+		
 			IO`print("\n##### TESTS #####\n");
-		  	new TestTetris().addPiece_test();
-		  	--new Tests().timer_test();  	
+			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
+			
+			new TestTetris().initalMatrix_test(game1);
+		  	new TestTetris().addPiece_test(game1);
+		  	new TestTetris().automaticallyMovePiece_test(game1,8);
+		  	new TestTetris().manuallyMovePiece_test(game1);
 		);
 		
 end TestTetris

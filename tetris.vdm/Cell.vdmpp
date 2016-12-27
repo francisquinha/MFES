@@ -1,26 +1,25 @@
 class Cell
 
-	types
-		public String 	= seq of char;
-		public t_matrix	= map seq of nat to nat;
-		public t_coord	= seq of nat;
-
 	instance variables
-		private totalRows			:nat 		:= 11;
-		private totalColumns		:nat 		:= 11;
+		private totalRows			:nat 					:= 11;
+		private totalColumns		:nat 					:= 11;
 		
-		private emptyCell			:nat		:=0;
-		private forMoveCell			:nat		:=1;
-		private filledCell			:nat		:=2;
-		private tempCell			:nat		:=9;
+		private emptyCell			:nat					:=0;
+		private forMoveCell			:nat					:=1;
+		private filledCell			:nat					:=2;
+		private tempCell			:nat					:=9;
 
-		private matrix 				:t_matrix	:= {|->};
-		private tempMatrix			:t_matrix	:= {|->};
-		private pieceOperation		:nat		:= 0;
+		private matrix 				:TestCaseExtra`t_matrix	:= {|->};
+		private tempMatrix			:TestCaseExtra`t_matrix	:= {|->};
+		private pieceOperation		:nat					:= 0;
 						  
 	operations	
 		------------------------------------------------------------ add and remove piece
-		public setPiece : String * t_coord * t_coord * t_coord * t_coord * t_matrix ==> (t_matrix)
+		public setPiece :	TestCaseExtra`String  * 
+							TestCaseExtra`t_coord * TestCaseExtra`t_coord * 
+							TestCaseExtra`t_coord * TestCaseExtra`t_coord * 
+							TestCaseExtra`t_matrix
+							==> (TestCaseExtra`t_matrix)
 		setPiece(option, coord1, coord2, coord3, coord4, get_matrix) ==(
 			
 			matrix := get_matrix;
@@ -40,7 +39,8 @@ class Cell
 		);
 				
 		------------------------------------------------------------ automaticallyMovePiece
-		public automaticallyMovePiece : t_matrix * t_matrix ==> (t_matrix)
+		public automaticallyMovePiece : TestCaseExtra`t_matrix * 
+										TestCaseExtra`t_matrix ==> (TestCaseExtra`t_matrix)
 		automaticallyMovePiece(get_tempMatrix, get_matrix) ==(
  		
 			matrix 		:= get_matrix;
@@ -60,7 +60,9 @@ class Cell
 		);
 		
 		------------------------------------------------------------ manualMovePiece
-		public manuallyMovePiece : String * nat * t_matrix * t_matrix ==> (t_matrix)
+		public manuallyMovePiece : 	TestCaseExtra`String * nat * 
+									TestCaseExtra`t_matrix * TestCaseExtra`t_matrix
+									==> (TestCaseExtra`t_matrix)
 		manuallyMovePiece(option, numberOfClicks, get_tempMatrix, get_matrix) ==(
  		
 			matrix 		:= get_matrix;

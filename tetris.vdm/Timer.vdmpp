@@ -1,6 +1,6 @@
 class Timer
+
 	types
-		public String = seq of char;
 		
 	instance variables
 		private curTime : nat := 0;
@@ -14,7 +14,7 @@ class Timer
 			curStep := curStep + 1;	
 		);
 		
-		public getTimer:(String) ==> (nat)
+		public getTimer:(TestCaseExtra`String) ==> (nat)
 		getTimer(option) == (
 		
 			(if(option = "time") then
@@ -25,7 +25,7 @@ class Timer
 			return 0;
 		);
 		
-		public resetTimer:(String) ==> ()
+		public resetTimer:(TestCaseExtra`String) ==> ()
 		resetTimer(option) == (
 		
 			(if(option = "time") then(

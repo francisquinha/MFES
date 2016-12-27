@@ -1,5 +1,5 @@
 class Game
-
+	
 	instance variables
 	  public level	:int	:= 0;
 	  public board: Board;
