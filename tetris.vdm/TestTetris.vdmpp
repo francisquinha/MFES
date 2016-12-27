@@ -5,7 +5,7 @@ class TestTetris is subclass of TestCaseExtra
 		public printBoard	:TestCaseExtra`String	:= "";
 		
 	operations
-		------------------------------------------------------------ initaMatrix_test
+		------------------------------------------------------------ initalMatrix_test
 		private initalMatrix_test: (Game) ==> ()
 		initalMatrix_test(game) ==(
 		
@@ -17,11 +17,13 @@ class TestTetris is subclass of TestCaseExtra
 		); 
 	
 		------------------------------------------------------------ addPiece_test
-		private addPiece_test: (Game) ==> ()
-		addPiece_test(game) ==(		
+		private addPiece_test:	Game * 
+							  	TestCaseExtra`t_coord * TestCaseExtra`t_coord *
+							  	TestCaseExtra`t_coord * TestCaseExtra`t_coord ==> ()
+		addPiece_test(game, coord1, coord2, coord3, coord4) ==(		
 			
 			IO`println("-> Add piece on the matrix");
-			game.board.cell_setPiece("set",[0,2],[1,2],[2,2],[3,2]);
+			game.board.cell_setPiece("set",coord1,coord2,coord3,coord4);
 	
 			--get matrix after add piece
 			matrix:= game.board.getBoard("printMatrix" );
@@ -31,8 +33,8 @@ class TestTetris is subclass of TestCaseExtra
 		);
 		
 		------------------------------------------------------------ automaticallyMovePiece_test
-		private automaticallyMovePiece_test: Game *nat ==> ()
-		automaticallyMovePiece_test(game, numberOfTimes) ==(
+		private automaticallyMovePiece_test: Game * nat * nat ==> ()
+		automaticallyMovePiece_test(game, totalTime, step) ==(
 		
 			dcl timer		:Timer	:= new Timer();
 			dcl endLoop		:bool	:= false;	
@@ -44,12 +46,12 @@ class TestTetris is subclass of TestCaseExtra
 			
 				timer.incTimers();
 				
-				if (timer.getTimer("time") = 20000*(numberOfTimes+1)) then(
+				if (timer.getTimer("time") = 180000 * totalTime ) then(
 					timer.resetTimer("all");
 					endLoop := true;
 				);
 				
-				if(timer.getTimer("step") = 20000) then(
+				if(timer.getTimer("step") = 2500 * step) then(
 					
 					movePiece:= game.board.cell_automaticallyMovePiece();
 			
@@ -75,22 +77,28 @@ class TestTetris is subclass of TestCaseExtra
 			matrix:= game.board.getBoard("printMatrix");
 				
 			--print board
-			printBoard:= game.board.getBoardPrint("printBoard");
+			printBoard:= game.board.getBoardPrint("printBoard");					
 		);
 				
 		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
 		main() ==(
 		
-			dcl game1: Game := new Game();
+			dcl game: Game := new Game();
 		
 			IO`print("\n##### TESTS #####\n");
-			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
 			
-			new TestTetris().initalMatrix_test(game1);
-		  	new TestTetris().addPiece_test(game1);
-		  	new TestTetris().automaticallyMovePiece_test(game1,8);
-		  	new TestTetris().manuallyMovePiece_test(game1);
+			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
+			new TestTetris().initalMatrix_test(game);
+		  	new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[3,2]);
+		  	new TestTetris().automaticallyMovePiece_test(game,2,16); --(game,1,8)
+		  	new TestTetris().manuallyMovePiece_test(game);
+		  	new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[2,3]);
+		  	new TestTetris().automaticallyMovePiece_test(game,2,10);
+		  	new TestTetris().addPiece_test(game, [1,1],[1,2],[2,2],[2,3]);
+		  	new TestTetris().automaticallyMovePiece_test(game,2,10); --(game,1,8)
+		  	
+		  	--TODO: Add more tests
 		);
 		
 end TestTetris

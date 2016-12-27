@@ -5,10 +5,16 @@ class Cell
 		private totalColumns		:nat 					:= 11;
 		
 		private emptyCell			:nat					:=0;
-		private forMoveCell			:nat					:=1;
-		private filledCell			:nat					:=2;
-		private tempCell			:nat					:=9;
-
+		private blockedCell			:nat					:=1;
+				
+		private pieceI				:nat					:=111;
+		private pieceO				:nat					:=222;
+		private pieceT				:nat					:=333;
+		private pieceJ				:nat					:=444;
+		private piecelL				:nat					:=555;
+		private pieceS				:nat					:=666;
+		private pieceZ				:nat					:=777;
+			
 		private matrix 				:TestCaseExtra`t_matrix	:= {|->};
 		private tempMatrix			:TestCaseExtra`t_matrix	:= {|->};
 		private pieceOperation		:nat					:= 0;
@@ -25,7 +31,7 @@ class Cell
 			matrix := get_matrix;
 					
 			(if(option = "set") then
-				pieceOperation := forMoveCell
+				pieceOperation := pieceI
 			elseif (option = "remove") then
 				pieceOperation := emptyCell
 			);
@@ -50,8 +56,8 @@ class Cell
 			for i=0 to totalRows do(
 	  			for j=0 to totalColumns do (
   				  	 				  		  				  	
-					if (matrix([i,j]) = forMoveCell) then(
-						tempMatrix([i+1,j]) := forMoveCell;
+					if (matrix([i,j]) = pieceI) then(
+						tempMatrix([i+1,j]) := pieceI;
 					);		
   				);  			
 	  		);
@@ -72,8 +78,8 @@ class Cell
 				for i=0 to totalRows do(
 		  			for j=0 to totalColumns do (
 	  				  	 				  		  				  	
-						if (matrix([i,j]) = forMoveCell) then(
-							tempMatrix([i,j+numberOfClicks]) := forMoveCell;
+						if (matrix([i,j]) = pieceI) then(
+							tempMatrix([i,j+numberOfClicks]) := pieceI;
 						);		
 	  				);  			
 		  		);
@@ -82,8 +88,8 @@ class Cell
 				for i=0 to totalRows do(
 		  			for j=0 to totalColumns do (
 	  				  	 				  		  				  	
-						if (matrix([i,j]) = forMoveCell) then(
-							tempMatrix([i,j-numberOfClicks]) := forMoveCell;
+						if (matrix([i,j]) = pieceI) then(
+							tempMatrix([i,j-numberOfClicks]) := pieceI;
 						);		
 	  				);  			
 		  		);
