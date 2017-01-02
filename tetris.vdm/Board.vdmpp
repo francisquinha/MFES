@@ -1,5 +1,5 @@
 class Board
-		
+
 	instance variables
 		private print_startTag		:TestCaseExtra`String	:="▕";
 		private print_endTag		:TestCaseExtra`String	:="▏\n";
@@ -159,5 +159,18 @@ class Board
 		public  checkRow : int ==> bool
 			checkRow(row) ==
 			is not yet specified;
+			
+		public setMatrixPosition : seq1 of nat * nat ==> ()
+		setMatrixPosition(position, value) ==
+				matrix(position) := value;	
+		
+		public getMatrixPosition : seq1 of nat ==> nat
+		getMatrixPosition(position) ==
+				return matrix(position);	
+				
+		public setGameOver : () ==> ()
+		setGameOver() ==
+			is not yet specified;
+
 
 end Board

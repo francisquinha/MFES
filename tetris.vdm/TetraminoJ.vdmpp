@@ -1,12 +1,57 @@
 class TetraminoJ is subclass of Tetramino
 		
 	operations
-		public TetraminoJ : () ==> TetraminoJ
-		TetraminoJ() == 
-			Tetramino`Tetramino(<Blue>, 0, [21, 20, 20, 20], [3, 3, 4, 5]);
+		public Tetramino : (Board) ==> Tetramino
+		Tetramino(board) == (
+			Tetramino`setColor(<Blue>);
+			Tetramino`setId(2);
+			Tetramino`setOrientation(0);
+			Tetramino`initialSetMinoes(board, [21, 3]);
+			return self
+		);
 
-		public rotate : ()  ==> bool
-		rotate() ==
-			is not yet specified;
+		public getNextMino: seq1 of nat * nat ==> seq1 of nat
+		getNextMino(position, index) == (
+			dcl result : seq1 of nat := position;
+			cases Tetramino`getOrientation():
+				0 -> (
+					cases index:
+						0 -> result(0) := position(0) - 1,
+						others -> result(1) := position(1) + 1
+					end
+				),
+				1 -> (
+					cases index:
+						0 -> result(1) := position(1) - 1,
+						others -> result(0) := position(0) - 1
+					end
+				),
+				2 -> (
+					cases index:
+						0 -> result(0) := position(0) + 1,
+						others -> result(1) := position(1) - 1
+					end
+				),
+				3 -> (
+					cases index:
+						0 -> result(1) := position(1) + 1,
+						others -> result(0) := position(0) + 1
+					end
+				)
+			end;
+			return result
+		);	
+		
+		public getRotatedMino: seq1 of nat ==> seq1 of nat
+		getRotatedMino(position) == (
+			dcl result : seq1 of nat := position;
+			cases Tetramino`getOrientation():
+				0 -> result(1) := position(1) + 2,
+				1 -> result(0) := position(0) - 2,
+				2 -> result(1) := position(1) - 2,
+				3 -> result(0) := position(0) + 2
+			end;
+			return result
+		);	
 
 end TetraminoJ
