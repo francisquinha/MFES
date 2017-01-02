@@ -4,40 +4,107 @@ class Tetramino
 		public Color = <Cyan> | <Blue> | <Orange> | <Yellow> | <Green> | <Purple> | <Red>;
 
 	instance variables
-		private color: Color;
-		private orientation: nat;
-		private minoes: seq1 of seq1 of nat;
+		private color: Color := <Cyan>;
+		private id: nat := 0;
+		private orientation: nat := 0;
+		private minoes: seq1 of seq1 of nat := [[0, 0], [0, 0], [0, 0], [0, 0]]
 	
 	operations
-		public Tetramino : Color * nat * seq of nat * seq of nat ==> Tetramino
-		Tetramino(c, o, linhas, colunas) == (
-			color := c; 
-			orientation := o;
-			minoes := [
-				[linhas(0), colunas(0)], 
-				[linhas(1), colunas(1)], 
-				[linhas(2), colunas(2)], 
-				[linhas(3), colunas(3)]
-			];
-			return self
+	
+		public Tetramino : (Board) ==> Tetramino
+		Tetramino(board) ==
+			is subclass responsibility;
+		
+		public setColor : Color ==> ()
+		setColor(c) == color := c;
+		
+		public setId : nat ==> ()
+		setId(i) == id := i;
+		
+		public getOrientation : () ==> nat
+		getOrientation() == return orientation;
+
+		public setOrientation : nat ==> ()
+		setOrientation(o) == orientation := o;
+
+		public setMinoes : Board * seq1 of nat ==> bool
+		setMinoes(board, position) == (
+			dcl tempMinoes : seq1 of seq1 of nat := minoes;
+			dcl tempPosition : seq1 of nat := position;
+			removeTetramino(board);
+			for i = 0 to 3 do (
+				if (validPosition(board, tempPosition)) 
+				then tempMinoes(i) := tempPosition
+				else (
+					addTetramino(board);
+					return false
+				);
+				tempPosition := getNextMino(tempPosition, i);
+			);				
+			minoes := tempMinoes;
+			addTetramino(board);
+			return true
+		);
+		
+		public initialSetMinoes : Board * seq1 of nat ==> ()
+		initialSetMinoes(board, position) == (
+			dcl tempPosition : seq1 of nat := position;
+			for i = 0 to 3 do (
+				if (validPosition(board, tempPosition)) 
+				then minoes(i) := tempPosition
+				else (
+					board.setGameOver();
+					return
+				);
+				tempPosition := getNextMino(tempPosition, i);
+			);				
+			addTetramino(board);
+		);
+		
+		public getNextMino: seq1 of nat * nat ==> seq1 of nat
+		getNextMino(position, index) ==
+			is subclass responsibility;
+			
+		public getRotatedMino: seq1 of nat ==> seq1 of nat
+		getRotatedMino(position) ==
+			is subclass responsibility;
+
+		public validPosition : Board * seq1 of nat ==> bool
+		validPosition(board, position) ==
+			if position(0) < 0 then return false
+			else if position(0) > 21 then return false
+			else if position(1) < 0 then return false
+			else if position(1) > 9 then return false
+			else if board.getMatrixPosition(position) <> 0 then return false
+			else return true;
+			
+		public removeTetramino : Board ==> ()
+		removeTetramino(board) ==
+			for mino in minoes do
+				board.setMatrixPosition(mino, 0);
+
+		public addTetramino : Board ==> ()
+		addTetramino(board) ==
+			for mino in minoes do
+				board.setMatrixPosition(mino, id);
+
+		public moveDown : Board ==> bool
+		moveDown(board) == 
+			return setMinoes(board, [minoes(0)(0) - 1, minoes(0)(1)]);
+					
+		public moveLeft : Board ==> bool
+		moveLeft(board) == 
+			return setMinoes(board, [minoes(0)(0), minoes(0)(1) - 1]);
+		
+		public moveRight : Board ==> bool
+		moveRight(board) == 
+			return setMinoes(board, [minoes(0)(0), minoes(0)(1) + 1]);
+
+		public rotate : Board ==> bool
+		rotate(board) == (
+			dcl position : seq1 of nat := getRotatedMino(minoes(0));
+			orientation := (orientation + 1) mod 4;
+			return setMinoes(board, position)
 		)
-		pre len(linhas) = 4 and len(colunas) = 4 and elems(linhas) subset {20, 21} and elems(colunas) subset {3, ..., 6}
-		post card(elems(minoes)) = 4;
 		
-		public  moveDown : ()  ==> bool
-		moveDown() ==
-			is subclass responsibility;
-		
-		public  moveLeft : ()  ==> bool
-		moveLeft() ==
-			is subclass responsibility;
-		
-		public  moveRight : ()  ==> bool
-		moveRight() ==
-			is subclass responsibility;
-
-		public  rotate : ()  ==> bool
-		rotate() ==
-			is subclass responsibility;
-
 end Tetramino
