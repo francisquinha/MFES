@@ -1,0 +1,11 @@
+class TetraminoO is subclass of Tetramino
+		
+	operations
+		public TetraminoO : () ==> TetraminoO
+		TetraminoO() == 
+			Tetramino`Tetramino(<Yellow>, 0, [21, 21, 20, 20], [4, 5, 4, 5]);	
+	
+		public rotate : ()  ==> bool
+		rotate() == return true;
+
+end TetraminoO

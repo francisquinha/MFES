@@ -1,0 +1,12 @@
+class TetraminoZ is subclass of Tetramino
+		
+	operations
+		public TetraminoZ : () ==> TetraminoZ
+		TetraminoZ() == 
+			Tetramino`Tetramino(<Red>, 0, [21, 21, 20, 20], [3, 4, 4, 5]);
+
+		public  rotate : ()  ==> bool
+		rotate() ==
+			is not yet specified;
+
+end TetraminoZ

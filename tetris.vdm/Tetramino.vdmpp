@@ -1,28 +1,43 @@
 class Tetramino
 
+	types 
+		public Color = <Cyan> | <Blue> | <Orange> | <Yellow> | <Green> | <Purple> | <Red>;
+
 	instance variables
-		color:seq of (char) 		:= "";
-		orientation:seq of (char)	:= "";
-		mino0:seq of (char) 		:= "";
-		mino1:seq of (char) 		:= "";
-		mino2:seq of (char) 		:= "";
-		mino3:seq of (char) 		:= "";
+		private color: Color;
+		private orientation: nat;
+		private minoes: seq1 of seq1 of nat;
 	
 	operations
+		public Tetramino : Color * nat * seq of nat * seq of nat ==> Tetramino
+		Tetramino(c, o, linhas, colunas) == (
+			color := c; 
+			orientation := o;
+			minoes := [
+				[linhas(0), colunas(0)], 
+				[linhas(1), colunas(1)], 
+				[linhas(2), colunas(2)], 
+				[linhas(3), colunas(3)]
+			];
+			return self
+		)
+		pre len(linhas) = 4 and len(colunas) = 4 and elems(linhas) subset {20, 21} and elems(colunas) subset {3, ..., 6}
+		post card(elems(minoes)) = 4;
+		
 		public  moveDown : ()  ==> bool
 		moveDown() ==
-			is not yet specified;
+			is subclass responsibility;
 		
 		public  moveLeft : ()  ==> bool
 		moveLeft() ==
-			is not yet specified;
+			is subclass responsibility;
 		
 		public  moveRight : ()  ==> bool
 		moveRight() ==
-			is not yet specified;
-		
+			is subclass responsibility;
+
 		public  rotate : ()  ==> bool
 		rotate() ==
-			is not yet specified;
+			is subclass responsibility;
 
 end Tetramino

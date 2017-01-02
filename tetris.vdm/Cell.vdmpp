@@ -1,8 +1,8 @@
 class Cell
 
 	instance variables
-		private totalRows			:nat 					:= 11;
-		private totalColumns		:nat 					:= 11;
+		private totalRows			:nat 					:= 20;
+		private totalColumns		:nat 					:= 10;
 		
 		private emptyCell			:nat					:=0;
 		private blockedCell			:nat					:=1;
@@ -11,7 +11,7 @@ class Cell
 		private pieceO				:nat					:=222;
 		private pieceT				:nat					:=333;
 		private pieceJ				:nat					:=444;
-		private piecelL				:nat					:=555;
+		private pieceL				:nat					:=555;
 		private pieceS				:nat					:=666;
 		private pieceZ				:nat					:=777;
 			

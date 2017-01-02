@@ -1,0 +1,12 @@
+class TetraminoJ is subclass of Tetramino
+		
+	operations
+		public TetraminoJ : () ==> TetraminoJ
+		TetraminoJ() == 
+			Tetramino`Tetramino(<Blue>, 0, [21, 20, 20, 20], [3, 3, 4, 5]);
+
+		public rotate : ()  ==> bool
+		rotate() ==
+			is not yet specified;
+
+end TetraminoJ
