@@ -64,10 +64,11 @@ Nuno Valente - up200204376\\
 
 Tetris game it's a puzzle game and one of the most recognizable and influential video game brands in the world. It’s no wonder why there are hundreds of millions of Tetris products being played, worn, and enjoyed by fans in their everyday lives. The game was born in 1984 and it's living proof of a game that have truly transcended the barriers of culture and language.
 
-The rules to play the game are very simple. Tetris game requires players to strategically rotate, move, and drop a chaining of tetrominos that fall into the rectangular board at increasing speeds. Players attempt to clear as many lines as possible by completing horizontal rows of blocks without empty space, but if the tetrominos surpass the skyline the game is over! Speed and consequent level advance can make the game ally to strategy more enthusiastic.
-
 One meritorious reference to Alexey Pajitnov because he his the person who developed this popular game. He is a russian video game designer and computer engineer and in his spare time, he drew inspiration from his favorite puzzle board game, pentominos, and decided to create a computer game for himself. Pajitnov envisioned an electronic game that let players arrange puzzle pieces in real time as they fell from the top of the playing field. The resulting design was a game that used seven distinctive geometric playing pieces (appendix\ref{tetrominoes}), each made up of four squares. Pajitnov called this game “Tetris,” a combination of “tetra” (the Greek word meaning “four”) and “tennis” (his favorite sport).
 
+The rules to play the game are very simple. Tetris game requires players to strategically rotate and drop a chaining of tetrominoes that fall into the rectangular board at increasing speeds. Players attempt to clear as many lines as possible by completing horizontal rows of blocks without empty space, but if the tetrominoes surpass the skyline the game is over! Speed and consequent level advance can make the game ally to strategy more enthusiastic.
+
+Formal details about other rules are presented in appendix\ref{rules}
 \textcolor{red}{maybe put some image here}
 \subsection{List of requirements}
 
@@ -78,11 +79,12 @@ One meritorious reference to Alexey Pajitnov because he his the person who devel
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\textbf{Id} & \textbf{Priority} & \textbf{Description} \\ \hline
-		R1 & Mandatory         &                      \\ \hline
-		R2 & Mandatory         &                      \\ \hline
-		R3 & Mandatory         &                      \\ \hline
-		R4 & Mandatory         &                      \\ \hline
-		R5 & Mandatory         &                      \\ \hline
+		R1 & Mandatory         & The player can configure the game with his nickname \\ \hline
+		R2 & Optional         & The player can view best highscores \\ \hline
+		R3 & Mandatory         & The game allows two movements - rotation and drop \\ \hline
+		R4 & Mandatory         & The player should be able to leave the game when he wants \\ \hline
+		R5 & Mandatory         & The player has access to help menu where are the rules to play the game \\ \hline
+		R6 & Mandatory         & The spawns appears in a random order to be played\\ \hline
 	\end{tabular}
 \end{table}
 
@@ -92,6 +94,8 @@ These requirements are directly translated onto use cases as shown next.
 
 \subsection{Use case model}
 
+In all use cases we've made an assumption that all keyboard game keys are functioning properly.
+
 \begin{center}
 	\includegraphics[scale=0.4]{resources/img/use_cases}
 	\label{use-cases}
@@ -99,19 +103,57 @@ These requirements are directly translated onto use cases as shown next.
 
 The main use cases are described below: 
 
+\begin{table}[h]
+	\centering
+	%	\caption{Use case configuration}
+	\label{use-case-configuration}
+	\begin{tabular}{|l| p{10cm}|}
+		\hline
+		\textbf{Scenario}        & \textbf{Configure Game} \\ \hline
+		\textbf{Description}     &  The user can write his nickname and difficulty level\\ \hline
+		\textbf{Pre-conditions}  & 	
+		\begin{tabular}[c]{@{}l@{}}
+			The game is in the configuration menu
+		\end{tabular}  \\ \hline
+		\textbf{Post-conditions} &  The player became associated with that nickname \\ \hline
+		\textbf{Steps}           &  (unspecified) \\ \hline
+		\textbf{Exceptions}      &  (unspecified) \\ \hline
+	\end{tabular}
+\end{table}
 
 \begin{table}[h]
 	\centering
-%	\caption{Use case 1}
-	\label{use-case1}
-	\begin{tabular}{|l|l|}
+%	\caption{Use case rotation}
+	\label{use-case-rotation}
+	\begin{tabular}{|l| p{10cm}|}
 		\hline
-		\textbf{Scenario}        & \textbf{Scenario name} \\ \hline
-		\textbf{Description}     &                        \\ \hline
-		\textbf{Pre-conditions}  &                        \\ \hline
-		\textbf{Post-conditions} &                        \\ \hline
-		\textbf{Steps}           &                        \\ \hline
-		\textbf{Exceptions}      &                        \\ \hline
+		\textbf{Scenario}        & \textbf{Rotation Movement} \\ \hline
+		\textbf{Description}     &  Rotate a tetromino when is falling \\ \hline
+		\textbf{Pre-conditions}  & 	
+			\begin{tabular}[c]{@{}l@{}}
+				 Tetromino must not be frozen in place
+			 \end{tabular}  \\ \hline
+		\textbf{Post-conditions} &  Tetromino position has changed  \\ \hline
+		\textbf{Steps}           &  The player must click on a key that allows rotation  \\ \hline
+		\textbf{Exceptions}      &  Tetromino type O doesn't have other form when try rotation; when, simultaneously, try to rotate and the spawn reached one final position; the stack of tetrominoes reached the penult line of the board \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	%	\caption{Use case drop}
+	\label{use-case-drop}
+	\begin{tabular}{|l| p{10cm}|}
+		\hline
+		\textbf{Scenario}        & \textbf{Drop Movement} \\ \hline
+		\textbf{Description}     &  Accelerates the tetromino falling and position it as it was before reach the final position \\ \hline
+		\textbf{Pre-conditions}  & 	
+		\begin{tabular}[c]{@{}l@{}}
+			Tetromino must not be frozen in place
+		\end{tabular}  \\ \hline
+		\textbf{Post-conditions} &  Tetromino position has changed  \\ \hline
+		\textbf{Steps}           &  The player must click on a key that allows falling spawn  \\ \hline
+		\textbf{Exceptions}      &  (none) \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -138,23 +180,26 @@ The main use cases are described below:
 
 \section{Formal VDM++ model}
 
-todo
+paste code
 
 \subsection{Class Game}
 
-todo
+paste code
 
 \subsection{Class Board}
 
-todo
+paste code
 
 \subsection{Class Cell}
 
-todo
+paste code
 
 \subsection{Class Tetromino}
 
-todo
+paste code
+
+\subsubsection{Class Tetromino-"type"}
+
 
 \section{Model validation}
 
@@ -193,6 +238,7 @@ This project took approximately 16 hours to develop.
 \begin{itemize}
 \item https://en.wikipedia.org/wiki/Tetris
 \item http://tetris.com/
+%\item https://tetris.wiki/Tetris_Guideline
 \end{itemize}
 
 \newpage
@@ -205,5 +251,64 @@ This project took approximately 16 hours to develop.
 	\includegraphics[scale=0.7]{resources/img/tetrominoes}
 	\label{tetrominoes}
 \end{center}
+
+\section{The position of each mino's}
+
+\begin{center}
+	\includegraphics[scale=0.7]{resources/img/minoes1}
+	\label{minoes1}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.7]{resources/img/minoes2}
+	\label{minoes2}
+\end{center}
+
+\section{Indispensable rules}
+\label{rules}
+
+\begin{itemize}
+	\item Playfield is 10 cells wide and at least 22 cells tall, where rows above 20 are hidden or obstructed by the field frame.
+	\item Tetromino colors:
+		
+\begin{description}
+	\item Cyan I
+	\item Yellow O
+	\item Purple T
+	\item Green S
+	\item Red Z
+	\item Blue J
+	\item Orange L
+\end{description}
+	
+	\item Tetromino start locations:
+		
+		\begin{description}
+			\item The I and O spawn in the middle columns
+			\item The rest spawn in the left-middle columns
+			\item The tetrominoes spawn horizontally and with their flat side pointed down
+		\end{description}
+
+\item Super Rotation System (SRS) specifies tetromino rotation
+
+\item Standard mappings for console and handheld gamepads:
+Up, Down, Left, Right on joystick perform locking hard drop, non-locking soft drop (except first frame locking in some games), left shift, and right shift respectively.
+Left fire button rotates 90 degrees counterclockwise, and right fire button rotates 90 degrees clockwise.
+
+\item Standard mappings different from console/handheld gamepads for computer keyboards
+
+\item So-called Random Generator (also called "random bag" or "7 system")
+
+\item "Hold piece": The player can press a button to send the falling tetromino to the hold box, and any tetromino that had been in the hold box moves to the top of the screen and begins falling. Hold cannot be used again until after the piece locks down. Games on platforms with fewer than eight usable buttons (such as the version on iPod) may skip this feature. The combination of hold piece and Random Generator would appear to allow the player to play forever.
+
+\item Game must have ghost piece function.
+\item Terms used in the user manual: "Tetriminos" not "tetrominoes" or "tetrads" or "pieces", letter names not "square" or "stick", etc.
+\item Designated soft drop speed. Details vary between guideline versions.
+\item Player may only level up by clearing lines or performing T-Spin. Required lines depends in the game.
+\item The game must use a variant of Roger Dean's Tetris logo, although this was true from around 2000 - before the guidelines emerged.
+\item Game must include a song called Korobeiniki. (Guideline 2005~)
+\item The player tops out when a piece is spawned overlapping at least one block, or a piece locks completely above the visible portion of the playfield.
+
+\end{itemize}
 
 \end{document}
