@@ -28,6 +28,8 @@ class Board
 
 		private pieceOperation		:nat					:= 0;
 		
+		private gameOver			:bool					:= false;
+		
 							
 	operations
 		------------------------------------------------------------ Board
@@ -209,21 +211,39 @@ class Board
 		);
 		
 		------------------------------------------------------------ checkRow
-		public  checkRow : int ==> bool
-			checkRow(row) ==
-			is not yet specified;
+		public checkRow : int ==> bool
+		checkRow(row) == (
+			for column = 1 to maxColumn do
+				if (matrix([row, column]) = 0) then return false;
+			for i = row - 1 to 1 by -1 do
+				for j = 1 to maxColumn do
+					matrix([i + 1, j]) := matrix([i, j]);
+			return true
+		);
+		
+		public checkRows : () ==> nat
+		checkRows() == (
+			dcl result : nat := 0;
+			for row = 1 to maxRow do
+				if checkRow(row) then result := result + 1;
+			return result
+		); 
 			
 		public setMatrixPosition : Position * nat ==> ()
 		setMatrixPosition(position, value) ==
-				matrix(position) := value;	
+			matrix(position) := value;	
 		
 		public getMatrixPosition : Position ==> nat
 		getMatrixPosition(position) ==
-				return matrix(position);	
+			return matrix(position);	
 				
 		public setGameOver : () ==> ()
 		setGameOver() ==
-			is not yet specified;
+			gameOver := true;
+			
+		public getGameOver : () ==> bool
+		getGameOver() ==
+			return gameOver;
 			
 		public getMaxRow : () ==> nat
 		getMaxRow() ==
@@ -232,5 +252,21 @@ class Board
 		public getMaxColumn : () ==> nat
 		getMaxColumn() ==
 			return maxColumn;
+			
+		public addTetramino: () ==> Tetramino
+		addTetramino() ==(		
+			dcl tetramino : Tetramino;
+			dcl random : nat1 := MATH`rand(7) + 1;
+			cases random:
+				1 -> tetramino := new TetraminoI(self),
+				2 -> tetramino := new TetraminoJ(self),
+				3 -> tetramino := new TetraminoL(self),
+				4 -> tetramino := new TetraminoO(self),
+				5 -> tetramino := new TetraminoS(self),
+				6 -> tetramino := new TetraminoT(self),
+				7 -> tetramino := new TetraminoZ(self)
+			end;
+			return tetramino;
+		);
 
 end Board

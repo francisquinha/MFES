@@ -9,8 +9,8 @@ class TestTetris is subclass of TestCaseExtra
 		private initalMatrix_test: (Game) ==> ()
 		initalMatrix_test(game) ==(
 		
-			IO`println("-> Initial matrix");
-			matrix := game.board.getBoard("printMatrix");
+--			IO`println("-> Initial matrix");
+--			matrix := game.board.getBoard("printMatrix");
 			
 			--print board	
 			printBoard := game.board.getBoardPrint("printBoard");
@@ -79,11 +79,10 @@ class TestTetris is subclass of TestCaseExtra
 			printBoard:= game.board.getBoardPrint("printBoard");					
 		);
 				
-				------------------------------------------------------------ addPiece_test
-		private addTetramino_test:	Game * nat ==> Tetramino
-		addTetramino_test(game, id) ==(		
+				------------------------------------------------------------ addTetramino_test
+		private addTetramino_test: Game * nat ==> Tetramino
+		addTetramino_test(game, id) == (		
 			dcl tetramino : Tetramino;
-		--	IO`println("-> Add piece on the matrix");
 			cases id:
 				1 -> tetramino := new TetraminoI(game.board),
 				2 -> tetramino := new TetraminoJ(game.board),
@@ -93,37 +92,26 @@ class TestTetris is subclass of TestCaseExtra
 				6 -> tetramino := new TetraminoT(game.board),
 				7 -> tetramino := new TetraminoZ(game.board)
 			end;
-			
-			--get matrix with tetramino
-			matrix := game.board.getBoard("printMatrix" );
-			
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
-			
 			return tetramino;
 		);
 		
 				------------------------------------------------------------ dropTetramino_test
 		private dropTetramino_test:	Game * Tetramino ==> ()
-		dropTetramino_test(game, tetramino) ==(		
+		dropTetramino_test(game, tetramino) == (		
 			dcl value : nat := tetramino.drop(game.board);
-			
-			--get matrix with tetramino
-			matrix := game.board.getBoard("printMatrix" );
-			
-			--print board
-			printBoard := game.board.getBoardPrint("printBoard");
-			IO`println(value);
+			if value > 0 then (
+				--print board
+				printBoard := game.board.getBoardPrint("printBoard");
+				IO`println(value);
+			)
 		);
 		
 				------------------------------------------------------------ downTetramino_test
 		private downTetramino_test:	Game * Tetramino ==> ()
-		downTetramino_test(game, tetramino) ==(		
+		downTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.moveDown(game.board);
-			
-			--get matrix with tetramino
-			matrix := game.board.getBoard("printMatrix" );
-			
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
 			IO`println(result);
@@ -131,12 +119,8 @@ class TestTetris is subclass of TestCaseExtra
 
 				------------------------------------------------------------ rightTetramino_test
 		private rightTetramino_test: Game * Tetramino ==> ()
-		rightTetramino_test(game, tetramino) ==(		
+		rightTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.moveRight(game.board);
-			
-			--get matrix with tetramino
-			matrix := game.board.getBoard("printMatrix" );
-			
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
 			IO`println(result);
@@ -144,30 +128,42 @@ class TestTetris is subclass of TestCaseExtra
 
 				------------------------------------------------------------ leftTetramino_test
 		private leftTetramino_test: Game * Tetramino ==> ()
-		leftTetramino_test(game, tetramino) ==(		
+		leftTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.moveLeft(game.board);
-			
-			--get matrix with tetramino
-			matrix := game.board.getBoard("printMatrix" );
-			
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
 			IO`println(result);
 		);
 		
-				------------------------------------------------------------ leftTetramino_test
+				------------------------------------------------------------ rotateTetramino_test
 		private rotateTetramino_test: Game * Tetramino ==> ()
-		rotateTetramino_test(game, tetramino) ==(		
+		rotateTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.rotate(game.board);
-			
-			--get matrix with tetramino
-			matrix := game.board.getBoard("printMatrix" );
-			
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
 			IO`println(result);
 		);
 				
+				------------------------------------------------------------ checkRows_test
+		private checkRows_test: Game ==> ()
+		checkRows_test(game) == (		
+			dcl value : nat := game.board.checkRows();
+			if value > 0 then (
+				--print board
+				printBoard := game.board.getBoardPrint("printBoard");
+				IO`println(value);
+			)
+		);
+
+				------------------------------------------------------------ addRandomTetramino_test
+		private addRandomTetramino_test: Game ==> Tetramino
+		addRandomTetramino_test(game) == (	
+			dcl tetramino : Tetramino := game.board.addTetramino();
+			--print board
+			printBoard := game.board.getBoardPrint("printBoard");
+			return tetramino;
+		);
+
 		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
 		main() ==(
@@ -186,6 +182,7 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().rotateTetramino_test(game, tetramino);
 			new TestTetris().rotateTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
 			tetramino := new TestTetris().addTetramino_test(game, 2);
 			new TestTetris().downTetramino_test(game, tetramino);
 			new TestTetris().downTetramino_test(game, tetramino);
@@ -197,6 +194,7 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().leftTetramino_test(game, tetramino);
 			new TestTetris().leftTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
 			tetramino := new TestTetris().addTetramino_test(game, 3);
 			new TestTetris().downTetramino_test(game, tetramino);
 			new TestTetris().downTetramino_test(game, tetramino);
@@ -209,6 +207,7 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().rightTetramino_test(game, tetramino);
 			new TestTetris().rightTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
 			tetramino := new TestTetris().addTetramino_test(game, 4);
 			new TestTetris().downTetramino_test(game, tetramino);
 			new TestTetris().downTetramino_test(game, tetramino);
@@ -217,6 +216,7 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().rotateTetramino_test(game, tetramino);
 			new TestTetris().rotateTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
 			tetramino := new TestTetris().addTetramino_test(game, 5);
 			new TestTetris().downTetramino_test(game, tetramino);
 			new TestTetris().downTetramino_test(game, tetramino);
@@ -229,6 +229,7 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().rightTetramino_test(game, tetramino);
 			new TestTetris().rightTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
 			tetramino := new TestTetris().addTetramino_test(game, 6);
 			new TestTetris().downTetramino_test(game, tetramino);
 			new TestTetris().downTetramino_test(game, tetramino);
@@ -240,6 +241,7 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().rightTetramino_test(game, tetramino);
 			new TestTetris().rightTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
 			tetramino := new TestTetris().addTetramino_test(game, 7);
 			new TestTetris().downTetramino_test(game, tetramino);
 			new TestTetris().downTetramino_test(game, tetramino);
@@ -251,8 +253,20 @@ class TestTetris is subclass of TestCaseExtra
 			new TestTetris().leftTetramino_test(game, tetramino);
 			new TestTetris().leftTetramino_test(game, tetramino);
 			new TestTetris().dropTetramino_test(game, tetramino);
-			
-			
+			new TestTetris().checkRows_test(game);
+			tetramino := new TestTetris().addTetramino_test(game, 5);
+			new TestTetris().downTetramino_test(game, tetramino);
+			new TestTetris().downTetramino_test(game, tetramino);
+			new TestTetris().rotateTetramino_test(game, tetramino);
+			new TestTetris().leftTetramino_test(game, tetramino);
+			new TestTetris().leftTetramino_test(game, tetramino);
+			new TestTetris().dropTetramino_test(game, tetramino);
+			new TestTetris().checkRows_test(game);
+			while not game.board.getGameOver() do (
+				tetramino := new TestTetris().addRandomTetramino_test(game);
+				new TestTetris().dropTetramino_test(game, tetramino);
+				new TestTetris().checkRows_test(game);
+			)
 			
 /**			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
 			new TestTetris().initalMatrix_test(game);

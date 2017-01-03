@@ -49,15 +49,13 @@ class Tetramino
 			dcl tempPosition : Board`Position := position;
 			for i = 1 to 4 do (
 				if (validPosition(board, tempPosition)) 
-				then minoes(i) := tempPosition
-				else (
-					board.setGameOver();
-					return
-				);
-				tempPosition := getNextMino(tempPosition, i);
-			);				
-			addTetramino(board);
-			return
+				then (
+					minoes(i) := tempPosition;
+					tempPosition := getNextMino(tempPosition, i)
+				)	
+				else board.setGameOver()
+			);			
+			if not board.getGameOver() then addTetramino(board);
 		);
 		
 		public getNextMino: Board`Position * nat ==> Board`Position
