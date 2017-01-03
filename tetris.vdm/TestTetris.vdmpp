@@ -51,7 +51,7 @@ class TestTetris is subclass of TestCaseExtra
 					endLoop := true;
 				);
 				
-				if(timer.getTimer("step") = 2500 * step) then(
+				if(timer.getTimer("step") = 4000 * step) then(
 					
 					movePiece:= game.board.cell_automaticallyMovePiece();
 			
@@ -90,13 +90,14 @@ class TestTetris is subclass of TestCaseExtra
 			
 			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
 			new TestTetris().initalMatrix_test(game);
-		  	new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[3,2]);
-		  	new TestTetris().automaticallyMovePiece_test(game,2,16); --(game,1,8)
-		  	new TestTetris().manuallyMovePiece_test(game);
-		  	new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[2,3]);
-		  	new TestTetris().automaticallyMovePiece_test(game,2,10);
-		  	new TestTetris().addPiece_test(game, [1,1],[1,2],[2,2],[2,3]);
-		  	new TestTetris().automaticallyMovePiece_test(game,2,10); --(game,1,8)
+		  	--new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[3,2]);
+		  	--new TestTetris().automaticallyMovePiece_test(game,3,16);
+		  	--new TestTetris().manuallyMovePiece_test(game);
+		  	--new TestTetris().automaticallyMovePiece_test(game,2,16);
+		  	--new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[2,3]);
+		  	--new TestTetris().automaticallyMovePiece_test(game,10,42);
+		  	--new TestTetris().addPiece_test(game, [1,1],[1,2],[2,2],[2,3]);
+		  	--new TestTetris().automaticallyMovePiece_test(game,2,10); --(game,1,8)
 		  	
 		  	--TODO: Add more tests
 		);
