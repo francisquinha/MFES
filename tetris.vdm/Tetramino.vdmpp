@@ -68,7 +68,9 @@ class Tetramino
 
 		public validPosition : Board * Board`Position ==> bool
 		validPosition(board, position) ==
-			if position(1) > board.getMaxRow() then return false
+			if position(1) < 1 then return false
+			else if position(1) > board.getMaxRow() then return false
+			else if position(2) < 1 then return false
 			else if position(2) > board.getMaxColumn() then return false
 			else if board.getMatrixPosition(position) <> 0 then return false
 			else return true;

@@ -104,7 +104,7 @@ class TestTetris is subclass of TestCaseExtra
 			if value > 0 then (
 				--print board
 				printBoard := game.board.getBoardPrint("printBoard");
-				IO`println(value);
+			--	IO`println(value);
 			)
 		);
 		
@@ -114,7 +114,7 @@ class TestTetris is subclass of TestCaseExtra
 			dcl result : bool := tetramino.moveDown(game.board);
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
-			IO`println(result);
+			--IO`println(result);
 		);
 
 				------------------------------------------------------------ rightTetramino_test
@@ -123,7 +123,7 @@ class TestTetris is subclass of TestCaseExtra
 			dcl result : bool := tetramino.moveRight(game.board);
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
-			IO`println(result);
+			--IO`println(result);
 		);
 
 				------------------------------------------------------------ leftTetramino_test
@@ -132,7 +132,7 @@ class TestTetris is subclass of TestCaseExtra
 			dcl result : bool := tetramino.moveLeft(game.board);
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
-			IO`println(result);
+			--IO`println(result);
 		);
 		
 				------------------------------------------------------------ rotateTetramino_test
@@ -141,7 +141,7 @@ class TestTetris is subclass of TestCaseExtra
 			dcl result : bool := tetramino.rotate(game.board);
 			--print board
 			printBoard := game.board.getBoardPrint("printBoard");
-			IO`println(result);
+			--IO`println(result);
 		);
 				
 				------------------------------------------------------------ checkRows_test
@@ -151,7 +151,7 @@ class TestTetris is subclass of TestCaseExtra
 			if value > 0 then (
 				--print board
 				printBoard := game.board.getBoardPrint("printBoard");
-				IO`println(value);
+				--IO`println(value);
 			)
 		);
 
