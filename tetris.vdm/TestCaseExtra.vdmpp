@@ -1,9 +1,4 @@
 class TestCaseExtra
-
-	types
-		public String 	= seq of char;
-		public t_coord	= seq of nat;
-		public t_matrix	= map seq of nat to nat;
 	
 	operations
 	-- Simulates assertion checking by reducing it to pre-condition checking.

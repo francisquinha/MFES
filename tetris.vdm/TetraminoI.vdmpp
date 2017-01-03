@@ -10,9 +10,9 @@ class TetraminoI is subclass of Tetramino
 			return self
 		);
 		
-		public getNextMino: seq1 of nat * nat ==> seq1 of nat
+		public getNextMino: Board`Position * nat ==> Board`Position
 		getNextMino(position, index) == (
-			dcl result : seq1 of nat := position;
+			dcl result : Board`Position := position;
 			cases Tetramino`getOrientation():
 				0 -> result(1) := position(1) + 1,
 				1 -> result(0) := position(0) - 1,
@@ -22,9 +22,9 @@ class TetraminoI is subclass of Tetramino
 			return result
 		);	
 		
-		public getRotatedMino: seq1 of nat ==> seq1 of nat
+		public getRotatedMino: Board`Position ==> Board`Position
 		getRotatedMino(position) == (
-			dcl result : seq1 of nat := position;
+			dcl result : Board`Position := position;
 			cases Tetramino`getOrientation():
 				0 -> (
 					result(0) := position(0) + 1; 

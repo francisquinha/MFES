@@ -2,12 +2,14 @@ class Tetramino
 
 	types 
 		public Color = <Cyan> | <Blue> | <Orange> | <Yellow> | <Green> | <Purple> | <Red>;
+		public Minoes = seq1 of Board`Position
+		inv minoes == len minoes = 4 and card elems minoes = 4
 
 	instance variables
 		private color: Color := <Cyan>;
 		private id: nat := 0;
 		private orientation: nat := 0;
-		private minoes: seq1 of seq1 of nat := [[0, 0], [0, 0], [0, 0], [0, 0]]
+		private minoes: Minoes := [[0, 0], [0, 1], [0, 2], [0, 3]]
 	
 	operations
 	
@@ -27,10 +29,10 @@ class Tetramino
 		public setOrientation : nat ==> ()
 		setOrientation(o) == orientation := o;
 
-		public setMinoes : Board * seq1 of nat ==> bool
+		public setMinoes : Board * Board`Position ==> bool
 		setMinoes(board, position) == (
-			dcl tempMinoes : seq1 of seq1 of nat := minoes;
-			dcl tempPosition : seq1 of nat := position;
+			dcl tempMinoes : Minoes := minoes;
+			dcl tempPosition : Board`Position := position;
 			removeTetramino(board);
 			for i = 0 to 3 do (
 				if (validPosition(board, tempPosition)) 
@@ -46,9 +48,9 @@ class Tetramino
 			return true
 		);
 		
-		public initialSetMinoes : Board * seq1 of nat ==> ()
+		public initialSetMinoes : Board * Board`Position ==> ()
 		initialSetMinoes(board, position) == (
-			dcl tempPosition : seq1 of nat := position;
+			dcl tempPosition : Board`Position := position;
 			for i = 0 to 3 do (
 				if (validPosition(board, tempPosition)) 
 				then minoes(i) := tempPosition
@@ -59,22 +61,23 @@ class Tetramino
 				tempPosition := getNextMino(tempPosition, i);
 			);				
 			addTetramino(board);
+			return
 		);
 		
-		public getNextMino: seq1 of nat * nat ==> seq1 of nat
+		public getNextMino: Board`Position * nat ==> Board`Position
 		getNextMino(position, index) ==
 			is subclass responsibility;
 			
-		public getRotatedMino: seq1 of nat ==> seq1 of nat
+		public getRotatedMino: Board`Position ==> Board`Position
 		getRotatedMino(position) ==
 			is subclass responsibility;
 
-		public validPosition : Board * seq1 of nat ==> bool
+		public validPosition : Board * Board`Position ==> bool
 		validPosition(board, position) ==
 			if position(0) < 0 then return false
-			else if position(0) > 21 then return false
+			else if position(0) >= board.getTotalRows() then return false
 			else if position(1) < 0 then return false
-			else if position(1) > 9 then return false
+			else if position(1) >= board.getTotalColumns() then return false
 			else if board.getMatrixPosition(position) <> 0 then return false
 			else return true;
 			
@@ -102,9 +105,17 @@ class Tetramino
 
 		public rotate : Board ==> bool
 		rotate(board) == (
-			dcl position : seq1 of nat := getRotatedMino(minoes(0));
+			dcl position : Board`Position := getRotatedMino(minoes(0));
 			orientation := (orientation + 1) mod 4;
 			return setMinoes(board, position)
-		)
+		);
+		
+		public drop : Board ==> nat
+		drop(board) == (
+			dcl result : nat := 0;
+			while moveDown(board) do 
+				result := result + 1;
+			return result
+		);
 		
 end Tetramino

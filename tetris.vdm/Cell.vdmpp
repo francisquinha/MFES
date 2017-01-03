@@ -15,17 +15,17 @@ class Cell
 		private pieceS				:nat					:=666;
 		private pieceZ				:nat					:=777;
 			
-		private matrix 				:TestCaseExtra`t_matrix	:= {|->};
-		private tempMatrix			:TestCaseExtra`t_matrix	:= {|->};
+		private matrix 				:Board`Matrix	:= {|->};
+		private tempMatrix			:Board`Matrix	:= {|->};
 		private pieceOperation		:nat					:= 0;
 						  
 	operations	
 		------------------------------------------------------------ add and remove piece
-		public setPiece :	TestCaseExtra`String  * 
-							TestCaseExtra`t_coord * TestCaseExtra`t_coord * 
-							TestCaseExtra`t_coord * TestCaseExtra`t_coord * 
-							TestCaseExtra`t_matrix
-							==> (TestCaseExtra`t_matrix)
+		public setPiece :	Board`String  * 
+							Board`Position * Board`Position * 
+							Board`Position * Board`Position * 
+							Board`Matrix
+							==> (Board`Matrix)
 		setPiece(option, coord1, coord2, coord3, coord4, get_matrix) ==(
 			
 			matrix := get_matrix;
@@ -45,8 +45,8 @@ class Cell
 		);
 				
 		------------------------------------------------------------ automaticallyMovePiece
-		public automaticallyMovePiece : TestCaseExtra`t_matrix * 
-										TestCaseExtra`t_matrix ==> (TestCaseExtra`t_matrix)
+		public automaticallyMovePiece : Board`Matrix * 
+										Board`Matrix ==> (Board`Matrix)
 		automaticallyMovePiece(get_tempMatrix, get_matrix) ==(
  		
 			matrix 		:= get_matrix;
@@ -66,9 +66,9 @@ class Cell
 		);
 		
 		------------------------------------------------------------ manualMovePiece
-		public manuallyMovePiece : 	TestCaseExtra`String * nat * 
-									TestCaseExtra`t_matrix * TestCaseExtra`t_matrix
-									==> (TestCaseExtra`t_matrix)
+		public manuallyMovePiece : 	Board`String * nat * 
+									Board`Matrix * Board`Matrix
+									==> (Board`Matrix)
 		manuallyMovePiece(option, numberOfClicks, get_tempMatrix, get_matrix) ==(
  		
 			matrix 		:= get_matrix;

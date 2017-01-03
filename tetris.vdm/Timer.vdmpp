@@ -14,7 +14,7 @@ class Timer
 			curStep := curStep + 1;	
 		);
 		
-		public getTimer:(TestCaseExtra`String) ==> (nat)
+		public getTimer:(Board`String) ==> (nat)
 		getTimer(option) == (
 		
 			(if(option = "time") then
@@ -25,7 +25,7 @@ class Timer
 			return 0;
 		);
 		
-		public resetTimer:(TestCaseExtra`String) ==> ()
+		public resetTimer:(Board`String) ==> ()
 		resetTimer(option) == (
 		
 			(if(option = "time") then(

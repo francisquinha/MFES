@@ -1,19 +1,26 @@
 class Board
 
+	types
+		public String = seq of char;
+		public Position = seq1 of nat
+		inv position == len position = 2;
+		public Matrix = map Position to nat;
+
 	instance variables
-		private print_startTag		:TestCaseExtra`String	:="▕";
-		private print_endTag		:TestCaseExtra`String	:="▏\n";
-		private print_bottomLine	:TestCaseExtra`String	:=" ▔▔▔▔▔▔▔▔▔▔▔▔";
-		private print_emptyCell		:TestCaseExtra`String	:="░";
-	  	private print_filledcell	:TestCaseExtra`String	:="█";
-		private print_board			:TestCaseExtra`String	:= "";
+		private print_startTag		:String	:="▕";
+		private print_endTag		:String	:="▏\n";
+		private print_bottomLine	:String	:=" ▔▔▔▔▔▔▔▔";
+		private print_emptyCell		:String	:="░";
+	  	private print_filledcell	:String	:="█";
+		private print_board			:String	:= "";
 		
-		private totalRows			:nat 					:= 20;
+		private totalRows			:nat 					:= 22;
+		private visibleRows			:nat					:= 20;
 		private totalColumns		:nat 					:= 10;
 		private iterator			:nat					:= 0;
 		
-		private matrix 				:TestCaseExtra`t_matrix	:= {|->};
-		private tempMatrix			:TestCaseExtra`t_matrix	:= {|->};
+		private matrix 				:Matrix	:= {|->};
+		private tempMatrix			:Matrix	:= {|->};
 		
 		private emptyCell			:nat					:=0;
 		private blockedCell			:nat					:=1;
@@ -35,7 +42,7 @@ class Board
 		);
 		
 		------------------------------------------------------------ initBoard
-		public  initBoard : (TestCaseExtra`String) ==> ()
+		public  initBoard : (String) ==> ()
 		initBoard(option) ==(		
 
 			if(option = "matrix") then(
@@ -58,7 +65,7 @@ class Board
 		--pre len matrix <=0
 
 		------------------------------------------------------------ printBoard
-		public getBoardPrint : (TestCaseExtra`String) ==> TestCaseExtra`String
+		public getBoardPrint : (String) ==> String
 		getBoardPrint(option) ==(	
 
 			print_board	:= "\n";
@@ -83,7 +90,7 @@ class Board
 		);
 		
 		------------------------------------------------------------ get matrix board
-		public  getBoard : (TestCaseExtra`String)  ==> TestCaseExtra`t_matrix
+		public  getBoard : (String)  ==> Matrix
 		getBoard(option) ==(
 			
 			if (option = "printMatrix" ) then
@@ -93,9 +100,9 @@ class Board
 		);
 		
 		------------------------------------------------------------ cell_setPiece
-		public cell_setPiece : 	TestCaseExtra`String  * 
-								TestCaseExtra`t_coord * TestCaseExtra`t_coord * 
-								TestCaseExtra`t_coord * TestCaseExtra`t_coord ==> ()
+		public cell_setPiece : 	String  * 
+								Position * Position * 
+								Position * Position ==> ()
 		cell_setPiece(option, coord1, coord2, coord3, coord4) ==(
 		
 			dcl cell: Cell := new Cell();
@@ -147,7 +154,7 @@ class Board
 		);
 		
 		------------------------------------------------------------ cell_manuallyMovePiece
-		public cell_manuallyMovePiece : TestCaseExtra`String * nat ==> ()
+		public cell_manuallyMovePiece : String * nat ==> ()
 		cell_manuallyMovePiece(option, numberOfClicks) ==(		
 			dcl cell: Cell := new Cell();
 			
@@ -171,6 +178,14 @@ class Board
 		public setGameOver : () ==> ()
 		setGameOver() ==
 			is not yet specified;
+			
+		public getTotalRows : () ==> nat
+		getTotalRows() ==
+			return totalRows;
+
+		public getTotalColumns : () ==> nat
+		getTotalColumns() ==
+			return totalColumns;
 
 
 end Board

@@ -1,8 +1,8 @@
 class TestTetris is subclass of TestCaseExtra
 
 	instance variables
-		public matrix 		:TestCaseExtra`t_matrix	:= {|->};
-		public printBoard	:TestCaseExtra`String	:= "";
+		public matrix 		:Board`Matrix	:= {|->};
+		public printBoard	:Board`String	:= "";
 		
 	operations
 		------------------------------------------------------------ initalMatrix_test
@@ -18,8 +18,8 @@ class TestTetris is subclass of TestCaseExtra
 	
 		------------------------------------------------------------ addPiece_test
 		private addPiece_test:	Game * 
-							  	TestCaseExtra`t_coord * TestCaseExtra`t_coord *
-							  	TestCaseExtra`t_coord * TestCaseExtra`t_coord ==> ()
+							  	Board`Position * Board`Position *
+							  	Board`Position * Board`Position ==> ()
 		addPiece_test(game, coord1, coord2, coord3, coord4) ==(		
 			
 			IO`println("-> Add piece on the matrix");
