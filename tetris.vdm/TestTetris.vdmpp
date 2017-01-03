@@ -56,8 +56,7 @@ class TestTetris is subclass of TestCaseExtra
 					movePiece:= game.board.cell_automaticallyMovePiece();
 			
 					--get matrix after automaticallyMove
-					matrix:= game.board.getBoard("printMatrix");
-						
+					matrix:= game.board.getBoard("printMatrix");		
 					--print board
 					printBoard:= game.board.getBoardPrint("printBoard");
 				
@@ -67,11 +66,11 @@ class TestTetris is subclass of TestCaseExtra
 		);
 		
 		------------------------------------------------------------ manuallyMovePiece_test
-		private manuallyMovePiece_test: (Game) ==> ()
-		manuallyMovePiece_test(game) ==(
+		private manuallyMovePiece_test: Game * Board`String * nat ==> ()
+		manuallyMovePiece_test(game, move, numberOfClicks) ==(
 			
 			IO`println("-> Move piece manually (keyboard click simulation)");
-			game.board.cell_manuallyMovePiece("moveRight", 8);
+			game.board.cell_manuallyMovePiece(move, numberOfClicks);
 	
 			--get matrix after manually move piece
 			matrix:= game.board.getBoard("printMatrix");
@@ -90,14 +89,16 @@ class TestTetris is subclass of TestCaseExtra
 			
 			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
 			new TestTetris().initalMatrix_test(game);
-		  	--new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[3,2]);
-		  	--new TestTetris().automaticallyMovePiece_test(game,3,16);
-		  	--new TestTetris().manuallyMovePiece_test(game);
-		  	--new TestTetris().automaticallyMovePiece_test(game,2,16);
-		  	--new TestTetris().addPiece_test(game, [0,2],[1,2],[2,2],[2,3]);
-		  	--new TestTetris().automaticallyMovePiece_test(game,10,42);
-		  	--new TestTetris().addPiece_test(game, [1,1],[1,2],[2,2],[2,3]);
-		  	--new TestTetris().automaticallyMovePiece_test(game,2,10); --(game,1,8)
+		  	new TestTetris().addPiece_test(game, [1,3],[1,4],[1,5],[1,6]);
+		   	new TestTetris().automaticallyMovePiece_test(game,1,4);	
+		   	new TestTetris().manuallyMovePiece_test(game, "moveRight", 2);
+		  	new TestTetris().automaticallyMovePiece_test(game,1,2);
+		  	new TestTetris().addPiece_test(game, [0,4],[1,4],[1,5],[1,6]);
+		   	new TestTetris().automaticallyMovePiece_test(game,1,2);	
+		  	new TestTetris().addPiece_test(game, [1,4],[1,5],[0,5],[0,6]);
+		  	new TestTetris().automaticallyMovePiece_test(game,1,4);	
+		  	new TestTetris().manuallyMovePiece_test(game, "moveLeft", 4);
+		   	new TestTetris().automaticallyMovePiece_test(game,1,2);
 		  	
 		  	--TODO: Add more tests
 		);

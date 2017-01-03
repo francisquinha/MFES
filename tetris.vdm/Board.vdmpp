@@ -9,7 +9,7 @@ class Board
 	instance variables
 		private print_startTag		:String	:="▕";
 		private print_endTag		:String	:="▏\n";
-		private print_bottomLine	:String	:=" ▔▔▔▔▔▔▔▔";
+		private print_bottomLine	:String	:=" ▔▔▔▔▔▔▔▔▔▔▔";
 		private print_emptyCell		:String	:="░";
 	  	private print_filledCell	:String	:="█";
 		private print_board			:String	:= "";
@@ -72,7 +72,9 @@ class Board
 	  			
 	  				if (matrix([i,j]) = move_cell or matrix([i,j]) = blocked_cell ) then
 	  					print_board := print_board ^ print_filledCell
-	  					
+	  				
+	  				else if (i< 2) then
+	  					print_board := print_board ^ " "
 	  				else
 	  					print_board := print_board ^ print_emptyCell;
 	  			);
