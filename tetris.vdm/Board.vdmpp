@@ -2,7 +2,7 @@ class Board
 
 	types
 		public String = seq of char;
-		public Position = seq1 of nat
+		public Position = seq of nat
 		inv position == len position = 2;
 		public Matrix = map Position to nat;
 
@@ -14,9 +14,9 @@ class Board
 	  	private print_filledCell	:String	:="█";
 		private print_board			:String	:= "";
 		
-		private totalRows			:nat 					:= 22;
+		private maxRow				:nat 					:= 22;
 		private visibleRows			:nat					:= 20;
-		private totalColumns		:nat 					:= 10;
+		private maxColumn			:nat 					:= 10;
 		private iterator			:nat					:= 0;
 		
 		private matrix 				:Matrix	:= {|->};
@@ -42,15 +42,15 @@ class Board
 		initBoard(option) ==(		
 
 			if(option = "matrix") then(
-				for i=0 to totalRows do( 
-					for j=0 to totalColumns do (
+				for i=1 to maxRow do( 
+					for j=1 to maxColumn do (
 						matrix := matrix ++ {[i,j] |-> 0 };
 					);
 				);
 			)	
 			elseif (option = "tempMatrix") then(
-				for i=0 to totalRows do( 
-					for j=0 to totalColumns do (
+				for i=1 to maxRow do( 
+					for j=1 to maxColumn do (
 						if (matrix([i,j]) <>  blocked_cell ) then
 							tempMatrix := tempMatrix ++ {[i,j] |-> 0 };
 					);
@@ -66,14 +66,15 @@ class Board
 
 			print_board	:= "\n";
 								
-			for i=0 to totalRows do(
+			for i=1 to maxRow do(
 				print_board := print_board ^ print_startTag;
-	  			for j=0 to totalColumns do (
+	  			for j=1 to maxColumn do (
 	  			
-	  				if (matrix([i,j]) = move_cell or matrix([i,j]) = blocked_cell ) then
+--	  				if (matrix([i,j]) = move_cell or matrix([i,j]) = blocked_cell ) then
+	  				if (matrix([i,j]) > 0) then
 	  					print_board := print_board ^ print_filledCell
 	  				
-	  				else if (i< 2) then
+	  				else if (i< 3) then
 	  					print_board := print_board ^ " "
 	  				else
 	  					print_board := print_board ^ print_emptyCell;
@@ -121,18 +122,18 @@ class Board
 			
 			dcl block	:bool	:= false;	
 										
-			for i=0 to totalRows do(
-	  			for j=0 to totalColumns do (
+			for i=1 to maxRow do(
+	  			for j=1 to maxColumn do (
 	  			
-	  				if ( (matrix([i,j]) = move_cell and matrix([totalRows,j]) = move_cell) or
+	  				if ( (matrix([i,j]) = move_cell and matrix([maxRow,j]) = move_cell) or
 	  					 (matrix([i,j]) = move_cell and matrix([i+1,j]) = blocked_cell) ) then
 						block:= true;
 	  			);
 	  		);
 	  			  		
 	  		if(block = true) then(
-				for i=0 to totalRows do( 
-					for j=0 to totalColumns do (
+				for i=1 to maxRow do( 
+					for j=1 to maxColumn do (
 						if (matrix([i,j]) = move_cell) then
 		  					matrix([i,j]) := blocked_cell;
 					);
@@ -144,8 +145,8 @@ class Board
 			
 			tempMatrix := matrix; 
 						
-			for i=0 to totalRows do( 
-				for j=0 to totalColumns do (
+			for i=1 to maxRow do( 
+				for j=1 to maxColumn do (
 					if (tempMatrix([i,j]) = move_cell) then
 						tempMatrix([i,j]) := empty_cell;
 				);
@@ -164,8 +165,8 @@ class Board
 					
 			self.checkBoard();
 
-			for i=0 to totalRows do( 
-	           	for j=0 to totalColumns do ( 
+			for i=1 to maxRow do( 
+	           	for j=1 to maxColumn do ( 
 	                                              
 	       			if (matrix([i,j]) = move_cell) then( 
 	           			tempMatrix([i+1,j]) := move_cell; 
@@ -185,8 +186,8 @@ class Board
 			self.checkBoard();
 
 			if(option = "moveRight") then(
-				for i=0 to totalRows do(
-		  			for j=0 to totalColumns do (
+				for i=1 to maxRow do(
+		  			for j=1 to maxColumn do (
 	  				  	 				  		  				  	
 						if (matrix([i,j]) = move_cell) then(
 							tempMatrix([i,j+numberOfClicks]) := move_cell;
@@ -195,8 +196,8 @@ class Board
 		  		);
 		  	)
 			elseif (option = "moveLeft") then(
-				for i=0 to totalRows do(
-		  			for j=0 to totalColumns do (
+				for i=1 to maxRow do(
+		  			for j=1 to maxColumn do (
 	  				  	 				  		  				  	
 						if (matrix([i,j]) = move_cell) then(
 							tempMatrix([i,j-numberOfClicks]) := move_cell;
@@ -212,11 +213,11 @@ class Board
 			checkRow(row) ==
 			is not yet specified;
 			
-		public setMatrixPosition : seq1 of nat * nat ==> ()
+		public setMatrixPosition : Position * nat ==> ()
 		setMatrixPosition(position, value) ==
 				matrix(position) := value;	
 		
-		public getMatrixPosition : seq1 of nat ==> nat
+		public getMatrixPosition : Position ==> nat
 		getMatrixPosition(position) ==
 				return matrix(position);	
 				
@@ -224,13 +225,12 @@ class Board
 		setGameOver() ==
 			is not yet specified;
 			
-		public getTotalRows : () ==> nat
-		getTotalRows() ==
-			return totalRows;
+		public getMaxRow : () ==> nat
+		getMaxRow() ==
+			return maxRow;
 
-		public getTotalColumns : () ==> nat
-		getTotalColumns() ==
-			return totalColumns;
-
+		public getMaxColumn : () ==> nat
+		getMaxColumn() ==
+			return maxColumn;
 
 end Board

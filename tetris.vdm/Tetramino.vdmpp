@@ -2,20 +2,16 @@ class Tetramino
 
 	types 
 		public Color = <Cyan> | <Blue> | <Orange> | <Yellow> | <Green> | <Purple> | <Red>;
-		public Minoes = seq1 of Board`Position
-		inv minoes == len minoes = 4 and card elems minoes = 4
+		public Minoes = seq of Board`Position
+		inv minoes == len minoes = 4 --and card elems minoes = 4
 
 	instance variables
 		private color: Color := <Cyan>;
 		private id: nat := 0;
 		private orientation: nat := 0;
-		private minoes: Minoes := [[0, 0], [0, 1], [0, 2], [0, 3]]
+		private minoes: Minoes := [[1, 1], [1, 2], [1, 3], [1, 4]]
 	
 	operations
-	
-		public Tetramino : (Board) ==> Tetramino
-		Tetramino(board) ==
-			is subclass responsibility;
 		
 		public setColor : Color ==> ()
 		setColor(c) == color := c;
@@ -26,15 +22,15 @@ class Tetramino
 		public getOrientation : () ==> nat
 		getOrientation() == return orientation;
 
-		public setOrientation : nat ==> ()
-		setOrientation(o) == orientation := o;
+--		public setOrientation : nat ==> ()
+--		setOrientation(o) == orientation := o;
 
 		public setMinoes : Board * Board`Position ==> bool
 		setMinoes(board, position) == (
 			dcl tempMinoes : Minoes := minoes;
 			dcl tempPosition : Board`Position := position;
 			removeTetramino(board);
-			for i = 0 to 3 do (
+			for i = 1 to 4 do (
 				if (validPosition(board, tempPosition)) 
 				then tempMinoes(i) := tempPosition
 				else (
@@ -51,7 +47,7 @@ class Tetramino
 		public initialSetMinoes : Board * Board`Position ==> ()
 		initialSetMinoes(board, position) == (
 			dcl tempPosition : Board`Position := position;
-			for i = 0 to 3 do (
+			for i = 1 to 4 do (
 				if (validPosition(board, tempPosition)) 
 				then minoes(i) := tempPosition
 				else (
@@ -74,10 +70,8 @@ class Tetramino
 
 		public validPosition : Board * Board`Position ==> bool
 		validPosition(board, position) ==
-			if position(0) < 0 then return false
-			else if position(0) >= board.getTotalRows() then return false
-			else if position(1) < 0 then return false
-			else if position(1) >= board.getTotalColumns() then return false
+			if position(1) > board.getMaxRow() then return false
+			else if position(2) > board.getMaxColumn() then return false
 			else if board.getMatrixPosition(position) <> 0 then return false
 			else return true;
 			
@@ -93,19 +87,19 @@ class Tetramino
 
 		public moveDown : Board ==> bool
 		moveDown(board) == 
-			return setMinoes(board, [minoes(0)(0) - 1, minoes(0)(1)]);
+			return setMinoes(board, [minoes(1)(1) + 1, minoes(1)(2)]);
 					
 		public moveLeft : Board ==> bool
 		moveLeft(board) == 
-			return setMinoes(board, [minoes(0)(0), minoes(0)(1) - 1]);
+			return setMinoes(board, [minoes(1)(1), minoes(1)(2) - 1]);
 		
 		public moveRight : Board ==> bool
 		moveRight(board) == 
-			return setMinoes(board, [minoes(0)(0), minoes(0)(1) + 1]);
+			return setMinoes(board, [minoes(1)(1), minoes(1)(2) + 1]);
 
 		public rotate : Board ==> bool
 		rotate(board) == (
-			dcl position : Board`Position := getRotatedMino(minoes(0));
+			dcl position : Board`Position := getRotatedMino(minoes(1));
 			orientation := (orientation + 1) mod 4;
 			return setMinoes(board, position)
 		);

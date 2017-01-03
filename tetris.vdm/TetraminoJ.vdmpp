@@ -1,12 +1,11 @@
 class TetraminoJ is subclass of Tetramino
 		
 	operations
-		public Tetramino : (Board) ==> Tetramino
-		Tetramino(board) == (
+		public TetraminoJ : (Board) ==> TetraminoJ
+		TetraminoJ(board) == (
 			Tetramino`setColor(<Blue>);
 			Tetramino`setId(2);
-			Tetramino`setOrientation(0);
-			Tetramino`initialSetMinoes(board, [21, 3]);
+			Tetramino`initialSetMinoes(board, [1, 4]);
 			return self
 		);
 
@@ -16,26 +15,26 @@ class TetraminoJ is subclass of Tetramino
 			cases Tetramino`getOrientation():
 				0 -> (
 					cases index:
-						0 -> result(0) := position(0) - 1,
-						others -> result(1) := position(1) + 1
+						1 -> result(1) := position(1) + 1,
+						others -> result(2) := position(2) + 1
 					end
 				),
 				1 -> (
 					cases index:
-						0 -> result(1) := position(1) - 1,
-						others -> result(0) := position(0) - 1
+						1 -> result(2) := position(2) - 1,
+						others -> result(1) := position(1) + 1
 					end
 				),
 				2 -> (
 					cases index:
-						0 -> result(0) := position(0) + 1,
-						others -> result(1) := position(1) - 1
+						1 -> result(1) := position(1) - 1,
+						others -> result(2) := position(2) - 1
 					end
 				),
 				3 -> (
 					cases index:
-						0 -> result(1) := position(1) + 1,
-						others -> result(0) := position(0) + 1
+						1 -> result(2) := position(2) + 1,
+						others -> result(1) := position(1) - 1
 					end
 				)
 			end;
@@ -46,10 +45,10 @@ class TetraminoJ is subclass of Tetramino
 		getRotatedMino(position) == (
 			dcl result : Board`Position := position;
 			cases Tetramino`getOrientation():
-				0 -> result(1) := position(1) + 2,
-				1 -> result(0) := position(0) - 2,
-				2 -> result(1) := position(1) - 2,
-				3 -> result(0) := position(0) + 2
+				0 -> result(2) := position(2) + 2,
+				1 -> result(1) := position(1) + 2,
+				2 -> result(2) := position(2) - 2,
+				3 -> result(1) := position(1) - 2
 			end;
 			return result
 		);	
