@@ -9,9 +9,9 @@ class Board
 	instance variables
 		private print_startTag		:String	:="▕";
 		private print_endTag		:String	:="▏\n";
-		private print_bottomLine	:String	:=" ▔▔▔▔▔▔▔▔▔▔▔";
+		private print_bottomLine	:String	:=" ▔▔▔▔▔▔▔▔▔▔";
 		private print_emptyCell		:String	:="░";
-	  	private print_filledCell	:String	:="█";
+	  	private print_filledCell	:String	:="\u001B[31m" ^ "█" ^ "\u001B[0m";
 		private print_board			:String	:= "";
 		
 		private maxRow				:nat 					:= 22;
