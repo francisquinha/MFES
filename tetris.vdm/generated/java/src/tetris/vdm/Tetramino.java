@@ -32,9 +32,9 @@ abstract public class Tetramino {
     VDMSeq tempMinoes = Utils.copy(minoes);
     VDMSeq tempPosition = Utils.copy(position);
     removeTetramino(board);
-    long toVar_23 = 4L;
+    long toVar_9 = 4L;
 
-    for (Long i = 1L; i <= toVar_23; i++) {
+    for (Long i = 1L; i <= toVar_9; i++) {
       if (validPosition(board, Utils.copy(tempPosition))) {
         Utils.mapSeqUpdate(tempMinoes, i, Utils.copy(tempPosition));
       } else {
@@ -52,9 +52,9 @@ abstract public class Tetramino {
   public void initialSetMinoes(final Board board, final VDMSeq position) {
 
     VDMSeq tempPosition = Utils.copy(position);
-    long toVar_24 = 4L;
+    long toVar_10 = 4L;
 
-    for (Long i = 1L; i <= toVar_24; i++) {
+    for (Long i = 1L; i <= toVar_10; i++) {
       if (validPosition(board, Utils.copy(tempPosition))) {
         Utils.mapSeqUpdate(minoes, i, Utils.copy(tempPosition));
         tempPosition = getNextMino(Utils.copy(tempPosition), i);
@@ -155,10 +155,10 @@ abstract public class Tetramino {
   public Number drop(final Board board) {
 
     Number result = 0L;
-    Boolean whileCond_3 = true;
-    while (whileCond_3) {
-      whileCond_3 = moveDown(board);
-      if (!(whileCond_3)) {
+    Boolean whileCond_2 = true;
+    while (whileCond_2) {
+      whileCond_2 = moveDown(board);
+      if (!(whileCond_2)) {
         break;
       }
 
