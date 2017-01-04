@@ -1,85 +1,17 @@
 class TestTetris is subclass of TestCaseExtra
 
 	instance variables
-		public matrix 		:Board`Matrix	:= {|->};
 		public printBoard	:Board`String	:= "";
 		
 	operations
 		------------------------------------------------------------ initalMatrix_test
 		private initalMatrix_test: (Game) ==> ()
 		initalMatrix_test(game) ==(
-		
---			IO`println("-> Initial matrix");
---			matrix := game.board.getBoard("printMatrix");
-			
 			--print board	
 			printBoard := game.board.getBoardPrint("printBoard");
 		); 
-	
-		------------------------------------------------------------ addPiece_test
-		private addPiece_test:	Game * 
-							  	Board`Position * Board`Position *
-							  	Board`Position * Board`Position ==> ()
-		addPiece_test(game, coord1, coord2, coord3, coord4) ==(		
 			
-			IO`println("-> Add piece on the matrix");
-			game.board.cell_setPiece("set",coord1,coord2,coord3,coord4);
-	
-			--get matrix after add piece
-			matrix := game.board.getBoard("printMatrix" );
-			
-			--print board
-			printBoard := game.board.getBoardPrint("printBoard");
-		);
-		
-		------------------------------------------------------------ automaticallyMovePiece_test
-		private automaticallyMovePiece_test: Game * nat * nat ==> ()
-		automaticallyMovePiece_test(game, totalTime, step) ==(
-		
-			dcl timer		:Timer	:= new Timer();
-			dcl endLoop		:bool	:= false;	
-			dcl movePiece	:bool	:= true;
-					
-			IO`println("-> Move piece automatically (dummy timer)");
-			
-			while not endLoop do (
-			
-				timer.incTimers();
-				
-				if (timer.getTimer("time") = 180000 * totalTime ) then(
-					timer.resetTimer("all");
-					endLoop := true;
-				);
-				
-				if(timer.getTimer("step") = 4000 * step) then(
-					
-					movePiece:= game.board.cell_automaticallyMovePiece();
-			
-					--get matrix after automaticallyMove
-					matrix:= game.board.getBoard("printMatrix");		
-					--print board
-					printBoard:= game.board.getBoardPrint("printBoard");
-				
-					timer.resetTimer("step");
-				);					
-			);
-		);
-		
-		------------------------------------------------------------ manuallyMovePiece_test
-		private manuallyMovePiece_test: Game * Board`String * nat ==> ()
-		manuallyMovePiece_test(game, move, numberOfClicks) ==(
-			
-			IO`println("-> Move piece manually (keyboard click simulation)");
-			game.board.cell_manuallyMovePiece(move, numberOfClicks);
-	
-			--get matrix after manually move piece
-			matrix:= game.board.getBoard("printMatrix");
-				
-			--print board
-			printBoard:= game.board.getBoardPrint("printBoard");					
-		);
-				
-				------------------------------------------------------------ addTetramino_test
+		------------------------------------------------------------ addTetramino_test
 		private addTetramino_test: Game * nat ==> Tetramino
 		addTetramino_test(game, id) == (		
 			dcl tetramino : Tetramino;
@@ -97,7 +29,7 @@ class TestTetris is subclass of TestCaseExtra
 			return tetramino;
 		);
 		
-				------------------------------------------------------------ dropTetramino_test
+		------------------------------------------------------------ dropTetramino_test
 		private dropTetramino_test:	Game * Tetramino ==> ()
 		dropTetramino_test(game, tetramino) == (		
 			dcl value : nat := tetramino.drop(game.board);
@@ -108,7 +40,7 @@ class TestTetris is subclass of TestCaseExtra
 			)
 		);
 		
-				------------------------------------------------------------ downTetramino_test
+		------------------------------------------------------------ downTetramino_test
 		private downTetramino_test:	Game * Tetramino ==> ()
 		downTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.moveDown(game.board);
@@ -117,7 +49,7 @@ class TestTetris is subclass of TestCaseExtra
 			--IO`println(result);
 		);
 
-				------------------------------------------------------------ rightTetramino_test
+		------------------------------------------------------------ rightTetramino_test
 		private rightTetramino_test: Game * Tetramino ==> ()
 		rightTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.moveRight(game.board);
@@ -126,7 +58,7 @@ class TestTetris is subclass of TestCaseExtra
 			--IO`println(result);
 		);
 
-				------------------------------------------------------------ leftTetramino_test
+		------------------------------------------------------------ leftTetramino_test
 		private leftTetramino_test: Game * Tetramino ==> ()
 		leftTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.moveLeft(game.board);
@@ -135,7 +67,7 @@ class TestTetris is subclass of TestCaseExtra
 			--IO`println(result);
 		);
 		
-				------------------------------------------------------------ rotateTetramino_test
+		------------------------------------------------------------ rotateTetramino_test
 		private rotateTetramino_test: Game * Tetramino ==> ()
 		rotateTetramino_test(game, tetramino) == (		
 			dcl result : bool := tetramino.rotate(game.board);
@@ -144,7 +76,7 @@ class TestTetris is subclass of TestCaseExtra
 			--IO`println(result);
 		);
 				
-				------------------------------------------------------------ checkRows_test
+		------------------------------------------------------------ checkRows_test
 		private checkRows_test: Game ==> ()
 		checkRows_test(game) == (		
 			dcl value : nat := game.board.checkRows();
@@ -155,7 +87,7 @@ class TestTetris is subclass of TestCaseExtra
 			)
 		);
 
-				------------------------------------------------------------ addRandomTetramino_test
+		------------------------------------------------------------ addRandomTetramino_test
 		private addRandomTetramino_test: Game ==> Tetramino
 		addRandomTetramino_test(game) == (	
 			dcl tetramino : Tetramino := game.board.addTetramino();
@@ -166,7 +98,7 @@ class TestTetris is subclass of TestCaseExtra
 
 		------------------------------------------------------------ MAIN TESTS
 		public static main: () ==> ()
-		main() ==(
+		main() == (
 		
 			dcl game: Game := new Game();
 			dcl tetramino: Tetramino;
@@ -280,21 +212,6 @@ class TestTetris is subclass of TestCaseExtra
 				new TestTetris().checkRows_test(game);
 				testInt := (testInt + 1) mod 3;
 			)
-			
-/**			IO`println("# Test 1 - Add random piece; move the piece manually/automatically\n");
-			new TestTetris().initalMatrix_test(game);
-		  	new TestTetris().addPiece_test(game, [1,3],[1,4],[1,5],[1,6]);
-		   	new TestTetris().automaticallyMovePiece_test(game,1,4);	
-		   	new TestTetris().manuallyMovePiece_test(game, "moveRight", 2);
-		  	new TestTetris().automaticallyMovePiece_test(game,1,2);
-		  	new TestTetris().addPiece_test(game, [0,4],[1,4],[1,5],[1,6]);
-		   	new TestTetris().automaticallyMovePiece_test(game,1,2);	
-		  	new TestTetris().addPiece_test(game, [1,4],[1,5],[0,5],[0,6]);
-		  	new TestTetris().automaticallyMovePiece_test(game,1,4);	
-		  	new TestTetris().manuallyMovePiece_test(game, "moveLeft", 4);
-		   	new TestTetris().automaticallyMovePiece_test(game,1,2);**/
-		  	
-		  	--TODO: Add more tests
 		);
 		
 end TestTetris

@@ -1,15 +1,16 @@
 class Tetramino
 
 	types 
-		public Color = <Cyan> | <Blue> | <Orange> | <Yellow> | <Green> | <Purple> | <Red>;
+		public Color = <Cyan> | <Blue> | <Orange> 
+			| <Yellow> | <Green> | <Purple> | <Red>;
 		public Minoes = seq of Board`Position
 		inv minoes == len minoes = 4 --and card elems minoes = 4
 
 	instance variables
-		private color: Color := <Cyan>;
-		private id: nat := 0;
-		private orientation: nat := 0;
-		private minoes: Minoes := [[1, 1], [1, 2], [1, 3], [1, 4]]
+		private color		: Color  := <Cyan>;
+		private id			: nat 	 := 0;
+		private orientation	: nat 	 := 0;
+		private minoes		: Minoes := [[1, 1], [1, 2], [1, 3], [1, 4]]
 	
 	operations
 		
@@ -21,9 +22,6 @@ class Tetramino
 		
 		public getOrientation : () ==> nat
 		getOrientation() == return orientation;
-
---		public setOrientation : nat ==> ()
---		setOrientation(o) == orientation := o;
 
 		public setMinoes : Board * Board`Position ==> bool
 		setMinoes(board, position) == (
@@ -68,11 +66,16 @@ class Tetramino
 
 		public validPosition : Board * Board`Position ==> bool
 		validPosition(board, position) ==
-			if position(1) < 1 then return false
-			else if position(1) > board.getMaxRow() then return false
-			else if position(2) < 1 then return false
-			else if position(2) > board.getMaxColumn() then return false
-			else if board.getMatrixPosition(position) <> 0 then return false
+			if position(1) < 1 
+			then return false
+			else if position(1) > board.getMaxRow() 
+			then return false
+			else if position(2) < 1 
+			then return false
+			else if position(2) > board.getMaxColumn() 
+			then return false
+			else if board.getMatrixPosition(position) <> 0 
+			then return false
 			else return true;
 			
 		public removeTetramino : Board ==> ()

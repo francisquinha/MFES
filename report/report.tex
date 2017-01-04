@@ -76,7 +76,7 @@ Nuno Valente - up200204376\\
 	\centering
 	%\caption{My caption}
 	\label{tab:list-of-requirements}
-	\begin{tabular}{|l|l|l|}
+	\begin{tabular}{|l|l|p{9cm}|}
 		\hline
 		\textbf{Id} & \textbf{Priority} & \textbf{Description} \\ \hline
 		R1 & Mandatory         & The player can configure the game with his nickname \\ \hline
@@ -111,7 +111,7 @@ The main use cases are described below:
 	\centering
 	%	\caption{Use case configuration}
 	\label{use-case-configuration}
-	\begin{tabular}{|l| p{8cm}|}
+	\begin{tabular}{|l| p{9cm}|}
 		\hline
 		\textbf{Scenario}        & \textbf{Configure Game} \\ \hline
 		\textbf{Description}     &  The user can write his nickname and difficulty level\\ \hline
@@ -129,7 +129,7 @@ The main use cases are described below:
 	\centering
 %	\caption{Use case rotation}
 	\label{use-case-rotation}
-	\begin{tabular}{|l| p{8cm}|}
+	\begin{tabular}{|l| p{9cm}|}
 		\hline
 		\textbf{Scenario}        & \textbf{Rotation Movement} \\ \hline
 		\textbf{Description}     &  Rotate a tetromino when is falling \\ \hline
@@ -147,7 +147,7 @@ The main use cases are described below:
 	\centering
 	%	\caption{Use case drop}
 	\label{use-case-drop}
-	\begin{tabular}{|l| p{8cm}|}
+	\begin{tabular}{|l| p{9cm}|}
 		\hline
 		\textbf{Scenario}        & \textbf{Drop Movement} \\ \hline
 		\textbf{Description}     &  Accelerates the tetromino falling and position it as it was before reach the final position \\ \hline
@@ -248,7 +248,7 @@ In addition it is noticed that all the elements of the group have already had co
 \section{Source Code}
 \textcolor{red}{maybe not necessary because of section3}
 
-\section{Formal indispensable rules}\label{rules}
+\section{Indispensable formal rules}\label{rules}
 In this section we present the formal rules that Tetris game must follow. We already present other rules, named informal and in a player view way in section \ref{informal-rules}.
 
 \begin{itemize}
@@ -304,47 +304,48 @@ In this section we present the formal rules that Tetris game must follow. We alr
 
 \section{The 7 tetrominoes}
 
-\begin{center}
-	\includegraphics[scale=0.7]{resources/img/tetrominoes}
+	\parbox[]{0.8\textwidth}{
+	\centering
+	\includegraphics[scale=0.5]{resources/img/tetrominoes}
 	\label{tetrominoes}
-\end{center}
+	}
 
 \section{The position of each mino inside respective tetromino}
-	
-	\begin{minipage}{0.25\textwidth}
+
+	\centering
+	\begin{minipage}{0.2\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_cyan}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_cyan}
 		\label{fig:mino-cyan}
 	\end{minipage}%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.2\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_yellow}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_yellow}
 		\label{fig:mino-yellow}
 	\end{minipage}%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.2\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_purple}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_purple}
 		\label{fig:mino-purple}
 	\end{minipage}%
-	\begin{minipage}{0.25\textwidth}
+	\begin{minipage}{0.2\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_green}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_green}
 		\label{fig:mino-green}
 	\end{minipage}
-
-	\begin{minipage}{0.33\textwidth}
+	\begin{minipage}{0.26\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_red}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_red}
 		\label{fig:mino-red}
 	\end{minipage}%
-	\begin{minipage}{0.33\textwidth}
+	\begin{minipage}{0.26\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_blue}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_blue}
 		\label{fig:mino-blue}
 	\end{minipage}%
-	\begin{minipage}{0.33\textwidth}
+	\begin{minipage}{0.26\textwidth}
 		\centering
-		\includegraphics[scale=0.5]{resources/img/minos/mino_orange}
+		\includegraphics[scale=0.4]{resources/img/minos/mino_orange}
 		\label{fig:mino-orange}
 	\end{minipage}%
 

@@ -1,16 +1,16 @@
 class Game
 	
 	instance variables
-	  public level	:int	:= 0;
-	  public board: Board;
+	  public level		: int		:= 0;
+	  public board		: Board;
 	  
 	operations
 		public Game : () ==> Game
 		Game() ==
 			board := new Board();	-- startGame
 
-	  public endGame:() ==> int
-	  endGame()==
-	    is not yet specified;
+	  	public endGame:() ==> int
+	  	endGame() ==
+	  		is not yet specified;
 
 end Game
