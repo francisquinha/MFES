@@ -7,72 +7,47 @@ class Board
 		public Matrix = map Position to nat;
 
 	instance variables
-		private print_startTag		:String	:="▕";
-		private print_endTag		:String	:="▏\n";
-		private print_bottomLine	:String	:=" ▔▔▔▔▔▔▔▔▔▔▔";
-		private print_emptyCell		:String	:="░";
-	  	private print_filledCell	:String	:="█";
-		private print_board			:String	:= "";
-		
-		private maxRow				:nat 					:= 22;
-		private visibleRows			:nat					:= 20;
-		private maxColumn			:nat 					:= 10;
-		private iterator			:nat					:= 0;
-		
-		private matrix 				:Matrix	:= {|->};
-		private tempMatrix			:Matrix	:= {|->};
-		
-		private empty_cell			:nat					:=0;
-		private blocked_cell		:nat					:=1;		
-		private move_cell			:nat					:=111;
-
-		private pieceOperation		:nat					:= 0;
-		
-		private gameOver			:bool					:= false;
+		private print_startTag		: String	:= "▕";
+		private print_endTag		: String	:= "▏\n";
+		private print_bottomLine	: String	:= " ▔▔▔▔▔▔▔▔▔▔▔";
+		private print_emptyCell		: String	:= "░";
+	  	private print_filledCell	: String	:= "█";
+		                                        
+		private maxRow				: nat		:= 22;
+		private maxVisibleRow		: nat		:= 20;
+		private maxColumn			: nat		:= 10;
+		                                        
+		private matrix 				: Matrix	:= {|->};
+                                                
+		private gameOver			: bool		:= false;
 		
 							
 	operations
 		------------------------------------------------------------ Board
 		public Board : () ==> Board
-		Board() ==(	
-			self.initBoard("matrix");
-			tempMatrix := matrix; 
+		Board() == (	
+			self.initBoard();
 		);
 		
 		------------------------------------------------------------ initBoard
-		public  initBoard : (String) ==> ()
-		initBoard(option) ==(		
-
-			if(option = "matrix") then(
-				for i=1 to maxRow do( 
-					for j=1 to maxColumn do (
-						matrix := matrix ++ {[i,j] |-> 0 };
-					);
-				);
-			)	
-			elseif (option = "tempMatrix") then(
-				for i=1 to maxRow do( 
-					for j=1 to maxColumn do (
-						if (matrix([i,j]) <>  blocked_cell ) then
-							tempMatrix := tempMatrix ++ {[i,j] |-> 0 };
-					);
-				);	
-			);		
+		public initBoard : () ==> ()
+		initBoard() == (		
+			for i = 1 to maxRow do
+				for j = 1 to maxColumn do
+					matrix := matrix ++ {[i,j] |-> 0}
 		);
 		--post len row1 =12;
 		--pre len matrix <=0
 
 		------------------------------------------------------------ printBoard
 		public getBoardPrint : (String) ==> String
-		getBoardPrint(option) ==(	
+		getBoardPrint(option) == (	
 
-			print_board	:= "\n";
+			dcl print_board	: String := "\n";
 								
-			for i=1 to maxRow do(
+			for i = 1 to maxRow do(
 				print_board := print_board ^ print_startTag;
 	  			for j=1 to maxColumn do (
-	  			
---	  				if (matrix([i,j]) = move_cell or matrix([i,j]) = blocked_cell ) then
 	  				if (matrix([i,j]) > 0) then
 	  					print_board := print_board ^ print_filledCell
 	  				
@@ -98,116 +73,6 @@ class Board
 	  			IO`println(self.matrix);
 		
 			return self.matrix;
-		);
-		
-		------------------------------------------------------------ add and remove piece
-		public cell_setPiece : 	String  * 
-								Position * Position * 
-								Position * Position ==> ()
-		cell_setPiece(option, coord1, coord2, coord3, coord4) ==(
-		
-			(if(option = "set") then
-				pieceOperation := move_cell
-			elseif (option = "remove") then
-				pieceOperation := empty_cell
-			);
-				
-			matrix := matrix ++ {coord1 |-> pieceOperation};
-			matrix := matrix ++ {coord2 |-> pieceOperation};
-			matrix := matrix ++ {coord3 |-> pieceOperation};
-			matrix := matrix ++ {coord4 |-> pieceOperation};
-		);
-
-		------------------------------------------------------------ checkBoard
-		public 	checkBoard : () ==> ()
-				checkBoard() ==(
-			
-			dcl block	:bool	:= false;	
-										
-			for i=1 to maxRow do(
-	  			for j=1 to maxColumn do (
-	  			
-	  				if ( (matrix([i,j]) = move_cell and matrix([maxRow,j]) = move_cell) or
-	  					 (matrix([i,j]) = move_cell and matrix([i+1,j]) = blocked_cell) ) then
-						block:= true;
-	  			);
-	  		);
-	  			  		
-	  		if(block = true) then(
-				for i=1 to maxRow do( 
-					for j=1 to maxColumn do (
-						if (matrix([i,j]) = move_cell) then
-		  					matrix([i,j]) := blocked_cell;
-					);
-				);
-			--tempMatrix := matrix; 
-			);	
-			
-			--clean temp matrix
-			
-			tempMatrix := matrix; 
-						
-			for i=1 to maxRow do( 
-				for j=1 to maxColumn do (
-					if (tempMatrix([i,j]) = move_cell) then
-						tempMatrix([i,j]) := empty_cell;
-				);
-			);			
-		);
-				
-		------------------------------------------------------------ cell_automaticallyMovePiece
-		public cell_automaticallyMovePiece : () ==> bool
-		cell_automaticallyMovePiece() ==(
-			
-			-- check if mino is on the last row				
-			-- TODO: dynamic board ( call cell_setPiece(...) )
-			-- TODO: draw new Mino (add piece on the matrix with the values |-> 1
-			-- move piece	
-			-- empty_cell
-					
-			self.checkBoard();
-
-			for i=1 to maxRow do( 
-	           	for j=1 to maxColumn do ( 
-	                                              
-	       			if (matrix([i,j]) = move_cell) then( 
-	           			tempMatrix([i+1,j]) := move_cell; 
-	           		);     
-	           	);         
-	       	);       
-	   
-	        matrix:= tempMatrix; 
-		
-			return true;  					
-		);
-		
-		------------------------------------------------------------ cell_manuallyMovePiece
-		public cell_manuallyMovePiece : String * nat ==> ()
-		cell_manuallyMovePiece(option, numberOfClicks) ==(		
-						
-			self.checkBoard();
-
-			if(option = "moveRight") then(
-				for i=1 to maxRow do(
-		  			for j=1 to maxColumn do (
-	  				  	 				  		  				  	
-						if (matrix([i,j]) = move_cell) then(
-							tempMatrix([i,j+numberOfClicks]) := move_cell;
-						);		
-	  				);  			
-		  		);
-		  	)
-			elseif (option = "moveLeft") then(
-				for i=1 to maxRow do(
-		  			for j=1 to maxColumn do (
-	  				  	 				  		  				  	
-						if (matrix([i,j]) = move_cell) then(
-							tempMatrix([i,j-numberOfClicks]) := move_cell;
-						);		
-	  				);  			
-		  		);
-			);
-	  		matrix:= tempMatrix;			
 		);
 		
 		------------------------------------------------------------ checkRow
@@ -249,12 +114,16 @@ class Board
 		getMaxRow() ==
 			return maxRow;
 
+		public getMaxVisibleRow : () ==> nat
+		getMaxVisibleRow() ==
+			return maxVisibleRow;
+
 		public getMaxColumn : () ==> nat
 		getMaxColumn() ==
 			return maxColumn;
 			
-		public addTetramino: () ==> Tetramino
-		addTetramino() ==(		
+		public addTetramino : () ==> Tetramino
+		addTetramino() == (		
 			dcl tetramino : Tetramino;
 			dcl random : nat1 := MATH`rand(7) + 1;
 			cases random:
