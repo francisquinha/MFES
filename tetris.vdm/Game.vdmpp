@@ -1,5 +1,10 @@
 class Game
 	
+	types
+	
+		public String = seq of char;
+
+
 	instance variables
 		
 		private board		: Board;
@@ -90,7 +95,10 @@ class Game
 
 		public getLevel : () ==> nat1
 		getLevel() == return level;
-
+		
+		public printBoard : bool * bool * bool ==> String
+		printBoard(printNow, blackConsole, testPrint) == 
+			return board.getBoardPrint(printNow, blackConsole, testPrint);
 
 			
 end Game

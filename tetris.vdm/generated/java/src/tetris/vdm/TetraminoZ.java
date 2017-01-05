@@ -5,43 +5,43 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class TetraminoZ extends Tetramino {
-  public void cg_init_TetraminoZ_1(final Board board) {
+  public void cg_init_TetraminoZ_1(final Game game) {
 
     super.setColor(tetris.vdm.quotes.RedQuote.getInstance());
     super.setId(7L);
-    super.initialSetMinoes(board, SeqUtil.seq(1L, 4L));
+    super.initialSetMinoes(game, SeqUtil.seq(1L, 4L));
     return;
   }
 
-  public TetraminoZ(final Board board) {
+  public TetraminoZ(final Game game) {
 
-    cg_init_TetraminoZ_1(board);
+    cg_init_TetraminoZ_1(game);
   }
 
   public VDMSeq getNextMino(final VDMSeq position, final Number index) {
 
     VDMSeq result = Utils.copy(position);
-    Number casesExp_35 = super.getOrientation();
-    Number intPattern_87 = casesExp_35;
-    Boolean success_35 = Utils.equals(intPattern_87, 0L);
+    Number casesExp_36 = super.getOrientation();
+    Number intPattern_88 = casesExp_36;
+    Boolean success_36 = Utils.equals(intPattern_88, 0L);
 
-    if (!(success_35)) {
-      Number intPattern_88 = casesExp_35;
-      success_35 = Utils.equals(intPattern_88, 1L);
+    if (!(success_36)) {
+      Number intPattern_89 = casesExp_36;
+      success_36 = Utils.equals(intPattern_89, 1L);
 
-      if (!(success_35)) {
-        Number intPattern_89 = casesExp_35;
-        success_35 = Utils.equals(intPattern_89, 2L);
+      if (!(success_36)) {
+        Number intPattern_90 = casesExp_36;
+        success_36 = Utils.equals(intPattern_90, 2L);
 
-        if (!(success_35)) {
-          Number intPattern_90 = casesExp_35;
-          success_35 = Utils.equals(intPattern_90, 3L);
+        if (!(success_36)) {
+          Number intPattern_91 = casesExp_36;
+          success_36 = Utils.equals(intPattern_91, 3L);
 
-          if (success_35) {
-            Number intPattern_91 = index;
-            Boolean success_36 = Utils.equals(intPattern_91, 2L);
+          if (success_36) {
+            Number intPattern_92 = index;
+            Boolean success_37 = Utils.equals(intPattern_92, 2L);
 
-            if (success_36) {
+            if (success_37) {
               Utils.mapSeqUpdate(result, 2L, ((Number) Utils.get(position, 2L)).longValue() + 1L);
             } else {
               Utils.mapSeqUpdate(result, 1L, ((Number) Utils.get(position, 1L)).longValue() - 1L);
@@ -49,10 +49,10 @@ public class TetraminoZ extends Tetramino {
           }
 
         } else {
-          Number intPattern_92 = index;
-          Boolean success_37 = Utils.equals(intPattern_92, 2L);
+          Number intPattern_93 = index;
+          Boolean success_38 = Utils.equals(intPattern_93, 2L);
 
-          if (success_37) {
+          if (success_38) {
             Utils.mapSeqUpdate(result, 1L, ((Number) Utils.get(position, 1L)).longValue() - 1L);
           } else {
             Utils.mapSeqUpdate(result, 2L, ((Number) Utils.get(position, 2L)).longValue() - 1L);
@@ -60,10 +60,10 @@ public class TetraminoZ extends Tetramino {
         }
 
       } else {
-        Number intPattern_93 = index;
-        Boolean success_38 = Utils.equals(intPattern_93, 2L);
+        Number intPattern_94 = index;
+        Boolean success_39 = Utils.equals(intPattern_94, 2L);
 
-        if (success_38) {
+        if (success_39) {
           Utils.mapSeqUpdate(result, 2L, ((Number) Utils.get(position, 2L)).longValue() - 1L);
         } else {
           Utils.mapSeqUpdate(result, 1L, ((Number) Utils.get(position, 1L)).longValue() + 1L);
@@ -71,10 +71,10 @@ public class TetraminoZ extends Tetramino {
       }
 
     } else {
-      Number intPattern_94 = index;
-      Boolean success_39 = Utils.equals(intPattern_94, 2L);
+      Number intPattern_95 = index;
+      Boolean success_40 = Utils.equals(intPattern_95, 2L);
 
-      if (success_39) {
+      if (success_40) {
         Utils.mapSeqUpdate(result, 1L, ((Number) Utils.get(position, 1L)).longValue() + 1L);
       } else {
         Utils.mapSeqUpdate(result, 2L, ((Number) Utils.get(position, 2L)).longValue() + 1L);
@@ -87,23 +87,23 @@ public class TetraminoZ extends Tetramino {
   public VDMSeq getRotatedMino(final VDMSeq position) {
 
     VDMSeq result = Utils.copy(position);
-    Number casesExp_40 = super.getOrientation();
-    Number intPattern_95 = casesExp_40;
-    Boolean success_40 = Utils.equals(intPattern_95, 0L);
+    Number casesExp_41 = super.getOrientation();
+    Number intPattern_96 = casesExp_41;
+    Boolean success_41 = Utils.equals(intPattern_96, 0L);
 
-    if (!(success_40)) {
-      Number intPattern_96 = casesExp_40;
-      success_40 = Utils.equals(intPattern_96, 1L);
+    if (!(success_41)) {
+      Number intPattern_97 = casesExp_41;
+      success_41 = Utils.equals(intPattern_97, 1L);
 
-      if (!(success_40)) {
-        Number intPattern_97 = casesExp_40;
-        success_40 = Utils.equals(intPattern_97, 2L);
+      if (!(success_41)) {
+        Number intPattern_98 = casesExp_41;
+        success_41 = Utils.equals(intPattern_98, 2L);
 
-        if (!(success_40)) {
-          Number intPattern_98 = casesExp_40;
-          success_40 = Utils.equals(intPattern_98, 3L);
+        if (!(success_41)) {
+          Number intPattern_99 = casesExp_41;
+          success_41 = Utils.equals(intPattern_99, 3L);
 
-          if (success_40) {
+          if (success_41) {
             Utils.mapSeqUpdate(result, 1L, ((Number) Utils.get(position, 1L)).longValue() - 2L);
           }
 

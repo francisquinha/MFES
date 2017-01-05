@@ -7,7 +7,7 @@ public class Main{
 	static boolean keepRunning = true;
 	static boolean result = true;
 	private static Scanner in;
-    
+    /*
 	public static Tetramino randomTetramino (Game game){
 		
 		Random gerador = new Random();
@@ -35,10 +35,10 @@ public class Main{
 		   }
 		return tetramino;
 	}
-	
+*/	
     public static void main(String[] args) {
     	
-    	
+/*    	
 		System.out.println("Welcome to Tetris");
 		System.out.println("> a: Play game");
 		System.out.println("> b: Run VDM tests");
@@ -97,7 +97,7 @@ public class Main{
 	            catch (Exception e) {}
 	        }
     	}
-    	else
+    	else*/
 		TestTetris.main();    
     }
 	/*

@@ -8,13 +8,10 @@ public class Board {
   private String print_startTag = "▕";
   private String print_endTag = "▏\n";
   private String print_bottomLine = " ▔▔▔▔▔▔▔▔▔▔";
-  private String print_emptyCell = "░";
-  private String print_filledCell = "[31m" + "█" + "[0m";
   private Number maxRow = 22L;
   private Number maxVisibleRow = 20L;
   private Number maxColumn = 10L;
   private VDMMap matrix = MapUtil.map();
-  private Boolean gameOver = false;
 
   public void cg_init_Board_1() {
 
@@ -40,42 +37,117 @@ public class Board {
     }
   }
 
-  public String getBoardPrint(final String option) {
+  public String getBoardPrint(
+      final Boolean printNow, final Boolean blackConsole, final Boolean testPrint) {
 
     String print_board = "\n";
+    Number start_row = 3L;
+    if (testPrint) {
+      start_row = 1L;
+    }
+
     long toVar_4 = maxRow.longValue();
 
-    for (Long i = 1L; i <= toVar_4; i++) {
+    for (Long i = start_row.longValue(); i <= toVar_4; i++) {
       print_board = print_board + print_startTag;
       long toVar_3 = maxColumn.longValue();
 
       for (Long j = 1L; j <= toVar_3; j++) {
-        if (((Number) Utils.get(matrix, SeqUtil.seq(i, j))).longValue() > 0L) {
-          print_board = print_board + print_filledCell;
-        } else {
-          if (i.longValue() < 3L) {
-            print_board = print_board + " ";
-          } else {
-            print_board = print_board + print_emptyCell;
-          }
-        }
+        print_board =
+            print_board
+                + getCellPrint(((Number) Utils.get(matrix, SeqUtil.seq(i, j))), i, blackConsole);
       }
       print_board = print_board + print_endTag;
     }
-    if (Utils.equals(option, "printBoard")) {
+    if (printNow) {
       IO.println(print_board + print_bottomLine);
     }
 
     return print_board + print_bottomLine;
   }
 
-  public VDMMap getBoard(final String option) {
+  private String getCellPrint(final Number id, final Number row, final Boolean blackConsole) {
 
-    if (Utils.equals(option, "printMatrix")) {
-      IO.println(this.matrix);
+    if (blackConsole) {
+      Number intPattern_1 = id;
+      Boolean success_1 = Utils.equals(intPattern_1, 0L);
+
+      if (success_1) {
+        if (row.longValue() < 3L) {
+          return " ";
+
+        } else {
+          return "░";
+        }
+
+      } else {
+        return "█";
+      }
+
+    } else {
+      Number intPattern_2 = id;
+      Boolean success_2 = Utils.equals(intPattern_2, 0L);
+
+      if (!(success_2)) {
+        Number intPattern_3 = id;
+        success_2 = Utils.equals(intPattern_3, 1L);
+
+        if (!(success_2)) {
+          Number intPattern_4 = id;
+          success_2 = Utils.equals(intPattern_4, 2L);
+
+          if (!(success_2)) {
+            Number intPattern_5 = id;
+            success_2 = Utils.equals(intPattern_5, 3L);
+
+            if (!(success_2)) {
+              Number intPattern_6 = id;
+              success_2 = Utils.equals(intPattern_6, 4L);
+
+              if (!(success_2)) {
+                Number intPattern_7 = id;
+                success_2 = Utils.equals(intPattern_7, 5L);
+
+                if (!(success_2)) {
+                  Number intPattern_8 = id;
+                  success_2 = Utils.equals(intPattern_8, 6L);
+
+                  if (success_2) {
+                    return "[38;5;165m" + "█" + "[0m";
+
+                  } else {
+                    return "[38;5;196m" + "█" + "[0m";
+                  }
+
+                } else {
+                  return "[38;5;34m" + "█" + "[0m";
+                }
+
+              } else {
+                return "[38;5;226m" + "█" + "[0m";
+              }
+
+            } else {
+              return "[38;5;208m" + "█" + "[0m";
+            }
+
+          } else {
+            return "[38;5;21m" + "█" + "[0m";
+          }
+
+        } else {
+          return "[38;5;51m" + "█" + "[0m";
+        }
+
+      } else {
+        if (row.longValue() < 3L) {
+          return " ";
+
+        } else {
+          return "░";
+        }
+      }
     }
-
-    return this.matrix;
   }
 
   public Boolean checkRow(final Number row) {
@@ -125,16 +197,6 @@ public class Board {
     return ((Number) Utils.get(matrix, position));
   }
 
-  public void setGameOver() {
-
-    gameOver = true;
-  }
-
-  public Boolean getGameOver() {
-
-    return gameOver;
-  }
-
   public Number getMaxRow() {
 
     return maxRow;
@@ -150,68 +212,6 @@ public class Board {
     return maxColumn;
   }
 
-  public Tetramino addTetramino() {
-
-    Tetramino tetramino = null;
-    Number random = MATH.rand(7L).longValue() + 1L;
-    Number intPattern_1 = random;
-    Boolean success_1 = Utils.equals(intPattern_1, 1L);
-
-    if (!(success_1)) {
-      Number intPattern_2 = random;
-      success_1 = Utils.equals(intPattern_2, 2L);
-
-      if (!(success_1)) {
-        Number intPattern_3 = random;
-        success_1 = Utils.equals(intPattern_3, 3L);
-
-        if (!(success_1)) {
-          Number intPattern_4 = random;
-          success_1 = Utils.equals(intPattern_4, 4L);
-
-          if (!(success_1)) {
-            Number intPattern_5 = random;
-            success_1 = Utils.equals(intPattern_5, 5L);
-
-            if (!(success_1)) {
-              Number intPattern_6 = random;
-              success_1 = Utils.equals(intPattern_6, 6L);
-
-              if (!(success_1)) {
-                Number intPattern_7 = random;
-                success_1 = Utils.equals(intPattern_7, 7L);
-
-                if (success_1) {
-                  tetramino = new TetraminoZ(this);
-                }
-
-              } else {
-                tetramino = new TetraminoT(this);
-              }
-
-            } else {
-              tetramino = new TetraminoS(this);
-            }
-
-          } else {
-            tetramino = new TetraminoO(this);
-          }
-
-        } else {
-          tetramino = new TetraminoL(this);
-        }
-
-      } else {
-        tetramino = new TetraminoJ(this);
-      }
-
-    } else {
-      tetramino = new TetraminoI(this);
-    }
-
-    return tetramino;
-  }
-
   public String toString() {
 
     return "Board{"
@@ -221,10 +221,6 @@ public class Board {
         + Utils.toString(print_endTag)
         + ", print_bottomLine := "
         + Utils.toString(print_bottomLine)
-        + ", print_emptyCell := "
-        + Utils.toString(print_emptyCell)
-        + ", print_filledCell := "
-        + Utils.toString(print_filledCell)
         + ", maxRow := "
         + Utils.toString(maxRow)
         + ", maxVisibleRow := "
@@ -233,8 +229,6 @@ public class Board {
         + Utils.toString(maxColumn)
         + ", matrix := "
         + Utils.toString(matrix)
-        + ", gameOver := "
-        + Utils.toString(gameOver)
         + "}";
   }
 }
