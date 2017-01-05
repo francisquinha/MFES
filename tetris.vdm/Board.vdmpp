@@ -2,22 +2,22 @@ class Board
 
 	types
 	
-		public Position = seq of nat
+		public Position = seq of int
 		inv position == len position = 2;
 		public Matrix = map Position to nat;
 
 
 	instance variables
 	
+		public static maxRow		: nat1			:= 22;
+		public static maxVisibleRow	: nat1			:= 20;
+		public static maxColumn		: nat1			:= 10;
+
 		private print_startTag		: Game`String	:= "▕";
 		private print_endTag		: Game`String	:= "▏\n";
 		private print_bottomLine	: Game`String	:= " ▔▔▔▔▔▔▔▔▔▔";
 		                                        
-		private maxRow				: nat		:= 22;
-		private maxVisibleRow		: nat		:= 20;
-		private maxColumn			: nat		:= 10;
-		                                        
-		private matrix 				: Matrix	:= {|->};
+		private matrix 				: Matrix		:= {|->};
      
                                                							
 	operations
@@ -34,9 +34,8 @@ class Board
 			for i = 1 to maxRow do
 				for j = 1 to maxColumn do
 					matrix := matrix ++ {[i,j] |-> 0}
-		);
-		--post len row1 =12;
-		--pre len matrix <=0
+		)
+		post matrix([1,1]) = 0 and matrix([maxRow, maxColumn]) = 0;
 
 		------------------------------------------------------------ printBoard
 		public getBoardPrint : bool * bool * bool ==> Game`String
@@ -50,7 +49,8 @@ class Board
 			for i = start_row to maxRow do(
 				print_board := print_board ^ print_startTag;
 	  			for j=1 to maxColumn do
-	  				print_board := print_board ^ getCellPrint(matrix([i,j]), i, blackConsole);
+	  				print_board := print_board 
+	  					^ getCellPrint(matrix([i,j]), i, blackConsole);
 	  			print_board := print_board ^  print_endTag;
 	  		);
 	  		
@@ -89,7 +89,8 @@ class Board
 				for j = 1 to maxColumn do
 					matrix([i + 1, j]) := matrix([i, j]);
 			return true
-		);
+		)
+		pre row >= 1 and row <= maxRow;
 		
 		public checkRows : () ==> nat
 		checkRows() == (
@@ -97,26 +98,24 @@ class Board
 			for row = 1 to maxRow do
 				if checkRow(row) then result := result + 1;
 			return result
-		);
+		)
+		post RESULT <= maxRow;
 		
 		public setMatrixPosition : Position * nat ==> ()
 		setMatrixPosition(position, value) ==
-			matrix(position) := value;	
+			matrix(position) := value
+		pre position(1) >= 1
+			and position(1) <= maxRow 
+			and position(2) >= 1
+			and position(2) <= maxColumn;	
 		
 		public getMatrixPosition : Position ==> nat
 		getMatrixPosition(position) ==
-			return matrix(position);	
+			return matrix(position)		
+		pre position(1) >= 1
+			and position(1) <= maxRow 
+			and position(2) >= 1
+			and position(2) <= maxColumn;	
+	
 			
-		public getMaxRow : () ==> nat
-		getMaxRow() ==
-			return maxRow;
-
-		public getMaxVisibleRow : () ==> nat
-		getMaxVisibleRow() ==
-			return maxVisibleRow;
-
-		public getMaxColumn : () ==> nat
-		getMaxColumn() ==
-			return maxColumn;			
-
 end Board

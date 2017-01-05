@@ -45,7 +45,8 @@ class Game
 				6 -> tetramino := new TetraminoT(self),
 				7 -> tetramino := new TetraminoZ(self)
 			end;
-		);
+		)
+		pre id >= 1 and id <= 7;
 		
 		public newRandomTetramino: () ==> ()
 		newRandomTetramino() == 
@@ -83,7 +84,7 @@ class Game
 			dcl newLines: nat := board.checkRows();
 			lines := lines + newLines;
 			if newLines > 0 then score := score + lineScores(newLines) * level;
-			if lines > 0 and lines rem 10 = 0 then level := level + 1;
+			level := 1 + (lines div 10);
 			return newLines
 		);
 
@@ -99,6 +100,5 @@ class Game
 		public printBoard : bool * bool * bool ==> String
 		printBoard(printNow, blackConsole, testPrint) == 
 			return board.getBoardPrint(printNow, blackConsole, testPrint);
-
 			
 end Game
