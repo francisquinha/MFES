@@ -9,20 +9,20 @@ public class TestTetris extends TestCaseExtra {
 
   private void initalMatrix_test(final Game game) {
 
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   private void addTetramino_test(final Game game, final Number id) {
 
     game.newTetramino(id);
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   private void dropTetramino_test(final Game game) {
 
     Number value = game.drop();
     if (value.longValue() > 0L) {
-      printBoard = game.printBoard(true, false, true);
+      printBoard = game.printBoard(true, true, true);
       IO.println(game.getScore());
       IO.println(game.getLines());
       IO.println(game.getLevel());
@@ -32,32 +32,32 @@ public class TestTetris extends TestCaseExtra {
   private void downTetramino_test(final Game game) {
 
     Boolean result = game.down();
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   private void rightTetramino_test(final Game game) {
 
     Boolean result = game.right();
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   private void leftTetramino_test(final Game game) {
 
     Boolean result = game.left();
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   private void rotateTetramino_test(final Game game) {
 
     Boolean result = game.rotate();
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   private void checkLines_test(final Game game) {
 
     Number value = game.checkLines();
     if (value.longValue() > 0L) {
-      printBoard = game.printBoard(true, false, true);
+      printBoard = game.printBoard(true, true, true);
       IO.println(game.getScore());
       IO.println(game.getLines());
       IO.println(game.getLevel());
@@ -67,7 +67,7 @@ public class TestTetris extends TestCaseExtra {
   private void addRandomTetramino_test(final Game game) {
 
     game.newRandomTetramino();
-    printBoard = game.printBoard(true, false, true);
+    printBoard = game.printBoard(true, true, true);
   }
 
   public static void main() {
