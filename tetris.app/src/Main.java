@@ -1,104 +1,79 @@
 import tetris.vdm.*;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main{
+
+	private static boolean 	moveDown 	= true;
+	private static String  	input 		= ""; 
+	private static Scanner 	scanner 	= new Scanner(System.in);
+	private static boolean  gameState 	= false; 
+
 	
-	static boolean keepRunning = true;
-	static boolean result = true;
-	private static Scanner in;
-    /*
-	public static Tetramino randomTetramino (Game game){
-		
-		Random gerador = new Random();
-		 
-		int num = gerador.nextInt(6);
-		Tetramino tetramino = null;
-		
-		   switch (num) {
-           case 0:  tetramino = new TetraminoI(game.board);
-                    break;
-           case 1:  tetramino = new TetraminoJ(game.board);
-                    break;
-           case 2:	tetramino = new TetraminoL(game.board);
-                    break;
-           case 3:  tetramino = new TetraminoO(game.board);;
-                    break;
-           case 4:  tetramino = new TetraminoS(game.board);
-                    break;
-           case 5:  tetramino = new TetraminoT(game.board);
-                    break;
-           case 6:	tetramino = new TetraminoZ(game.board);
-                    break;
-           default: tetramino = new TetraminoI(game.board);
-           			break;
-		   }
-		return tetramino;
-	}
-*/	
     public static void main(String[] args) {
     	
-/*    	
-		System.out.println("Welcome to Tetris");
-		System.out.println("> a: Play game");
-		System.out.println("> b: Run VDM tests");
-		in = new Scanner(System.in);
+	    System.out.println("\n\u001B[37m\u001B[1m Welcome to Tetris\u001B[0m\n");
+		System.out.println("\u001B[37m\u001B[1m > a: Play game\u001B[0m");
+		System.out.println("\u001B[37m\u001B[1m > b: Run VDM tests\u001B[0m");
+		input = scanner.nextLine();
 		
-		String x = in.nextLine();
-    	
-    	if (x.equals("a")){
-			Game game = new Game();
-			System.out.println(game.board.getBoardPrint(""));
-	
-			Tetramino tetramino = new TetraminoZ(game.board);
-			System.out.println(game.board.getBoardPrint(""));
-			 
-			tetramino.moveDown(game.board);
-			System.out.println(game.board.getBoardPrint(""));
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+		
+		if (input.equals("a")){
+	    	Game game = new Game();
+			game.newRandomTetramino();
+			System.out.println(game.printBoard(false, true, false));
+
 			
-	    	while (keepRunning)  {
-	            try {        		
-	        		//Thread.sleep(1000);
-	        		
-	        		System.out.println("Use the keys a(left), d(right), s(rotate), f(drop) q(exit) to move the pieces: ");
-	        		x = in.nextLine();
-	        		
-	        		if(x.equals("a")){
-	        			tetramino.moveLeft(game.board);
-	        			result = tetramino.moveDown(game.board);
-	        		}
-	        		else if(x.equals("d")){
-	        			tetramino.moveRight(game.board);
-	        			result = tetramino.moveDown(game.board);
-	        		}
-	        		else if(x.equals("s")){
-	        			tetramino.rotate(game.board);
-	        			result = tetramino.moveDown(game.board);
-	        		}
-	        		else if(x.equals("f")){
-	        			tetramino.drop(game.board);
-	        		}
-	        		else if(x.equals("q")){
-	        			keepRunning = false;
-	        		}
-	        		else
-	            		result = tetramino.moveDown(game.board);
-	        		
-	        		System.out.println(game.board.getBoardPrint(""));
-	        		
-	        		if(result == false)
-	        			tetramino = randomTetramino(game);
-	        		
-	        	    Number value = game.board.checkRows();
-	        	    if (value.longValue() > 0L) {
-	            		System.out.println(game.board.getBoardPrint(""));
-	        	    }
-	            }
-	            catch (Exception e) {}
-	        }
-    	}
-    	else*/
-		TestTetris.main();    
+		  	while (!gameState)  {
+			    try {
+			    	gameState = game.getGameOver();
+			    	moveDown  = game.down();
+			    	game.checkLines();
+			    	
+					System.out.println(game.printBoard(false, false, false));
+					//Thread.sleep(1000);
+					System.out.println("\u001B[37m\u001B[1m Level "+ game.getLevel() + "\u001B[0m");
+					System.out.println("\u001B[37m\u001B[1m Score "+ game.getScore() + "\u001B[0m" + "\n");
+
+					System.out.println("\u001B[37m\u001B[1m"
+									+ " Use the keys a(left), d(right), s(rotate), f(drop) q(exit) to move the pieces: "
+									+ "\u001B[0m");
+					input = scanner.nextLine();
+					
+					if 		(input.equals("a"))
+								game.left();
+					else if	(input.equals("d"))
+								game.right();
+					else if	(input.equals("s"))
+								game.rotate();
+					else if	(input.equals("f"))
+								game.drop();
+					else if	(input.equals("q"))
+								gameState = true;
+					else
+						if(!moveDown)
+							game.newRandomTetramino();
+						else
+							moveDown = game.down();
+					
+					System.out.print("\033[H\033[2J");
+					System.out.flush();
+				
+			    }
+				catch(Exception e){e.printStackTrace();}
+			}
+		  	
+		    System.out.println("\u001B[37m\u001B[1m Game Over!\u001B[0m");
+			System.out.println("\u001B[37m\u001B[1m Level "+ game.getLevel() + "\u001B[0m");
+			System.out.println("\u001B[37m\u001B[1m Score "+ game.getScore() + "\u001B[0m" + "\n");
+			System.out.println("\u001B[37m\u001B[1m Press any key to close the game\u001B[0m");
+			input = scanner.nextLine();
+		}
+
+    	else
+    		TestTetris.main();
+ 
     }
 	/*
 	public static void myMethod() {
