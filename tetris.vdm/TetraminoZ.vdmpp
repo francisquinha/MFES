@@ -1,11 +1,11 @@
 class TetraminoZ is subclass of Tetramino
 		
 	operations
-		public TetraminoZ : (Board) ==> TetraminoZ
-		TetraminoZ(board) == (
+		public TetraminoZ : (Game) ==> TetraminoZ
+		TetraminoZ(game) == (
 			Tetramino`setColor(<Red>);
 			Tetramino`setId(7);
-			Tetramino`initialSetMinoes(board, [1, 4]);
+			Tetramino`initialSetMinoes(game, [1, 4]);
 			return self
 		);
 

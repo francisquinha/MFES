@@ -1,16 +1,96 @@
 class Game
 	
 	instance variables
-	  public level		: int		:= 0;
-	  public board		: Board;
-	  
+		
+		private board		: Board;
+		private tetramino	: Tetramino;
+		private gameOver	: bool			:= false;		
+		private score		: nat			:= 0;
+		private lines		: nat			:= 0;		
+		private level		: nat1			:= 1;
+		private lineScores	: seq of nat	:= [100, 300, 400, 800];
+		
+		
 	operations
+	
 		public Game : () ==> Game
 		Game() ==
 			board := new Board();	-- startGame
+	  		
+	  	public getBoard: () ==> Board
+	  	getBoard() ==
+	  		return board;
+	  					
+		public setGameOver : () ==> ()
+		setGameOver() ==
+			gameOver := true;
+			
+		public getGameOver : () ==> bool
+		getGameOver() ==
+			return gameOver;
+	  				
+		public newTetramino : nat1 ==> ()
+		newTetramino(id) == (		
+			cases id:
+				1 -> tetramino := new TetraminoI(self),
+				2 -> tetramino := new TetraminoJ(self),
+				3 -> tetramino := new TetraminoL(self),
+				4 -> tetramino := new TetraminoO(self),
+				5 -> tetramino := new TetraminoS(self),
+				6 -> tetramino := new TetraminoT(self),
+				7 -> tetramino := new TetraminoZ(self)
+			end;
+		);
+		
+		public newRandomTetramino: () ==> ()
+		newRandomTetramino() == 
+			newTetramino(MATH`rand(7) + 1);
+		
+		private incScore : nat ==> ()
+		incScore(inc) ==
+			score := score + inc;
+		
+		public down : () ==> bool
+		down() ==
+			return tetramino.moveDown(board);
+			
+		public left : () ==> bool
+		left() ==
+			return tetramino.moveLeft(board);
 
-	  	public endGame:() ==> int
-	  	endGame() ==
-	  		is not yet specified;
+		public right : () ==> bool
+		right() ==
+			return tetramino.moveRight(board);
+			
+		public rotate : () ==> bool
+		rotate() ==
+			return tetramino.rotate(board);
 
+		public drop : () ==> nat
+		drop() == (
+			dcl dropDistance: nat := tetramino.drop(board);
+			score := score + dropDistance * level;
+			return dropDistance;
+		);
+		
+		public checkLines : () ==> nat
+		checkLines() == (
+			dcl newLines: nat := board.checkRows();
+			lines := lines + newLines;
+			if newLines > 0 then score := score + lineScores(newLines) * level;
+			if lines > 0 and lines rem 10 = 0 then level := level + 1;
+			return newLines
+		);
+
+		public getScore : () ==> nat
+		getScore() == return score;
+	  
+		public getLines : () ==> nat
+		getLines() == return lines;
+
+		public getLevel : () ==> nat1
+		getLevel() == return level;
+
+
+			
 end Game

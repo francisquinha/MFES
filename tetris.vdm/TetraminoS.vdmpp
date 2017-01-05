@@ -1,11 +1,11 @@
 class TetraminoS is subclass of Tetramino
 		
 	operations
-		public TetraminoS : (Board) ==> TetraminoS
-		TetraminoS(board) == (
+		public TetraminoS : (Game) ==> TetraminoS
+		TetraminoS(game) == (
 			Tetramino`setColor(<Green>);
 			Tetramino`setId(5);
-			Tetramino`initialSetMinoes(board, [1, 6]);
+			Tetramino`initialSetMinoes(game, [1, 6]);
 			return self
 		);
 			

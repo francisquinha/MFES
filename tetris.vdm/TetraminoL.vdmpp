@@ -1,11 +1,11 @@
 class TetraminoL is subclass of Tetramino
 		
 	operations
-		public TetraminoL : (Board) ==> TetraminoL
-		TetraminoL(board) == (
+		public TetraminoL : (Game) ==> TetraminoL
+		TetraminoL(game) == (
 			Tetramino`setColor(<Orange>);
 			Tetramino`setId(3);
-			Tetramino`initialSetMinoes(board, [1, 6]);
+			Tetramino`initialSetMinoes(game, [1, 6]);
 			return self
 		);
 

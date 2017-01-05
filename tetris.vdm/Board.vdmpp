@@ -1,28 +1,31 @@
 class Board
 
 	types
+	
 		public String = seq of char;
 		public Position = seq of nat
 		inv position == len position = 2;
 		public Matrix = map Position to nat;
 
+
 	instance variables
+	
 		private print_startTag		: String	:= "▕";
 		private print_endTag		: String	:= "▏\n";
 		private print_bottomLine	: String	:= " ▔▔▔▔▔▔▔▔▔▔";
 		private print_emptyCell		: String	:= "░";
-	  	private print_filledCell	: String	:= "\u001B[31m" ^ "█" ^ "\u001B[0m";
+	  	--private print_filledCell	: String	:= "\u001B[31m" ^ "█" ^ "\u001B[0m";
+	  	private print_filledCell	: String	:= "█";
 		                                        
 		private maxRow				: nat		:= 22;
 		private maxVisibleRow		: nat		:= 20;
 		private maxColumn			: nat		:= 10;
 		                                        
 		private matrix 				: Matrix	:= {|->};
-                                                
-		private gameOver			: bool		:= false;
-		
-							
+     
+                                               							
 	operations
+	
 		------------------------------------------------------------ Board
 		public Board : () ==> Board
 		Board() == (	
@@ -66,7 +69,7 @@ class Board
 		);
 		
 		------------------------------------------------------------ get matrix board
-		public  getBoard : (String)  ==> Matrix
+		public getBoard : (String)  ==> Matrix
 		getBoard(option) ==(
 			
 			if (option = "printMatrix" ) then
@@ -92,8 +95,8 @@ class Board
 			for row = 1 to maxRow do
 				if checkRow(row) then result := result + 1;
 			return result
-		); 
-			
+		);
+		
 		public setMatrixPosition : Position * nat ==> ()
 		setMatrixPosition(position, value) ==
 			matrix(position) := value;	
@@ -101,14 +104,6 @@ class Board
 		public getMatrixPosition : Position ==> nat
 		getMatrixPosition(position) ==
 			return matrix(position);	
-				
-		public setGameOver : () ==> ()
-		setGameOver() ==
-			gameOver := true;
-			
-		public getGameOver : () ==> bool
-		getGameOver() ==
-			return gameOver;
 			
 		public getMaxRow : () ==> nat
 		getMaxRow() ==
@@ -120,22 +115,6 @@ class Board
 
 		public getMaxColumn : () ==> nat
 		getMaxColumn() ==
-			return maxColumn;
-			
-		public addTetramino : () ==> Tetramino
-		addTetramino() == (		
-			dcl tetramino : Tetramino;
-			dcl random : nat1 := MATH`rand(7) + 1;
-			cases random:
-				1 -> tetramino := new TetraminoI(self),
-				2 -> tetramino := new TetraminoJ(self),
-				3 -> tetramino := new TetraminoL(self),
-				4 -> tetramino := new TetraminoO(self),
-				5 -> tetramino := new TetraminoS(self),
-				6 -> tetramino := new TetraminoT(self),
-				7 -> tetramino := new TetraminoZ(self)
-			end;
-			return tetramino;
-		);
+			return maxColumn;			
 
 end Board

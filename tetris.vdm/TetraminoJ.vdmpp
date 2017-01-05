@@ -1,11 +1,11 @@
 class TetraminoJ is subclass of Tetramino
 		
 	operations
-		public TetraminoJ : (Board) ==> TetraminoJ
-		TetraminoJ(board) == (
+		public TetraminoJ : (Game) ==> TetraminoJ
+		TetraminoJ(game) == (
 			Tetramino`setColor(<Blue>);
 			Tetramino`setId(2);
-			Tetramino`initialSetMinoes(board, [1, 4]);
+			Tetramino`initialSetMinoes(game, [1, 4]);
 			return self
 		);
 
