@@ -27,14 +27,19 @@ abstract public class Tetramino {
     return orientation;
   }
 
+  public VDMSeq getMinoes() {
+
+    return Utils.copy(minoes);
+  }
+
   public Boolean setMinoes(final Board board, final VDMSeq position) {
 
     VDMSeq tempMinoes = Utils.copy(minoes);
     VDMSeq tempPosition = Utils.copy(position);
     removeTetramino(board);
-    long toVar_9 = 4L;
+    long toVar_11 = 4L;
 
-    for (Long i = 1L; i <= toVar_9; i++) {
+    for (Long i = 1L; i <= toVar_11; i++) {
       if (validPosition(board, Utils.copy(tempPosition))) {
         Utils.mapSeqUpdate(tempMinoes, i, Utils.copy(tempPosition));
       } else {
@@ -52,11 +57,12 @@ abstract public class Tetramino {
   public void initialSetMinoes(final Game game, final VDMSeq position) {
 
     VDMSeq tempPosition = Utils.copy(position);
-    long toVar_10 = 4L;
+    VDMSeq tempMinoes = Utils.copy(minoes);
+    long toVar_12 = 4L;
 
-    for (Long i = 1L; i <= toVar_10; i++) {
+    for (Long i = 1L; i <= toVar_12; i++) {
       if (validPosition(game.getBoard(), Utils.copy(tempPosition))) {
-        Utils.mapSeqUpdate(minoes, i, Utils.copy(tempPosition));
+        Utils.mapSeqUpdate(tempMinoes, i, Utils.copy(tempPosition));
         tempPosition = getNextMino(Utils.copy(tempPosition), i);
 
       } else {
@@ -64,6 +70,7 @@ abstract public class Tetramino {
       }
     }
     if (!(game.getGameOver())) {
+      minoes = Utils.copy(tempMinoes);
       addTetramino(game.getBoard());
     }
   }
@@ -74,46 +81,29 @@ abstract public class Tetramino {
 
   public Boolean validPosition(final Board board, final VDMSeq position) {
 
-    if (((Number) Utils.get(position, 1L)).longValue() < 1L) {
-      return false;
+    Boolean andResult_12 = false;
 
-    } else {
-      if (((Number) Utils.get(position, 1L)).longValue() > board.getMaxRow().longValue()) {
-        return false;
-
-      } else {
-        if (((Number) Utils.get(position, 2L)).longValue() < 1L) {
-          return false;
-
-        } else {
-          if (((Number) Utils.get(position, 2L)).longValue() > board.getMaxColumn().longValue()) {
-            return false;
-
-          } else {
-            if (!(Utils.equals(board.getMatrixPosition(Utils.copy(position)), 0L))) {
-              return false;
-
-            } else {
-              return true;
-            }
-          }
-        }
+    if (checkPosition(Utils.copy(position), 1L, Board.maxRow, 1L, Board.maxColumn)) {
+      if (Utils.equals(board.getMatrixPosition(Utils.copy(position)), 0L)) {
+        andResult_12 = true;
       }
     }
+
+    return andResult_12;
   }
 
   public void removeTetramino(final Board board) {
 
-    for (Iterator iterator_1 = minoes.iterator(); iterator_1.hasNext(); ) {
-      VDMSeq mino = (VDMSeq) iterator_1.next();
+    for (Iterator iterator_2 = minoes.iterator(); iterator_2.hasNext(); ) {
+      VDMSeq mino = (VDMSeq) iterator_2.next();
       board.setMatrixPosition(Utils.copy(mino), 0L);
     }
   }
 
   public void addTetramino(final Board board) {
 
-    for (Iterator iterator_2 = minoes.iterator(); iterator_2.hasNext(); ) {
-      VDMSeq mino = (VDMSeq) iterator_2.next();
+    for (Iterator iterator_3 = minoes.iterator(); iterator_3.hasNext(); ) {
+      VDMSeq mino = (VDMSeq) iterator_3.next();
       board.setMatrixPosition(Utils.copy(mino), id);
     }
   }
@@ -155,10 +145,10 @@ abstract public class Tetramino {
   public Number drop(final Board board) {
 
     Number result = 0L;
-    Boolean whileCond_1 = true;
-    while (whileCond_1) {
-      whileCond_1 = moveDown(board);
-      if (!(whileCond_1)) {
+    Boolean whileCond_2 = true;
+    while (whileCond_2) {
+      whileCond_2 = moveDown(board);
+      if (!(whileCond_2)) {
         break;
       }
 
@@ -169,6 +159,64 @@ abstract public class Tetramino {
   }
 
   public Tetramino() {}
+
+  private static Boolean checkPosition(
+      final VDMSeq position,
+      final Number min1,
+      final Number max1,
+      final Number min2,
+      final Number max2) {
+
+    Boolean andResult_14 = false;
+
+    if (((Number) Utils.get(position, 1L)).longValue() >= min1.longValue()) {
+      Boolean andResult_15 = false;
+
+      if (((Number) Utils.get(position, 1L)).longValue() <= max1.longValue()) {
+        Boolean andResult_16 = false;
+
+        if (((Number) Utils.get(position, 2L)).longValue() >= min2.longValue()) {
+          if (((Number) Utils.get(position, 2L)).longValue() <= max2.longValue()) {
+            andResult_16 = true;
+          }
+        }
+
+        if (andResult_16) {
+          andResult_15 = true;
+        }
+      }
+
+      if (andResult_15) {
+        andResult_14 = true;
+      }
+    }
+
+    return andResult_14;
+  }
+
+  private static Boolean checkMinoes(
+      final VDMSeq minoes_1,
+      final Number min1,
+      final Number max1,
+      final Number min2,
+      final Number max2) {
+
+    Boolean andResult_17 = false;
+
+    if (Utils.equals(SeqUtil.elems(Utils.copy(minoes_1)).size(), 4L)) {
+      Boolean forAllExpResult_1 = true;
+      VDMSet set_1 = SeqUtil.elems(Utils.copy(minoes_1));
+      for (Iterator iterator_1 = set_1.iterator(); iterator_1.hasNext() && forAllExpResult_1; ) {
+        VDMSeq mino = ((VDMSeq) iterator_1.next());
+        forAllExpResult_1 = checkPosition(Utils.copy(mino), min1, max1, min2, max2);
+      }
+      if (forAllExpResult_1) {
+        andResult_17 = true;
+      }
+    }
+
+    return andResult_17;
+  }
 
   public String toString() {
 

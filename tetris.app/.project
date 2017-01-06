@@ -18,7 +18,7 @@
 		<link>
 			<name>src/tetris</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/tetris.vdm/generated/java/src/tetris</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/tetris.vdm/generated/java/src/tetris</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

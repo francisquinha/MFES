@@ -29,11 +29,12 @@ public class Main{
 			    try {
 			    	gameState = game.getGameOver();
 			    	moveDown  = game.down();
-			    	game.checkLines();
+//			    	game.checkLines();
 			    	
 					System.out.println(game.printBoard(false, false, false));
 					//Thread.sleep(1000);
 					System.out.println("\u001B[37m\u001B[1m Level "+ game.getLevel() + "\u001B[0m");
+					System.out.println("\u001B[37m\u001B[1m Lines "+ game.getLines() + "\u001B[0m");
 					System.out.println("\u001B[37m\u001B[1m Score "+ game.getScore() + "\u001B[0m" + "\n");
 
 					System.out.println("\u001B[37m\u001B[1m"
@@ -52,8 +53,10 @@ public class Main{
 					else if	(input.equals("q"))
 								gameState = true;
 					else
-						if(!moveDown)
-							game.newRandomTetramino();
+						if(!moveDown) {
+					    	game.checkLines();
+							game.newRandomTetramino();							
+						}
 						else
 							moveDown = game.down();
 					

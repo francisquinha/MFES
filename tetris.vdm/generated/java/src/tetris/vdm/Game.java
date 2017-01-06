@@ -143,18 +143,7 @@ public class Game {
               + ((Number) Utils.get(lineScores, newLines)).longValue() * level.longValue();
     }
 
-    Boolean andResult_1 = false;
-
-    if (lines.longValue() > 0L) {
-      if (Utils.equals(Utils.rem(lines.longValue(), 10L), 0L)) {
-        andResult_1 = true;
-      }
-    }
-
-    if (andResult_1) {
-      level = level.longValue() + 1L;
-    }
-
+    level = 1L + Utils.div(lines.longValue(), 10L);
     return newLines;
   }
 

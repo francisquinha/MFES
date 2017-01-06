@@ -5,12 +5,12 @@ import org.overture.codegen.runtime.*;
 
 @SuppressWarnings("all")
 public class Board {
+  public static Number maxRow = 22L;
+  public static Number maxVisibleRow = 20L;
+  public static Number maxColumn = 10L;
   private String print_startTag = "▕";
   private String print_endTag = "▏\n";
   private String print_bottomLine = " ▔▔▔▔▔▔▔▔▔▔";
-  private Number maxRow = 22L;
-  private Number maxVisibleRow = 20L;
-  private Number maxColumn = 10L;
   private VDMMap matrix = MapUtil.map();
 
   public void cg_init_Board_1() {
@@ -25,10 +25,10 @@ public class Board {
 
   public void initBoard() {
 
-    long toVar_2 = maxRow.longValue();
+    long toVar_2 = Board.maxRow.longValue();
 
     for (Long i = 1L; i <= toVar_2; i++) {
-      long toVar_1 = maxColumn.longValue();
+      long toVar_1 = Board.maxColumn.longValue();
 
       for (Long j = 1L; j <= toVar_1; j++) {
         matrix =
@@ -46,11 +46,11 @@ public class Board {
       start_row = 1L;
     }
 
-    long toVar_4 = maxRow.longValue();
+    long toVar_4 = Board.maxRow.longValue();
 
     for (Long i = start_row.longValue(); i <= toVar_4; i++) {
       print_board = print_board + print_startTag;
-      long toVar_3 = maxColumn.longValue();
+      long toVar_3 = Board.maxColumn.longValue();
 
       for (Long j = 1L; j <= toVar_3; j++) {
         print_board =
@@ -152,7 +152,7 @@ public class Board {
 
   public Boolean checkRow(final Number row) {
 
-    long toVar_5 = maxColumn.longValue();
+    long toVar_5 = Board.maxColumn.longValue();
 
     for (Long column = 1L; column <= toVar_5; column++) {
       if (Utils.equals(((Number) Utils.get(matrix, SeqUtil.seq(row, column))), 0L)) {
@@ -162,7 +162,7 @@ public class Board {
     long toVar_7 = 1L;
     long byVar_1 = -1L;
     for (Long i = row.longValue() - 1L; byVar_1 < 0 ? i >= toVar_7 : i <= toVar_7; i += byVar_1) {
-      long toVar_6 = maxColumn.longValue();
+      long toVar_6 = Board.maxColumn.longValue();
 
       for (Long j = 1L; j <= toVar_6; j++) {
         Utils.mapSeqUpdate(
@@ -177,7 +177,7 @@ public class Board {
   public Number checkRows() {
 
     Number result = 0L;
-    long toVar_8 = maxRow.longValue();
+    long toVar_8 = Board.maxRow.longValue();
 
     for (Long row = 1L; row <= toVar_8; row++) {
       if (checkRow(row)) {
@@ -197,36 +197,21 @@ public class Board {
     return ((Number) Utils.get(matrix, position));
   }
 
-  public Number getMaxRow() {
-
-    return maxRow;
-  }
-
-  public Number getMaxVisibleRow() {
-
-    return maxVisibleRow;
-  }
-
-  public Number getMaxColumn() {
-
-    return maxColumn;
-  }
-
   public String toString() {
 
     return "Board{"
-        + "print_startTag := "
-        + Utils.toString(print_startTag)
-        + ", print_endTag := "
-        + Utils.toString(print_endTag)
-        + ", print_bottomLine := "
-        + Utils.toString(print_bottomLine)
-        + ", maxRow := "
+        + "maxRow := "
         + Utils.toString(maxRow)
         + ", maxVisibleRow := "
         + Utils.toString(maxVisibleRow)
         + ", maxColumn := "
         + Utils.toString(maxColumn)
+        + ", print_startTag := "
+        + Utils.toString(print_startTag)
+        + ", print_endTag := "
+        + Utils.toString(print_endTag)
+        + ", print_bottomLine := "
+        + Utils.toString(print_bottomLine)
         + ", matrix := "
         + Utils.toString(matrix)
         + "}";
