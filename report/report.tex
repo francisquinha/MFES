@@ -69,7 +69,7 @@ Nuno Valente - up200204376\\
 
 \paragraph{ }The rules to play the game are very simple. Tetris game requires players to strategically rotate and drop a chaining of tetrominoes that fall into the rectangular board at increasing speeds. Players attempt to clear as many lines as possible by completing horizontal rows of blocks without empty space, but if the tetrominoes surpass the skyline(top of the board) the game is over! Speed and consequent level advance can make the game ally to strategy more enthusiastic. Formal details about other rules are presented in appendix\ref{rules}.
 
-\textcolor{red}{put some image here}
+\textcolor{red}{put a game image here}
 \subsection{List of requirements}
 \label{sec:requirements}
 \begin{table}[h]
@@ -79,16 +79,16 @@ Nuno Valente - up200204376\\
 	\begin{tabular}{|l|l|p{9cm}|}
 		\hline
 		\textbf{Id} & \textbf{Priority} & \textbf{Description} \\ \hline
-		R1 & Mandatory         & The player can configure the game with his nickname \\ \hline
-		R2 & Optional          & The player can view best highscores \\ \hline
-		R3 & Mandatory         & The game allows two movements - rotation and drop \\ \hline
-		R4 & Mandatory         & The player should be able to leave the game when he wants \\ \hline
-		R5 & Mandatory         & The player has access to help menu where are the rules to play the game \\ \hline
-		R6 & Mandatory         & The spawns appears in a random order to be played\\ \hline
-		R7 & Mandatory         & When a row is full of blocks it must be cleared \\ \hline
-		R8 & Mandatory         & If tetraminoes surpass the skyline the game is over \\ \hline
-		R9 & Opcional          & Time to time the level advance one degree and the game became more difficult \\ \hline
-		R10 & Mandatory        & Each tetromino is formed by four squares named minos by us \\ \hline
+		R1 & Mandatory         & The player can view his score and level \\ \hline
+		R2 & Mandatory         & The game allows two movements - rotation and drop \\ \hline
+		R3 & Opcional         & The player should be able to leave the game when he wants \\ \hline
+		R4 & Mandatory         & The player has access to a footnote where are the rules to play the game \\ \hline
+		R5 & Mandatory         & The spawns appears in a random order to be played\\ \hline
+		R6 & Mandatory         & When a row(s) is(are) full of blocks it(they) must be cleared \\ \hline
+		R7 & Mandatory         & If tetraminoes surpass the skyline the game is over \\ \hline
+		R8 & Opcional          & Time to time the level advance one degree and the game became more difficult \\ \hline
+		R9 & Mandatory        & Each tetromino is formed by four squares named minos by us \\ \hline
+		R10 & Mandatory        & The player has access to his score and actual level where he is \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -173,48 +173,72 @@ The main use cases are described below:
 	\label{description-classes}
 	\begin{tabular}{|l|p{10cm}|}
 	\hline
-	\textbf{Class} & \textbf{Description}	\\	\hline
-	Game		   &	Core model; defines the state variables and operations available to the players.	\\	\hline
-	Board		   &	Defines a game environment for playing and where eachhpiece of tetraminoes can stay \\	\hline
-	Tetromino	   &	Defines one piece to play with.	\\	\hline
+	\textbf{Class} 			   & \textbf{Description}	\\	\hline
+	Game		   			   &	Core model; defines the state variables and operations available to the players	\\	\hline
+	Board		   			   &	Defines a game environment for playing and where eachhpiece of tetraminoes can stay \\	\hline
+	Tetromino	   			   &	Defines one general piece to play with	\\	\hline
+	TetrominoI/J/L/O/S/T/Z	   &	Defines one specific piece and is a subclass of Tetromino \\	\hline
+	TestCaseExtra  			   &	Superclass for test classes; defines assertEquals and assertTrue	\\	\hline
+	TestTetris	   			   &	Defines the test/usage scenarios and test cases for the tetris game	\\	\hline
 	\end{tabular}
 	\caption{Description of each class}
 \end{table}
 
 \section{Formal VDM++ model}
 
-paste code
-
 \subsection{Class Game}
 
-paste code
+\lstinputlisting{../tetris.vdm/Game.vdmpp}
 
 \subsection{Class Board}
 
-paste code
+%\lstinputlisting{../tetris.vdm/Board.vdmpp}
 
 \subsection{Class Tetromino}
 
-paste code
+\lstinputlisting{../tetris.vdm/Tetramino.vdmpp}
 
-\subsubsection{Class Tetromino-"type"}
+\subsubsection{Class TetrominoI}
 
+\lstinputlisting{../tetris.vdm/TetraminoI.vdmpp}
+
+\subsubsection{Class TetrominoJ}
+
+\lstinputlisting{../tetris.vdm/TetraminoJ.vdmpp}
+
+\subsubsection{Class TetrominoL}
+
+\lstinputlisting{../tetris.vdm/TetraminoL.vdmpp}
+
+\subsubsection{Class TetrominoO}
+
+\lstinputlisting{../tetris.vdm/TetraminoO.vdmpp}
+
+\subsubsection{Class TetrominoS}
+
+\lstinputlisting{../tetris.vdm/TetraminoS.vdmpp}
+
+\subsubsection{Class TetrominoT}
+
+\lstinputlisting{../tetris.vdm/TetraminoT.vdmpp}
+
+\subsubsection{Class TetrominoZ}
+
+\lstinputlisting{../tetris.vdm/TetraminoZ.vdmpp}
 
 \section{Model validation}
 
-todo
+\lstinputlisting{../tetris.vdm/TestTetris.vdmpp}
 
-\subsection{Class MyTestCase} 
+\subsection{Class TestCaseExtra} 
 
-todo
+\lstinputlisting{../tetris.vdm/TestCaseExtra.vdmpp}
 
-\subsection{Class TestGame} 
+\subsection{Class TestTetris} 
 
-todo
+\lstinputlisting{../tetris.vdm/TestTetris.vdmpp}
 
 \section{Model verification}
-
-todo
 
 \subsection{Example of domain verification} 
 
@@ -234,14 +258,14 @@ In addition it is noticed that all the elements of the group have already had co
 
 \section{References}
 
-\begin{itemize}
+\begin{enumerate}
 	
 \item https://en.wikipedia.org/wiki/Tetris
 \item http://tetris.com/
 \item https://tetris.wiki/Tetris\_Guideline
 \item http://overturetool.org/
 
-\end{itemize}
+\end{enumerate}
 
 \newpage
 \appendix
