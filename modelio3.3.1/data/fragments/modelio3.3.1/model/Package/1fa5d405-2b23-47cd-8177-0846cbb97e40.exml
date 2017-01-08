@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Binding classes" version="3">
+  <DEPS>
+    <ID name="Binding classes" mc="Package" uid="1fa5d405-2b23-47cd-8177-0846cbb97e40"/>
+    <COMPID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+    <COMPID name="Optional&lt;IO::filedirective&gt;" mc="Class" uid="4250de75-30e7-4c87-b072-bd22bf217410"/>
+    <COMPID name="Optional&lt;p&gt;" mc="Class" uid="d7bbc8b3-824a-4232-aba5-f32fcb72045f"/>
+    <COMPID name="Product&lt;bool,Optional&lt;p&gt;&gt;" mc="Class" uid="59c8fc50-a83b-453a-ab0d-e77b18bb9fa9"/>
+    <COMPID name="Seq&lt;Any&gt;" mc="Class" uid="28725cfd-b0d4-4e5c-8bf1-f42e57474aa9"/>
+    <COMPID name="Seq&lt;Board::Position&gt;" mc="Class" uid="96b3bd96-5ff8-4bae-b663-26c5513fcea5"/>
+    <COMPID name="Seq&lt;char&gt;" mc="Class" uid="3961480d-81ec-477a-b506-8d4f399a47b8"/>
+    <COMPID name="Seq&lt;int&gt;" mc="Class" uid="195e65ad-513d-4358-a6fe-a7b3ac38ec1d"/>
+    <COMPID name="Seq&lt;nat&gt;" mc="Class" uid="75011377-3134-4e9a-830f-1ed86f5ffaea"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Binding classes" mc="Package" uid="1fa5d405-2b23-47cd-8177-0846cbb97e40"/>
+    <PID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Binding classes]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Seq&lt;int&gt;" mc="Class" uid="195e65ad-513d-4358-a6fe-a7b3ac38ec1d"/>
+        <COMPID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+        <COMPID name="Seq&lt;char&gt;" mc="Class" uid="3961480d-81ec-477a-b506-8d4f399a47b8"/>
+        <COMPID name="Seq&lt;Board::Position&gt;" mc="Class" uid="96b3bd96-5ff8-4bae-b663-26c5513fcea5"/>
+        <COMPID name="Seq&lt;nat&gt;" mc="Class" uid="75011377-3134-4e9a-830f-1ed86f5ffaea"/>
+        <COMPID name="Product&lt;bool,Optional&lt;p&gt;&gt;" mc="Class" uid="59c8fc50-a83b-453a-ab0d-e77b18bb9fa9"/>
+        <COMPID name="Optional&lt;p&gt;" mc="Class" uid="d7bbc8b3-824a-4232-aba5-f32fcb72045f"/>
+        <COMPID name="Optional&lt;IO::filedirective&gt;" mc="Class" uid="4250de75-30e7-4c87-b072-bd22bf217410"/>
+        <COMPID name="Seq&lt;Any&gt;" mc="Class" uid="28725cfd-b0d4-4e5c-8bf1-f42e57474aa9"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

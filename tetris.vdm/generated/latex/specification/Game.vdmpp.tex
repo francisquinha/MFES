@@ -1,0 +1,225 @@
+\begin{vdmpp}[breaklines=true]
+class Game
+
+ -- Represents the whole game, and provides all the necessary
+ -- operations for playing it.
+ 
+ 
+ types
+ 
+  public String = seq of char;
+
+
+ instance variables
+  
+  -- The game board.
+  private board  : Board;
+  -- The current game tetramino.
+  private tetramino : Tetramino;
+  -- Indicates if the game is finished.
+  private gameOver : bool   := false; 
+  -- The game score. 
+  private score  : nat   := 0;
+  -- The number of completed lines in the game.
+  private lines  : nat   := 0;
+  -- The level of the game. 
+  private level  : nat1   := 1;
+  
+  -- The scores that lines make, according to the number of lines 
+  -- made at once (1, 2, 3 or 4).
+  private static lineScores : seq of nat
+   := [100, 300, 400, 800];
+  
+  
+ operations
+ 
+(*@
+\label{Game:35}
+@*)
+  public Game : () ==> Game
+  Game() ==
+   board := new Board();
+    
+(*@
+\label{getBoard:39}
+@*)
+    public getBoard: () ==> Board
+    getBoard() ==
+     return board;
+        
+(*@
+\label{setGameOver:43}
+@*)
+  public setGameOver : () ==> ()
+  setGameOver() ==
+   gameOver := true;
+   
+(*@
+\label{getGameOver:47}
+@*)
+  public getGameOver : () ==> bool
+  getGameOver() ==
+   return gameOver;
+       
+    -- Generates a new tetramino of the specified type.
+(*@
+\label{newTetramino:52}
+@*)
+  public newTetramino : nat1 ==> ()
+  newTetramino(id) == (  
+   cases id:
+    1 -> tetramino := new TetraminoI(self),
+    2 -> tetramino := new TetraminoJ(self),
+    3 -> tetramino := new TetraminoL(self),
+    4 -> tetramino := new TetraminoO(self),
+    5 -> tetramino := new TetraminoS(self),
+    6 -> tetramino := new TetraminoT(self),
+    7 -> tetramino := new TetraminoZ(self)
+   end;
+  )
+  pre id >= 1 and id <= 7;
+  
+    -- Generates a new random tetramino.
+(*@
+\label{newRandomTetramino:67}
+@*)
+  public newRandomTetramino: () ==> ()
+  newRandomTetramino() == 
+   newTetramino(MATH`rand(7) + 1);
+  
+    -- Tries to move the current tetramino down.
+(*@
+\label{down:72}
+@*)
+  public down : () ==> bool
+  down() ==
+   return tetramino.moveDown(board);
+   
+    -- Tries to move the current tetramino left.
+(*@
+\label{left:77}
+@*)
+  public left : () ==> bool
+  left() ==
+   return tetramino.moveLeft(board);
+
+    -- Tries to move the current tetramino right.
+(*@
+\label{right:82}
+@*)
+  public right : () ==> bool
+  right() ==
+   return tetramino.moveRight(board);
+   
+    -- Tries to rotate the current tetramino.
+(*@
+\label{rotate:87}
+@*)
+  public rotate : () ==> bool
+  rotate() ==
+   return tetramino.rotate(board);
+
+    -- Drops the current tetramino to the bottom of the board. 
+    -- Also updates the score, using the current level and the
+    -- total distance of the drop. 
+(*@
+\label{drop:94}
+@*)
+  public drop : () ==> nat
+  drop() == (
+   dcl dropDistance: nat := tetramino.drop(board);
+   score := score + dropDistance * level;
+   return dropDistance;
+  );
+  
+  -- Checks all game lines for completion and updates the game
+  -- score according to the number of completed lines and the
+  -- current game level.
+(*@
+\label{checkLines:104}
+@*)
+  public checkLines : () ==> nat
+  checkLines() == (
+   dcl newLines: nat := board.checkRows();
+   lines := lines + newLines;
+   if newLines > 0 then score := score + lineScores(newLines) * level;
+   level := 1 + (lines div 10);
+   return newLines
+  );
+
+(*@
+\label{getScore:113}
+@*)
+  public getScore : () ==> nat
+  getScore() == return score;
+   
+(*@
+\label{getLines:116}
+@*)
+  public getLines : () ==> nat
+  getLines() == return lines;
+
+(*@
+\label{getLevel:119}
+@*)
+  public getLevel : () ==> nat1
+  getLevel() == return level;
+  
+  -- Returns a printing string of the board.
+  -- If blackConsole is true, there are only three strings
+  -- possible, depending on whether the position is empty or filled
+  -- and diferentiating the invisible lines.
+  -- If blackConsole is false, each tetramino will have a different
+  -- print, according to its color.
+(*@
+\label{printBoard:128}
+@*)
+  public printBoard : bool * bool * bool ==> String
+  printBoard(printNow, blackConsole, testPrint) == 
+   return board.getBoardPrint(printNow, blackConsole, testPrint);
+   
+end Game
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Game:35]{Game} & 35&100.0\% & 1 \\
+\hline
+\hyperref[checkLines:104]{checkLines} & 104&100.0\% & 62 \\
+\hline
+\hyperref[down:72]{down} & 72&100.0\% & 96 \\
+\hline
+\hyperref[drop:94]{drop} & 94&100.0\% & 62 \\
+\hline
+\hyperref[getBoard:39]{getBoard} & 39&100.0\% & 309 \\
+\hline
+\hyperref[getGameOver:47]{getGameOver} & 47&100.0\% & 78 \\
+\hline
+\hyperref[getLevel:119]{getLevel} & 119&100.0\% & 2 \\
+\hline
+\hyperref[getLines:116]{getLines} & 116&100.0\% & 2 \\
+\hline
+\hyperref[getScore:113]{getScore} & 113&100.0\% & 12 \\
+\hline
+\hyperref[left:77]{left} & 77&100.0\% & 248 \\
+\hline
+\hyperref[newRandomTetramino:67]{newRandomTetramino} & 67&100.0\% & 14 \\
+\hline
+\hyperref[newTetramino:52]{newTetramino} & 52&100.0\% & 62 \\
+\hline
+\hyperref[printBoard:128]{printBoard} & 128&100.0\% & 654 \\
+\hline
+\hyperref[right:82]{right} & 82&100.0\% & 190 \\
+\hline
+\hyperref[rotate:87]{rotate} & 87&100.0\% & 70 \\
+\hline
+\hyperref[setGameOver:43]{setGameOver} & 43&100.0\% & 4 \\
+\hline
+\hline
+Game.vdmpp & & 100.0\% & 1866 \\
+\hline
+\end{longtable}
+

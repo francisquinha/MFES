@@ -1,0 +1,190 @@
+\begin{vdmpp}[breaklines=true]
+class Board
+
+ -- Represents the game board, with its matrix.
+
+
+ types
+  
+  -- Position in the board.
+  public Position = seq of int
+  -- A position is a sequence with exactly to integers.
+  inv position == len position = 2;
+  -- The board matrix is represented by a map.
+  public Matrix = map Position to nat;
+
+
+ instance variables
+ 
+  -- Total number of rows in the board, including two lines that
+  -- are not displayed for the user to see.
+  public static maxRow  : nat1   := 22;
+  -- Total number of rows that are visible during gameplay.
+  public static maxVisibleRow : nat1   := 20;
+  -- Total number of columns in the board.
+  public static maxColumn  : nat1   := 10;
+
+  -- Aids for printing the board matrix in the console.
+  private print_startTag  : Game`String := "▕";
+  private print_endTag  : Game`String := "▏\n";
+  private print_bottomLine : Game`String := " ▔▔▔▔▔▔▔▔▔▔";
+                                       
+  -- The matrix attributes to each position in the board
+  -- a natural number: 0 if the position is empty; the id of the
+  -- tetramino if it is occupied.
+  private matrix     : Matrix  := {|->};
+     
+                                                      
+ operations
+ 
+(*@
+\label{Board:39}
+@*)
+  public Board : () ==> Board
+  Board() == ( 
+   initBoard();
+  );
+  
+  -- Initiates the board matrix with all positions empty,
+  -- that is, with zeros.
+(*@
+\label{initBoard:46}
+@*)
+  private initBoard : () ==> ()
+  initBoard() == (  
+   for i = 1 to maxRow do
+    for j = 1 to maxColumn do
+     matrix := matrix ++ {[i,j] |-> 0}
+  )
+  post matrix([1,1]) = 0 and matrix([maxRow, maxColumn]) = 0;
+
+  -- Returns a string containing the board matrix in its
+  -- printing form. If the boolean printNow is true, the matrix is
+  -- immediately printed. If the boolean blackConsole is true, the
+  -- matrix is printed without using colors. If the boolean testPrint
+  -- is true, the invisible lines are printed for test purposes.
+(*@
+\label{getBoardPrint:59}
+@*)
+  public getBoardPrint : bool * bool * bool ==> Game`String
+  getBoardPrint(printNow, blackConsole, testPrint) == ( 
+   dcl print_board : Game`String := "\n";
+   dcl start_row : nat1 := 3;
+   if testPrint then start_row := 1;   
+   for i = start_row to maxRow do(
+    print_board := print_board ^ print_startTag;
+      for j=1 to maxColumn do
+       print_board := print_board 
+        ^ getCellPrint(matrix([i,j]), i, blackConsole);
+      print_board := print_board ^  print_endTag;
+     );
+     if printNow then
+      IO`println(print_board ^ print_bottomLine);
+    return print_board ^ print_bottomLine ;                   
+  );
+  
+  -- Returns the string corresponding to a board cell print.
+  -- If blackConsole is true, there are only three strings
+  -- possible, depending on whether the position is empty or filled
+  -- and diferentiating the invisible lines.
+  -- If blackConsole is false, each tetramino will have a different
+  -- print, according to its color.
+(*@
+\label{getCellPrint:82}
+@*)
+  private getCellPrint: nat * nat * bool ==> Game`String
+  getCellPrint(id, row, blackConsole) == (
+   if blackConsole then
+    cases id:
+     0 -> if row < 3 then return " " else return "░",
+     others -> return "█"
+    end
+   else
+    (*@\vdmnotcovered{cases}@*) (*@\vdmnotcovered{id}@*):
+     (*@\vdmnotcovered{0}@*) -> (*@\vdmnotcovered{if}@*) (*@\vdmnotcovered{row}@*) (*@\vdmnotcovered{<}@*) (*@\vdmnotcovered{3}@*) then (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{" "}@*) else (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"░"}@*),
+     (*@\vdmnotcovered{1}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;51m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{2}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;21m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{3}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;208m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{4}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;226m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{5}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;34m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{6}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;165m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     others -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;196m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"█"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*)    
+    end
+  );
+  
+  -- Checks a board row to determine if it is completely filled
+  -- with tetramino cells. In affirmative case, the row is removed
+  -- from the board and the rows above it are shifted down.
+(*@
+\label{checkRow:105}
+@*)
+  private checkRow : int ==> bool
+  checkRow(row) == (
+   for column = 1 to maxColumn do
+    if (matrix([row, column]) = 0) then return false;
+   for i = row - 1 to 1 by -1 do
+    for j = 1 to maxColumn do
+     matrix([i + 1, j]) := matrix([i, j]);
+   return true
+  )
+  pre row >= 1 and row <= maxRow;
+  
+  -- Checks all the rows of the board and returns the number of rows
+  -- that where removed.
+(*@
+\label{checkRows:118}
+@*)
+  public checkRows : () ==> nat
+  checkRows() == (
+   dcl result : nat := 0;
+   for row = 1 to maxRow do
+    if checkRow(row) then result := result + 1;
+   return result
+  )
+  post RESULT <= maxRow;
+  
+(*@
+\label{setMatrixPosition:127}
+@*)
+  public setMatrixPosition : Position * nat ==> ()
+  setMatrixPosition(position, value) ==
+   matrix(position) := value
+  pre Tetramino`checkPosition(position, 1, maxRow, 1, maxColumn);
+  
+(*@
+\label{getMatrixPosition:132}
+@*)
+  public getMatrixPosition : Position ==> nat
+  getMatrixPosition(position) ==
+   return matrix(position)  
+  pre Tetramino`checkPosition(position, 1, maxRow, 1, maxColumn);
+ 
+end Board
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Board:39]{Board} & 39&100.0\% & 1 \\
+\hline
+\hyperref[checkRow:105]{checkRow} & 105&100.0\% & 1364 \\
+\hline
+\hyperref[checkRows:118]{checkRows} & 118&100.0\% & 62 \\
+\hline
+\hyperref[getBoardPrint:59]{getBoardPrint} & 59&100.0\% & 654 \\
+\hline
+\hyperref[getCellPrint:82]{getCellPrint} & 82&21.3\% & 143880 \\
+\hline
+\hyperref[getMatrixPosition:132]{getMatrixPosition} & 132&100.0\% & 6349 \\
+\hline
+\hyperref[initBoard:46]{initBoard} & 46&100.0\% & 1 \\
+\hline
+\hyperref[setMatrixPosition:127]{setMatrixPosition} & 127&100.0\% & 12924 \\
+\hline
+\hline
+Board.vdmpp & & 74.8\% & 165235 \\
+\hline
+\end{longtable}
+

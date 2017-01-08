@@ -12,12 +12,12 @@ abstract public class Tetramino {
       SeqUtil.seq(
           SeqUtil.seq(1L, 1L), SeqUtil.seq(1L, 2L), SeqUtil.seq(1L, 3L), SeqUtil.seq(1L, 4L));
 
-  public void setColor(final Object c) {
+  protected void setColor(final Object c) {
 
     color = c;
   }
 
-  public void setId(final Number i) {
+  protected void setId(final Number i) {
 
     id = i;
   }
@@ -27,7 +27,7 @@ abstract public class Tetramino {
     return orientation;
   }
 
-  public Boolean setMinoes(final Board board, final VDMSeq position) {
+  private Boolean setMinoes(final Board board, final VDMSeq position) {
 
     VDMSeq tempMinoes = Utils.copy(minoes);
     VDMSeq tempPosition = Utils.copy(position);
@@ -49,7 +49,7 @@ abstract public class Tetramino {
     return true;
   }
 
-  public void initialSetMinoes(final Game game, final VDMSeq position) {
+  protected void initialSetMinoes(final Game game, final VDMSeq position) {
 
     VDMSeq tempPosition = Utils.copy(position);
     VDMSeq tempMinoes = Utils.copy(minoes);
@@ -70,11 +70,11 @@ abstract public class Tetramino {
     }
   }
 
-  public abstract VDMSeq getNextMino(final VDMSeq position, final Number index);
+  protected abstract VDMSeq getNextMino(final VDMSeq position, final Number index);
 
-  public abstract VDMSeq getRotatedMino(final VDMSeq position);
+  protected abstract VDMSeq getRotatedMino(final VDMSeq position);
 
-  public Boolean validPosition(final Board board, final VDMSeq position) {
+  protected Boolean validPosition(final Board board, final VDMSeq position) {
 
     Boolean andResult_5 = false;
 
@@ -87,7 +87,7 @@ abstract public class Tetramino {
     return andResult_5;
   }
 
-  public void removeTetramino(final Board board) {
+  protected void removeTetramino(final Board board) {
 
     for (Iterator iterator_2 = minoes.iterator(); iterator_2.hasNext(); ) {
       VDMSeq mino = (VDMSeq) iterator_2.next();
@@ -95,7 +95,7 @@ abstract public class Tetramino {
     }
   }
 
-  public void addTetramino(final Board board) {
+  protected void addTetramino(final Board board) {
 
     for (Iterator iterator_3 = minoes.iterator(); iterator_3.hasNext(); ) {
       VDMSeq mino = (VDMSeq) iterator_3.next();

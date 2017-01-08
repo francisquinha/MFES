@@ -1,12 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.28)  24 DEC 2016 17:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.11)  8 JAN 2017 16:55
 entering extended mode
-**./report.tex
-(report.tex
-LaTeX2e <2016/03/31> patch level 3
-Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+ \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**report.tex
+(./report.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -21,21 +24,14 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2016/04/23 3.9r The Babel package
+(/usr/local/texlive/2015/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2014/09/25 3.9l The Babel package
 
-*************************************
-* Local config file bblopts.cfg used
-*
-("C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
- babel
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
+(/usr/local/texlive/2015/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2012/08/20 v3.3p English support from the babel system
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2016/04/23 3.9r Babel common definitions
+(/usr/local/texlive/2015/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2014/09/25 3.9l Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
@@ -43,18 +39,18 @@ File: babel.def 2016/04/23 3.9r Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\utf8x.def"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\ucs.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/ucs.sty
 Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-global.def"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-global.def
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
 \uc@secondtry=\count88
@@ -62,44 +58,52 @@ File: uni-global.def 2013/05/13 UCS: Unicode global data
 \uc@combtoksb=\toks17
 \uc@temptokena=\toks18
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count89
+\float@exts=\toks19
+\float@box=\box26
+\@float@everytoks=\toks20
+\@floatcapt=\box27
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks19
+\KV@toks@=\toks21
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count89
+\Gread@gobject=\count90
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen106
 \captionmargin@=\dimen107
 \captionwidth=\dimen108
@@ -108,19 +112,20 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen111
 \caption@hangindent=\dimen112
 )
-\c@ContinuedFloat=\count90
+\c@ContinuedFloat=\count91
+Package caption Info: float package is loaded.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\pmboxdraw.sty"
-Package: pmboxdraw 2016/05/16 v1.2 Poor man's box drawing characters (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/pmboxdraw.sty
+Package: pmboxdraw 2011/03/24 v1.1 Poor man's box drawing characters (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
 Package etexcmds Info: Could not find \expanded.
@@ -128,11 +133,11 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \pmbd@W=\dimen113
 \pmbd@H=\dimen114
@@ -141,15 +146,15 @@ Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 \pmbd@Thick=\dimen117
 \pmbd@Sep=\dimen118
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 147.
+Package color Info: Driver file: pdftex.def on input line 142.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tocloft\tocloft.sty"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2013/05/02 v2.3f parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 44.
 \cftparskip=\skip43
@@ -178,215 +183,1128 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cftbeforefigskip=\skip66
 \cftfigindent=\skip67
 \cftfignumwidth=\skip68
-\c@lofdepth=\count91
-\c@lotdepth=\count92
+\c@lofdepth=\count92
+\c@lotdepth=\count93
 \cftbeforelottitleskip=\skip69
 \cftafterlottitleskip=\skip70
 \cftbeforetabskip=\skip71
 \cfttabindent=\skip72
 \cfttabnumwidth=\skip73
 )
-Package color Info: Redefining color green on input line 10.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\listingsutf8.sty"
-Package: listingsutf8 2016/05/16 v1.3 Allow UTF-8 in listings input (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count93
-\lst@gtempboxa=\box26
-\lst@token=\toks20
-\lst@length=\count94
+(/usr/local/texlive/2015/texmf-dist/tex/latex/vdmlisting/vdmlisting.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count94
+\lst@gtempboxa=\box28
+\lst@token=\toks22
+\lst@length=\count95
 \lst@currlwidth=\dimen119
-\lst@column=\count95
-\lst@pos=\count96
+\lst@column=\count96
+\lst@pos=\count97
 \lst@lostspace=\dimen120
 \lst@width=\dimen121
-\lst@newlines=\count97
-\lst@lineno=\count98
+\lst@newlines=\count98
+\lst@lineno=\count99
 \lst@maxwidth=\dimen122
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count99
-\lst@skipnumbers=\count100
-\lst@framebox=\box27
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count100
+\lst@skipnumbers=\count101
+\lst@framebox=\box29
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
-File: listings.cfg 2015/06/04 1.6 listings configuration
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2014/09/06 1.5e listings configuration
 ))
-Package: listings 2015/06/04 1.6 (Carsten Heinz)
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+))
+Package: vdmlisting 2014/09/06 1.5e (Kenneth Lausdahl)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip74
+\LTright=\skip75
+\LTpre=\skip76
+\LTpost=\skip77
+\LTchunksize=\count102
+\LTcapwidth=\dimen123
+\LT@head=\box30
+\LT@firsthead=\box31
+\LT@foot=\box32
+\LT@lastfoot=\box33
+\LT@cols=\count103
+\LT@rows=\count104
+\c@LT@tables=\count105
+\c@LT@chunks=\count106
+\LT@p@ftn=\toks23
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\stringenc.sty"
-Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen124
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count109
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count110
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen125
+\Fld@menulength=\count111
+\Field@Width=\dimen126
+\Fld@charsize=\dimen127
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
 )
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdfescape.sty"
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-)))
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-) (report.aux)
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count115
+\c@bookmark@seq@number=\count116
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip78
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count117
+\Gm@cntv=\count118
+\c@Gm@tempcnt=\count119
+\Gm@bindingoffset=\dimen128
+\Gm@wd@mp=\dimen129
+\Gm@odd@mp=\dimen130
+\Gm@even@mp=\dimen131
+\Gm@layoutwidth=\dimen132
+\Gm@layoutheight=\dimen133
+\Gm@layouthoffset=\dimen134
+\Gm@layoutvoffset=\dimen135
+\Gm@dimlist=\toks24
+)
+Package color Info: Redefining color green on input line 17.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+Package: listingsutf8 2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2011/12/02 v1.10 Convert strings between diff. encodings (HO
+)
+))
+(./report.aux
+
+LaTeX Warning: Label `use-cases' multiply defined.
+
+
+LaTeX Warning: Label `getNextMino:23' multiply defined.
+
+
+LaTeX Warning: Label `getNextMino:23' multiply defined.
+
+
+LaTeX Warning: Label `getRotatedMino:59' multiply defined.
+
+
+LaTeX Warning: Label `getNextMino:23' multiply defined.
+
+
+LaTeX Warning: Label `getNextMino:23' multiply defined.
+
+
+LaTeX Warning: Label `getRotatedMino:59' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for pmboxdraw/pmboxdraw/m/n on input line
- 34.
-LaTeX Font Info:    ... okay on input line 34.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
+ 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 41.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen123
-\scratchbox=\box28
-\nofMPsegments=\count102
-\nofMParguments=\count103
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen124
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
-\everyMPtoPDFconversion=\toks22
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+\scratchcounter=\count120
+\scratchdimen=\dimen136
+\scratchbox=\box34
+\nofMPsegments=\count121
+\nofMParguments=\count122
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen137
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
+\everyMPtoPDFconversion=\toks26
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-)
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+)
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count107
+\c@lstlisting=\count126
+\AtBeginShipoutBox=\box35
+Package hyperref Info: Link coloring OFF on input line 41.
 
-<resources/img/feup-logo.png, id=1, 2252.415pt x 742.775pt>
-File: resources/img/feup-logo.png Graphic file (type png)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-<use resources/img/feup-logo.png>
-Package pdftex.def Info: resources/img/feup-logo.png used on input line 54.
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count127
+)
+LaTeX Info: Redefining \ref on input line 41.
+LaTeX Info: Redefining \pageref on input line 41.
+LaTeX Info: Redefining \nameref on input line 41.
+
+(./report.out) (./report.out)
+\@outlinefile=\write3
+\openout3 = `report.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24408pt, 71.13191pt)
+* v-part:(T,H,B)=(99.58464pt, 625.96062pt, 119.50159pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24408pt
+* \textheight=625.96062pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-9.68535pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<resources/img/feup_logo.png, id=168, 2252.415pt x 742.775pt>
+File: resources/img/feup_logo.png Graphic file (type png)
+
+<use resources/img/feup_logo.png>
+Package pdftex.def Info: resources/img/feup_logo.png used on input line 62.
 (pdftex.def)             Requested size: 337.84767pt x 111.41144pt.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-0.def"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 54.
+(Font)              <12> on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 54.
+(Font)              <8> on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 54.
+(Font)              <6> on input line 62.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 62.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./resources/img/feup-logo
-.png>] (report.toc
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./resou
+rces/img/feup_logo.png>]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+ (./report.toc
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 2.
 )
-\tf@toc=\write3
-\openout3 = `report.toc'.
+\tf@toc=\write4
+\openout4 = `report.toc'.
 
-
-[2]
-Overfull \hbox (4.07637pt too wide) in paragraph at lines 61--61
-[]\OT1/cmr/bx/n/14.4 Informal sys-tem de-scrip-tion and list of re-quire-
- []
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
+ [2] [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-<resources/img/use_cases.png, id=15, 743.77875pt x 514.92375pt>
-File: resources/img/use_cases.png Graphic file (type png)
+<resources/img/game.png, id=230, 563.10374pt x 403.5075pt>
+File: resources/img/game.png Graphic file (type png)
 
-<use resources/img/use_cases.png>
-Package pdftex.def Info: resources/img/use_cases.png used on input line 96.
-(pdftex.def)             Requested size: 297.50623pt x 205.96585pt.
- [3]
-<resources/img/uml.png, id=19, 703.62875pt x 552.0625pt>
+<use resources/img/game.png>
+Package pdftex.def Info: resources/img/game.png used on input line 80.
+(pdftex.def)             Requested size: 394.16994pt x 282.45332pt.
+ [4 <./resources/img/game.png>]
+<resources/img/use_cases1.png, id=236, 660.4675pt x 464.73625pt>
+File: resources/img/use_cases1.png Graphic file (type png)
+
+<use resources/img/use_cases1.png>
+Package pdftex.def Info: resources/img/use_cases1.png used on input line 114.
+(pdftex.def)             Requested size: 363.25824pt x 255.60571pt.
+
+<resources/img/use_cases2.png, id=237, 620.3175pt x 472.76625pt>
+File: resources/img/use_cases2.png Graphic file (type png)
+
+<use resources/img/use_cases2.png>
+Package pdftex.def Info: resources/img/use_cases2.png used on input line 119.
+(pdftex.def)             Requested size: 341.17569pt x 260.02223pt.
+ [5 <./resources/img/use_cases1.png>]
+[6 <./resources/img/use_cases2.png>] [7]
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(62.59596pt, 445.28482pt, 89.62709pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=445.28482pt
+* \textheight=731.23584pt
+* \oddsidemargin=-9.67403pt
+* \evensidemargin=-9.67403pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+<resources/img/uml.png, id=262, 862.22125pt x 1282.7925pt>
 File: resources/img/uml.png Graphic file (type png)
 
 <use resources/img/uml.png>
-Package pdftex.def Info: resources/img/uml.png used on input line 121.
-(pdftex.def)             Requested size: 281.4465pt x 220.82108pt.
+Package pdftex.def Info: resources/img/uml.png used on input line 218.
+(pdftex.def)             Requested size: 474.22316pt x 705.53806pt.
 
-Overfull \hbox (68.58408pt too wide) in paragraph at lines 128--136
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4 <./resources/img/use_cases.png> <./resources/img/uml.png (PNG copy)>]
-[5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 194.
-
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 194.
- [6]
-<resources/img/tetrominoes.png, id=31, 572.1375pt x 194.22563pt>
-File: resources/img/tetrominoes.png Graphic file (type png)
-
-<use resources/img/tetrominoes.png>
-Package pdftex.def Info: resources/img/tetrominoes.png used on input line 205.
-(pdftex.def)             Requested size: 400.49352pt x 135.957pt.
-
-Overfull \hbox (55.49352pt too wide) in paragraph at lines 205--207
+Overfull \hbox (28.93834pt too wide) in paragraph at lines 218--220
  [] 
  []
 
-[7 <./resources/img/tetrominoes.png>] (report.aux) ) 
+[8
+
+ <./resources/img/uml.png>] (./resources/vdmpp/Game.vdmpp.tex
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 4.
+ [9
+
+] [10])
+(./resources/vdmpp/Board.vdmpp.tex [11] [12])
+(./resources/vdmpp/Tetramino.vdmpp.tex [13] [14] [15] [16])
+(./resources/vdmpp/TetraminoI.vdmpp.tex [17])
+(./resources/vdmpp/TetraminoJ.vdmpp.tex [18])
+(./resources/vdmpp/TetraminoL.vdmpp.tex [19])
+(./resources/vdmpp/TetraminoO.vdmpp.tex [20])
+(./resources/vdmpp/TetraminoS.vdmpp.tex [21] [22])
+(./resources/vdmpp/TetraminoT.vdmpp.tex [23])
+(./resources/vdmpp/TetraminoZ.vdmpp.tex [24])
+(./resources/vdmpp/TestCaseExtra.vdmpp.tex [25])
+(./resources/vdmpp/TestTetris.vdmpp.tex [26] [27] [28] [29] [30] [31] [32]
+[33] [34])
+
+LaTeX Warning: Hyper reference `Game:35' on page 35 undefined on input line 309
+.
+
+
+LaTeX Warning: Hyper reference `checkLines:104' on page 35 undefined on input l
+ine 311.
+
+
+LaTeX Warning: Hyper reference `down:72' on page 35 undefined on input line 313
+.
+
+
+LaTeX Warning: Hyper reference `drop:94' on page 35 undefined on input line 315
+.
+
+
+LaTeX Warning: Hyper reference `getBoard:39' on page 35 undefined on input line
+ 317.
+
+
+LaTeX Warning: Hyper reference `getGameOver:47' on page 35 undefined on input l
+ine 319.
+
+
+LaTeX Warning: Hyper reference `getLevel:119' on page 35 undefined on input lin
+e 321.
+
+
+LaTeX Warning: Hyper reference `getLines:116' on page 35 undefined on input lin
+e 323.
+
+
+LaTeX Warning: Hyper reference `getScore:113' on page 35 undefined on input lin
+e 325.
+
+
+LaTeX Warning: Hyper reference `left:77' on page 35 undefined on input line 327
+.
+
+
+LaTeX Warning: Hyper reference `newRandomTetramino:67' on page 35 undefined on 
+input line 329.
+
+
+LaTeX Warning: Hyper reference `newTetramino:52' on page 35 undefined on input 
+line 331.
+
+
+LaTeX Warning: Hyper reference `printBoard:128' on page 35 undefined on input l
+ine 333.
+
+
+LaTeX Warning: Hyper reference `right:82' on page 35 undefined on input line 33
+5.
+
+
+LaTeX Warning: Hyper reference `rotate:87' on page 35 undefined on input line 3
+37.
+
+
+LaTeX Warning: Hyper reference `setGameOver:43' on page 35 undefined on input l
+ine 339.
+
+
+Underfull \vbox (badness 10000) detected at line 344
+ []
+
+[35]
+
+LaTeX Warning: Hyper reference `Board:39' on page 36 undefined on input line 35
+2.
+
+
+LaTeX Warning: Hyper reference `checkRow:105' on page 36 undefined on input lin
+e 354.
+
+
+LaTeX Warning: Hyper reference `checkRows:118' on page 36 undefined on input li
+ne 356.
+
+
+LaTeX Warning: Hyper reference `getBoardPrint:59' on page 36 undefined on input
+ line 358.
+
+
+LaTeX Warning: Hyper reference `getCellPrint:82' on page 36 undefined on input 
+line 360.
+
+
+LaTeX Warning: Hyper reference `getMatrixPosition:132' on page 36 undefined on 
+input line 362.
+
+
+LaTeX Warning: Hyper reference `initBoard:46' on page 36 undefined on input lin
+e 364.
+
+
+LaTeX Warning: Hyper reference `setMatrixPosition:127' on page 36 undefined on 
+input line 366.
+
+
+Underfull \vbox (badness 10000) detected at line 371
+ []
+
+
+LaTeX Warning: Hyper reference `addTetramino:147' on page 36 undefined on input
+ line 381.
+
+
+LaTeX Warning: Hyper reference `checkMinoes:49' on page 36 undefined on input l
+ine 383.
+
+
+LaTeX Warning: Hyper reference `checkPosition:39' on page 36 undefined on input
+ line 385.
+
+
+LaTeX Warning: Hyper reference `drop:185' on page 36 undefined on input line 38
+7.
+
+
+LaTeX Warning: Hyper reference `getNextMino:122' on page 36 undefined on input 
+line 389.
+
+
+LaTeX Warning: Hyper reference `getOrientation:65' on page 36 undefined on inpu
+t line 391.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:128' on page 36 undefined on inp
+ut line 393.
+
+
+LaTeX Warning: Hyper reference `initialSetMinoes:98' on page 36 undefined on in
+put line 395.
+
+
+LaTeX Warning: Hyper reference `moveDown:154' on page 36 undefined on input lin
+e 397.
+
+
+LaTeX Warning: Hyper reference `moveLeft:161' on page 36 undefined on input lin
+e 399.
+
+
+LaTeX Warning: Hyper reference `moveRight:168' on page 36 undefined on input li
+ne 401.
+
+
+LaTeX Warning: Hyper reference `removeTetramino:140' on page 36 undefined on in
+put line 403.
+
+
+LaTeX Warning: Hyper reference `rotate:175' on page 36 undefined on input line 
+405.
+
+
+LaTeX Warning: Hyper reference `setColor:58' on page 36 undefined on input line
+ 407.
+
+
+LaTeX Warning: Hyper reference `setId:61' on page 36 undefined on input line 40
+9.
+
+
+LaTeX Warning: Hyper reference `setMinoes:73' on page 36 undefined on input lin
+e 411.
+
+
+LaTeX Warning: Hyper reference `validPosition:134' on page 36 undefined on inpu
+t line 413.
+
+
+Underfull \vbox (badness 10000) detected at line 418
+ []
+
+[36]
+
+LaTeX Warning: Hyper reference `TetraminoI:12' on page 37 undefined on input li
+ne 426.
+
+
+LaTeX Warning: Hyper reference `getNextMino:20' on page 37 undefined on input l
+ine 428.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:34' on page 37 undefined on inpu
+t line 430.
+
+
+Underfull \vbox (badness 10000) detected at line 435
+ []
+
+
+LaTeX Warning: Hyper reference `TetraminoJ:12' on page 37 undefined on input li
+ne 443.
+
+
+LaTeX Warning: Hyper reference `getNextMino:20' on page 37 undefined on input l
+ine 445.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:55' on page 37 undefined on inpu
+t line 447.
+
+
+Underfull \vbox (badness 10000) detected at line 452
+ []
+
+
+LaTeX Warning: Hyper reference `TetraminoL:12' on page 37 undefined on input li
+ne 460.
+
+
+LaTeX Warning: Hyper reference `getNextMino:20' on page 37 undefined on input l
+ine 462.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:55' on page 37 undefined on inpu
+t line 464.
+
+
+Underfull \vbox (badness 10000) detected at line 469
+ []
+
+
+LaTeX Warning: Hyper reference `TetraminoO:11' on page 37 undefined on input li
+ne 477.
+
+
+LaTeX Warning: Hyper reference `getNextMino:19' on page 37 undefined on input l
+ine 479.
+
+
+Underfull \vbox (badness 10000) detected at line 486
+ []
+
+
+LaTeX Warning: Hyper reference `TetraminoS:12' on page 37 undefined on input li
+ne 494.
+
+
+LaTeX Warning: Hyper reference `getNextMino:20' on page 37 undefined on input l
+ine 496.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:55' on page 37 undefined on inpu
+t line 498.
+
+
+Underfull \vbox (badness 10000) detected at line 503
+ []
+
+[37]
+
+LaTeX Warning: Hyper reference `TetraminoT:12' on page 38 undefined on input li
+ne 511.
+
+
+LaTeX Warning: Hyper reference `getNextMino:20' on page 38 undefined on input l
+ine 513.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:67' on page 38 undefined on inpu
+t line 515.
+
+
+Underfull \vbox (badness 10000) detected at line 520
+ []
+
+
+LaTeX Warning: Hyper reference `TetraminoZ:12' on page 38 undefined on input li
+ne 528.
+
+
+LaTeX Warning: Hyper reference `getNextMino:20' on page 38 undefined on input l
+ine 530.
+
+
+LaTeX Warning: Hyper reference `getRotatedMino:55' on page 38 undefined on inpu
+t line 532.
+
+
+Underfull \vbox (badness 10000) detected at line 537
+ []
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+(../tetris.vdm/Board.vdmpp
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 86.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 86.
+
+
+../tetris.vdm/Board.vdmpp:86: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 ... row < 3 then return " " else return "░"
+                                                  ,
+Ifthecharacterisanargument,putitin{}
+
+
+../tetris.vdm/Board.vdmpp:86: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 ... row < 3 then return " " else return "░"
+                                                  ,
+Ifthecharacterisanargument,putitin{}
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-255.def
+File: uni-255.def 2013/05/13 UCS: Unicode data U+FF00..U+FFFF
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uninames.dat
+File: uninames.dat 2013/05/13 UCS: Unicode character names, compressed
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-255.def
+File: uni-255.def 2013/05/13 UCS: Unicode data U+FF00..U+FFFF
+)
+
+../tetris.vdm/Board.vdmpp:86: Package ucs Error: Unknown Unicode character 6553
+3 = U+FFFD,
+(ucs)                possibly declared in uni-255.def.
+(ucs)                Type H to see if it is available with options.
+
+See the ucs package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 ... row < 3 then return " " else return "░"
+                                                  ,
+Unicode character 65533 = U+FFFD:
+REPLACEMENT CHARACTER
+Character is not defined in uni-*.def files.
+Enter I!<RET> to define the glyph.
+
+
+../tetris.vdm/Board.vdmpp:86: Package utf8x Error: Character145appearedalone.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 ... row < 3 then return " " else return "░"
+                                                  ,
+Characters128-191areonlyallowedasargumentstocharacters194-244
+
+
+Overfull \hbox (84.76141pt too wide) in paragraph at lines 86--87
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+../tetris.vdm/Board.vdmpp:87: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 					others -> return "█"
+                                
+Ifthecharacterisanargument,putitin{}
+
+
+../tetris.vdm/Board.vdmpp:87: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 					others -> return "█"
+                                
+Ifthecharacterisanargument,putitin{}
+
+
+Package ucs Warning: Unknown character 65533 = 0xFFFD appeared again. on input 
+line 87.
+
+
+../tetris.vdm/Board.vdmpp:87: Package utf8x Error: Character136appearedalone.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 					others -> return "█"
+                                
+Characters128-191areonlyallowedasargumentstocharacters194-244
+
+
+../tetris.vdm/Board.vdmpp:91: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.91 ... row < 3 then return " " else return "░"
+                                                  ,
+Ifthecharacterisanargument,putitin{}
+
+
+../tetris.vdm/Board.vdmpp:91: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.91 ... row < 3 then return " " else return "░"
+                                                  ,
+Ifthecharacterisanargument,putitin{}
+
+
+Package ucs Warning: Unknown character 65533 = 0xFFFD appeared again. on input 
+line 91.
+
+
+../tetris.vdm/Board.vdmpp:91: Package utf8x Error: Character145appearedalone.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.91 ... row < 3 then return " " else return "░"
+                                                  ,
+Characters128-191areonlyallowedasargumentstocharacters194-244
+
+
+Overfull \hbox (84.76141pt too wide) in paragraph at lines 91--92
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 92.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+
+
+../tetris.vdm/Board.vdmpp:92: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 					1 -> return "\u001B[38;5;51m" ^ "█"
+                                                ^ "\u001B[0m",
+Ifthecharacterisanargument,putitin{}
+
+
+../tetris.vdm/Board.vdmpp:92: Package utf8x Error: MalformedUTF-8sequence.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 					1 -> return "\u001B[38;5;51m" ^ "█"
+                                                ^ "\u001B[0m",
+Ifthecharacterisanargument,putitin{}
+
+
+Package ucs Warning: Unknown character 65533 = 0xFFFD appeared again. on input 
+line 92.
+
+
+../tetris.vdm/Board.vdmpp:92: Package utf8x Error: Character136appearedalone.
+
+See the utf8x package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 					1 -> return "\u001B[38;5;51m" ^ "█"
+                                                ^ "\u001B[0m",
+Characters128-191areonlyallowedasargumentstocharacters194-244
+
+)
+Overfull \hbox (96.76154pt too wide) in paragraph at lines 92--558
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[38] (../tetris.vdm/Board.vdmpp)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+(../tetris.app/src/Main.java [39]) [40] [41]
+<resources/img/tetraminoes.png, id=2214, 572.1375pt x 194.22563pt>
+File: resources/img/tetraminoes.png Graphic file (type png)
+
+<use resources/img/tetraminoes.png>
+Package pdftex.def Info: resources/img/tetraminoes.png used on input line 668.
+(pdftex.def)             Requested size: 286.06804pt x 97.11256pt.
+
+<resources/img/minoes/mino_cyan.png, id=2215, 177.66376pt x 370.986pt>
+File: resources/img/minoes/mino_cyan.png Graphic file (type png)
+
+<use resources/img/minoes/mino_cyan.png>
+Package pdftex.def Info: resources/img/minoes/mino_cyan.png used on input line 
+675.
+(pdftex.def)             Requested size: 71.06424pt x 148.39175pt.
+
+<resources/img/minoes/mino_blue.png, id=2216, 177.0615pt x 370.986pt>
+File: resources/img/minoes/mino_blue.png Graphic file (type png)
+
+<use resources/img/minoes/mino_blue.png>
+Package pdftex.def Info: resources/img/minoes/mino_blue.png used on input line 
+680.
+(pdftex.def)             Requested size: 70.82332pt x 148.39175pt.
+
+<resources/img/minoes/mino_orange.png, id=2217, 178.86826pt x 370.986pt>
+File: resources/img/minoes/mino_orange.png Graphic file (type png)
+
+<use resources/img/minoes/mino_orange.png>
+Package pdftex.def Info: resources/img/minoes/mino_orange.png used on input lin
+e 685.
+(pdftex.def)             Requested size: 71.54602pt x 148.39175pt.
+
+<resources/img/minoes/mino_yellow.png, id=2218, 176.45924pt x 366.77025pt>
+File: resources/img/minoes/mino_yellow.png Graphic file (type png)
+
+<use resources/img/minoes/mino_yellow.png>
+Package pdftex.def Info: resources/img/minoes/mino_yellow.png used on input lin
+e 690.
+(pdftex.def)             Requested size: 70.58244pt x 146.70549pt.
+ [42 <./resources/img/tetraminoes.png>] <resources/img/minoes/mino_green.png, i
+d=2223, 178.86826pt x 371.58826pt>
+File: resources/img/minoes/mino_green.png Graphic file (type png)
+
+<use resources/img/minoes/mino_green.png>
+Package pdftex.def Info: resources/img/minoes/mino_green.png used on input line
+ 696.
+(pdftex.def)             Requested size: 71.54602pt x 148.63266pt.
+
+<resources/img/minoes/mino_purple.png, id=2224, 180.07275pt x 372.1905pt>
+File: resources/img/minoes/mino_purple.png Graphic file (type png)
+
+<use resources/img/minoes/mino_purple.png>
+Package pdftex.def Info: resources/img/minoes/mino_purple.png used on input lin
+e 701.
+(pdftex.def)             Requested size: 72.02782pt x 148.87355pt.
+
+<resources/img/minoes/mino_red.png, id=2225, 178.266pt x 369.17924pt>
+File: resources/img/minoes/mino_red.png Graphic file (type png)
+
+<use resources/img/minoes/mino_red.png>
+Package pdftex.def Info: resources/img/minoes/mino_red.png used on input line 7
+06.
+(pdftex.def)             Requested size: 71.30513pt x 147.66908pt.
+
+<resources/img/orientations/cyan.png, id=2226, 391.4625pt x 96.36pt>
+File: resources/img/orientations/cyan.png Graphic file (type png)
+
+<use resources/img/orientations/cyan.png>
+Package pdftex.def Info: resources/img/orientations/cyan.png used on input line
+ 717.
+(pdftex.def)             Requested size: 274.02187pt x 67.45152pt.
+
+<resources/img/orientations/blue.png, id=2227, 392.667pt x 103.587pt>
+File: resources/img/orientations/blue.png Graphic file (type png)
+
+<use resources/img/orientations/blue.png>
+Package pdftex.def Info: resources/img/orientations/blue.png used on input line
+ 720.
+(pdftex.def)             Requested size: 274.86502pt x 72.51039pt.
+
+<resources/img/orientations/orange.png, id=2228, 393.8715pt x 102.3825pt>
+File: resources/img/orientations/orange.png Graphic file (type png)
+
+<use resources/img/orientations/orange.png>
+Package pdftex.def Info: resources/img/orientations/orange.png used on input li
+ne 723.
+(pdftex.def)             Requested size: 275.70816pt x 71.66725pt.
+
+<resources/img/orientations/yellow.png, id=2229, 394.47375pt x 98.16675pt>
+File: resources/img/orientations/yellow.png Graphic file (type png)
+
+<use resources/img/orientations/yellow.png>
+Package pdftex.def Info: resources/img/orientations/yellow.png used on input li
+ne 726.
+(pdftex.def)             Requested size: 276.12973pt x 68.71625pt.
+ [43 <./resources/img/minoes/mino_cyan.png> <./resources/img/minoes/mino_blue.p
+ng> <./resources/img/minoes/mino_orange.png> <./resources/img/minoes/mino_yello
+w.png> <./resources/img/minoes/mino_green.png> <./resources/img/minoes/mino_pur
+ple.png> <./resources/img/minoes/mino_red.png> <./resources/img/orientations/cy
+an.png> <./resources/img/orientations/blue.png> <./resources/img/orientations/o
+range.png>]
+<resources/img/orientations/green.png, id=2235, 395.076pt x 99.37125pt>
+File: resources/img/orientations/green.png Graphic file (type png)
+
+<use resources/img/orientations/green.png>
+Package pdftex.def Info: resources/img/orientations/green.png used on input lin
+e 729.
+(pdftex.def)             Requested size: 276.5513pt x 69.55939pt.
+
+<resources/img/orientations/purple.png, id=2236, 395.076pt x 96.36pt>
+File: resources/img/orientations/purple.png Graphic file (type png)
+
+<use resources/img/orientations/purple.png>
+Package pdftex.def Info: resources/img/orientations/purple.png used on input li
+ne 732.
+(pdftex.def)             Requested size: 276.5513pt x 67.45152pt.
+
+<resources/img/orientations/red.png, id=2237, 395.67825pt x 95.1555pt>
+File: resources/img/orientations/red.png Graphic file (type png)
+
+<use resources/img/orientations/red.png>
+Package pdftex.def Info: resources/img/orientations/red.png used on input line 
+735.
+(pdftex.def)             Requested size: 276.97289pt x 66.60837pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 740.
+ [44 <./resources/img/orientations/yellow.png> <./resources/img/orientations/gr
+een.png> <./resources/img/orientations/purple.png> <./resources/img/orientation
+s/red.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 740.
+ (./report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 740.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 740.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: ABDE9FAE3F5F1CAAF130A74992AE212C;2595.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 740.
+ ) 
 Here is how much of TeX's memory you used:
- 6208 strings out of 493333
- 91172 string characters out of 3139196
- 190652 words of memory out of 3000000
- 9659 multiletter control sequences out of 15000+200000
- 8501 words of font info for 30 fonts, out of 3000000 for 9000
+ 13305 strings out of 493089
+ 199195 string characters out of 6134841
+ 589424 words of memory out of 5000000
+ 14683 multiletter control sequences out of 15000+600000
+ 21318 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,9n,40p,769b,611s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-msy10.pfb>
-Output written on report.pdf (7 pages, 219668 bytes).
+ 36i,16n,48p,867b,2253s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/times/utmr8a.pfb>
+Output written on report.pdf (44 pages, 798917 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2657 PDF objects out of 2984 (max. 8388607)
+ 2552 compressed objects within 26 object streams
+ 1876 named destinations out of 2073 (max. 500000)
+ 429 words of extra memory for PDF output out of 10000 (max. 10000000)
 

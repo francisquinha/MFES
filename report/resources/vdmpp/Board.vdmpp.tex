@@ -1,0 +1,163 @@
+\begin{vdmpp}[breaklines=true]
+class Board
+
+ -- Represents the game board, with its matrix.
+
+
+ types
+  
+  -- Position in the board.
+  public Position = seq of int
+  -- A position is a sequence with exactly to integers.
+  inv position == len position = 2;
+  -- The board matrix is represented by a map.
+  public Matrix = map Position to nat;
+
+
+ instance variables
+ 
+  -- Total number of rows in the board, including two lines that
+  -- are not displayed for the user to see.
+  public static maxRow  : nat1   := 22;
+  -- Total number of rows that are visible during gameplay.
+  public static maxVisibleRow : nat1   := 20;
+  -- Total number of columns in the board.
+  public static maxColumn  : nat1   := 10;
+
+  -- Aids for printing the board matrix in the console.
+  private print_startTag  : Game`String := "|";
+  private print_endTag  : Game`String := "|\n";
+  private print_bottomLine : Game`String := " ----------";
+                                       
+  -- The matrix attributes to each position in the board
+  -- a natural number: 0 if the position is empty; the id of the
+  -- tetramino if it is occupied.
+  private matrix     : Matrix  := {|->};
+     
+                                                      
+ operations
+ 
+  public Board : () ==> Board
+(*@
+\label{Board:40}
+@*)
+  Board() == ( 
+   initBoard();
+  );
+  
+  -- Initiates the board matrix with all positions empty,
+  -- that is, with zeros.
+  private initBoard : () ==> ()
+(*@
+\label{initBoard:47}
+@*)
+  initBoard() == (  
+   for i = 1 to maxRow do
+    for j = 1 to maxColumn do
+     matrix := matrix ++ {[i,j] |-> 0}
+  )
+  post matrix([1,1]) = 0 and matrix([maxRow, maxColumn]) = 0;
+
+  -- Returns a string containing the board matrix in its
+  -- printing form. If the boolean printNow is true, the matrix is
+  -- immediately printed. If the boolean blackConsole is true, the
+  -- matrix is printed without using colors. If the boolean testPrint
+  -- is true, the invisible lines are printed for test purposes.
+  public getBoardPrint : bool * bool * bool ==> Game`String
+(*@
+\label{getBoardPrint:60}
+@*)
+  getBoardPrint(printNow, blackConsole, testPrint) == ( 
+   dcl print_board : Game`String := "\n";
+   dcl start_row : nat1 := 3;
+   if testPrint then start_row := 1;   
+   for i = start_row to maxRow do(
+    print_board := print_board ^ print_startTag;
+      for j=1 to maxColumn do
+       print_board := print_board 
+        ^ getCellPrint(matrix([i,j]), i, blackConsole);
+      print_board := print_board ^  print_endTag;
+     );
+     if printNow then
+      IO`println(print_board ^ print_bottomLine);
+    return print_board ^ print_bottomLine ;                   
+  );
+  
+  -- Returns the string corresponding to a board cell print.
+  -- If blackConsole is true, there are only three strings
+  -- possible, depending on whether the position is empty or filled
+  -- and diferentiating the invisible lines.
+  -- If blackConsole is false, each tetramino will have a different
+  -- print, according to its color.
+  private getCellPrint: nat * nat * bool ==> Game`String
+(*@
+\label{getCellPrint:83}
+@*)
+  getCellPrint(id, row, blackConsole) == (
+   if blackConsole then
+    cases id:
+     0 -> if row < 3 then return " " else return "#",
+     others -> return "*"
+    end
+   else
+    cases id:
+     0 -> if row < 3 then return " " else return "#",
+     1 -> return "\u001B[38;5;51m" ^ "*" ^ "\u001B[0m",
+     2 -> return "\u001B[38;5;21m" ^ "*" ^ "\u001B[0m",
+     3 -> return "\u001B[38;5;208m" ^ "*" ^ "\u001B[0m",
+     4 -> return "\u001B[38;5;226m" ^ "*" ^ "\u001B[0m",
+     5 -> return "\u001B[38;5;34m" ^ "*" ^ "\u001B[0m",
+     6 -> return "\u001B[38;5;165m" ^ "*" ^ "\u001B[0m",
+     others -> return "\u001B[38;5;196m" ^ "*" ^ "\u001B[0m"    
+    end
+  );
+  
+  -- Checks a board row to determine if it is completely filled
+  -- with tetramino cells. In affirmative case, the row is removed
+  -- from the board and the rows above it are shifted down.
+  private checkRow : int ==> bool
+(*@
+\label{checkRow:106}
+@*)
+  checkRow(row) == (
+   for column = 1 to maxColumn do
+    if (matrix([row, column]) = 0) then return false;
+   for i = row - 1 to 1 by -1 do
+    for j = 1 to maxColumn do
+     matrix([i + 1, j]) := matrix([i, j]);
+   return true
+  )
+  pre row >= 1 and row <= maxRow;
+  
+  -- Checks all the rows of the board and returns the number of rows
+  -- that where removed.
+  public checkRows : () ==> nat
+(*@
+\label{checkRows:119}
+@*)
+  checkRows() == (
+   dcl result : nat := 0;
+   for row = 1 to maxRow do
+    if checkRow(row) then result := result + 1;
+   return result
+  )
+  post RESULT <= maxRow;
+  
+  public setMatrixPosition : Position * nat ==> ()
+(*@
+\label{setMatrixPosition:128}
+@*)
+  setMatrixPosition(position, value) ==
+   matrix(position) := value
+  pre Tetramino`checkPosition(position, 1, maxRow, 1, maxColumn);
+  
+  public getMatrixPosition : Position ==> nat
+(*@
+\label{getMatrixPosition:133}
+@*)
+  getMatrixPosition(position) ==
+   return matrix(position)  
+  pre Tetramino`checkPosition(position, 1, maxRow, 1, maxColumn);
+ 
+end Board
+\end{vdmpp}

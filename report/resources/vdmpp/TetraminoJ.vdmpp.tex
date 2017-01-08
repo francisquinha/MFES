@@ -1,0 +1,80 @@
+\begin{vdmpp}[breaklines=true]
+class TetraminoJ is subclass of Tetramino
+  
+ -- Tetramino of the type J: x
+ --       xxx
+ -- 
+ -- Minoes:       1
+ --        234
+
+ 
+ operations
+ 
+  public TetraminoJ : (Game) ==> TetraminoJ
+  TetraminoJ(game) == (
+   Tetramino`setColor(<Blue>);
+(*@
+\label{TetraminoJ:15}
+@*)
+   Tetramino`setId(2);
+   Tetramino`initialSetMinoes(game, [1, 4]);
+   return self
+  );
+
+  protected getNextMino: Board`Position * nat ==> Board`Position
+  getNextMino(position, index) == (
+   dcl result : Board`Position := position;
+(*@
+\label{getNextMino:23}
+@*)
+   cases Tetramino`getOrientation():
+    0 -> (
+     cases index:
+      1 -> result(1) := position(1) + 1,
+      others -> result(2) := position(2) + 1
+     end
+    ),
+    1 -> (
+     cases index:
+      1 -> result(2) := position(2) - 1,
+      others -> result(1) := position(1) + 1
+     end
+    ),
+    2 -> (
+     cases index:
+      1 -> result(1) := position(1) - 1,
+      others -> result(2) := position(2) - 1
+     end
+    ),
+    3 -> (
+     cases index:
+      1 -> result(2) := position(2) + 1,
+      others -> result(1) := position(1) - 1
+     end
+    )
+   end;
+   return result
+  )
+  pre index in set {1, ..., 4} 
+   and Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
+
+  protected getRotatedMino: Board`Position ==> Board`Position
+  getRotatedMino(position) == (
+   dcl result : Board`Position := position;
+(*@
+\label{getRotatedMino:58}
+@*)
+   cases Tetramino`getOrientation():
+    0 -> result(2) := position(2) + 2,
+    1 -> result(1) := position(1) + 2,
+    2 -> result(2) := position(2) - 2,
+    3 -> result(1) := position(1) - 2
+   end;
+   return result
+  )
+  pre Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post Tetramino`checkPosition(RESULT, -1, Board`maxRow + 2, -1, Board`maxColumn + 2);
+
+end TetraminoJ
+\end{vdmpp}

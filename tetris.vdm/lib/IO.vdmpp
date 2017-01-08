@@ -10,10 +10,10 @@ class IO
 -- time error. Signatures should not be changed, as well as name of
 -- module (VDM-SL) or class (VDM++). Pre/post conditions is 
 -- fully user customizable. 
--- Don't care's may NOT be used in the parameter lists.
+-- Dontetraminoest caretetraminoess may NOT be used in the parameter lists.
 --
 -- The in/out functions  will return false if an error occurs. In this
--- case an internal error string will be set (see 'ferror').
+-- case an internal error string will be set (see tetraminoesferrortetraminoes).
 --
 -- File path:
 --  * An absolute path is accepted and used as specified.

@@ -1,0 +1,104 @@
+\begin{vdmpp}[breaklines=true]
+class TetraminoT is subclass of Tetramino
+  
+ -- Tetramino of the type J:  x
+ --       xxx
+ --
+ -- Minoes:        1
+ --         234
+ 
+
+ operations
+ 
+  public TetraminoT : (Game) ==> TetraminoT
+  TetraminoT(game) == (
+   Tetramino`setColor(<Purple>);
+(*@
+\label{TetraminoT:15}
+@*)
+   Tetramino`setId(6);
+   Tetramino`initialSetMinoes(game, [1, 5]);
+   return self
+  );
+
+  protected getNextMino: Board`Position * nat ==> Board`Position
+  getNextMino(position, index) == (
+   dcl result : Board`Position := position;
+(*@
+\label{getNextMino:23}
+@*)
+   cases Tetramino`getOrientation():
+    0 -> (
+     cases index:
+      1 -> (
+       result(1) := position(1) + 1;
+       result(2) := position(2) - 1;
+      ),
+      others -> result(2) := position(2) + 1
+     end
+    ),
+    1 -> (
+     cases index:
+      1 -> (
+       result(1) := position(1) - 1;
+       result(2) := position(2) - 1;
+      ),
+      others -> result(1) := position(1) + 1
+     end
+    ),
+    2 -> (
+     cases index:
+      1 -> (
+       result(1) := position(1) - 1;
+       result(2) := position(2) + 1;
+      ),
+      others -> result(2) := position(2) - 1
+     end
+    ),
+    3 -> (
+     cases index:
+      1 -> (
+       result(1) := position(1) + 1;
+       result(2) := position(2) + 1;
+      ),
+      others -> result(1) := position(1) - 1
+     end
+    )
+   end;
+   return result
+  )
+  pre index in set {1, ..., 4} 
+   and Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
+  
+  protected getRotatedMino: Board`Position ==> Board`Position
+  getRotatedMino(position) == (
+   dcl result : Board`Position := position;
+(*@
+\label{getRotatedMino:70}
+@*)
+   cases Tetramino`getOrientation():
+    0 -> (
+     result(1) := position(1) + 1; 
+     result(2) := position(2) + 1;
+     ),
+    1 -> (
+     result(1) := position(1) + 1; 
+     result(2) := position(2) - 1;
+     ),
+    2 -> (
+     result(1) := position(1) - 1; 
+     result(2) := position(2) - 1;
+     ),
+    3 -> (
+     result(1) := position(1) - 1; 
+     result(2) := position(2) + 1;
+     )
+   end;
+   return result
+  )
+  pre Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post Tetramino`checkPosition(RESULT, -1, Board`maxRow + 2, -1, Board`maxColumn + 2);
+
+end TetraminoT
+\end{vdmpp}

@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="modelio3.3.1" version="3">
+  <DEPS>
+    <ID name="modelio3.3.1" mc="Project" uid="6f153d55-07b5-4b06-93ba-5ea25ef5d98e"/>
+    <COMPID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+    <COMPID name="modelio3.3.1" mc="DiagramSet" uid="77049654-7be4-4d2d-aa03-14256456402f"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="modelio3.3.1" mc="Project" uid="6f153d55-07b5-4b06-93ba-5ea25ef5d98e"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[modelio3.3.1]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="DiagramRoot">
+        <COMPID name="modelio3.3.1" mc="DiagramSet" uid="77049654-7be4-4d2d-aa03-14256456402f"/>
+      </COMP>
+      <COMP relation="Model">
+        <COMPID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

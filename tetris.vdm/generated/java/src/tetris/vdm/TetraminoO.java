@@ -18,7 +18,7 @@ public class TetraminoO extends Tetramino {
     cg_init_TetraminoO_1(game);
   }
 
-  public VDMSeq getNextMino(final VDMSeq position, final Number index) {
+  protected VDMSeq getNextMino(final VDMSeq position, final Number index) {
 
     VDMSeq result = Utils.copy(position);
     Number casesExp_18 = super.getOrientation();
@@ -116,7 +116,7 @@ public class TetraminoO extends Tetramino {
     return Utils.copy(result);
   }
 
-  public VDMSeq getRotatedMino(final VDMSeq position) {
+  protected VDMSeq getRotatedMino(final VDMSeq position) {
 
     VDMSeq result = Utils.copy(position);
     Number casesExp_23 = super.getOrientation();

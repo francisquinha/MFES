@@ -497,7 +497,7 @@ class TestTetris is subclass of TestCaseExtra
 			assertEqual(game.getScore(), 542);
 		);
 
-		-- Plays the game for a while, using only I tetraminos, to test the number of lines
+		-- Plays the game for a while, using only I tetraminoes, to test the number of lines
 		-- completed, as well as the score and level increments.
 		private play_test: Game * bool * bool * bool ==> ()
 		play_test(game, printNow, blackConsole, testPrint) == (
@@ -535,7 +535,7 @@ class TestTetris is subclass of TestCaseExtra
 			assertEqual(game.getScore(), 2458 + 16 * 16 * 2 + 15 * 4 * 2 + 800 * 2 * 2);
 		);	
 		
-		-- Randomly generates tetraminos and drops them, in order to test that the game
+		-- Randomly generates tetraminoes and drops them, in order to test that the game
 		-- ends correctly.
 		private gameOver_test: Game * bool * bool * bool ==> ()
 		gameOver_test(game, printNow, blackConsole, testPrint) == (
@@ -551,7 +551,7 @@ class TestTetris is subclass of TestCaseExtra
 			assertTrue(game.getGameOver());
 		);
 
-		-- Runs all the tests, priting the board for further visual 
+		-- Runs all the tests, printing the board for further visual 
 		-- confirmation of the results.
 		public static main: bool * bool * bool ==> ()
 		main(printNow, blackConsole, testPrint) == (

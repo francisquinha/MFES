@@ -1,0 +1,182 @@
+\begin{vdmpp}[breaklines=true]
+class Game
+
+ -- Represents the whole game, and provides all the necessary
+ -- operations for playing it.
+ 
+ 
+ types
+ 
+  public String = seq of char;
+
+
+ instance variables
+  
+  -- The game board.
+  private board  : Board;
+  -- The current game tetramino.
+  private tetramino : Tetramino;
+  -- Indicates if the game is finished.
+  private gameOver : bool   := false; 
+  -- The game score. 
+  private score  : nat   := 0;
+  -- The number of completed lines in the game.
+  private lines  : nat   := 0;
+  -- The level of the game. 
+  private level  : nat1   := 1;
+  
+  -- The scores that lines make, according to the number of lines 
+  -- made at once (1, 2, 3 or 4).
+  private static lineScores : seq of nat
+   := [100, 300, 400, 800];
+  
+  
+ operations
+ 
+  public Game : () ==> Game
+(*@
+\label{Game:36}
+@*)
+  Game() ==
+   board := new Board();
+    
+    public getBoard: () ==> Board
+(*@
+\label{getBoard:40}
+@*)
+    getBoard() ==
+     return board;
+        
+  public setGameOver : () ==> ()
+(*@
+\label{setGameOver:44}
+@*)
+  setGameOver() ==
+   gameOver := true;
+   
+  public getGameOver : () ==> bool
+(*@
+\label{getGameOver:48}
+@*)
+  getGameOver() ==
+   return gameOver;
+       
+    -- Generates a new tetramino of the specified type.
+  public newTetramino : nat1 ==> ()
+(*@
+\label{newTetramino:53}
+@*)
+  newTetramino(id) == (  
+   cases id:
+    1 -> tetramino := new TetraminoI(self),
+    2 -> tetramino := new TetraminoJ(self),
+    3 -> tetramino := new TetraminoL(self),
+    4 -> tetramino := new TetraminoO(self),
+    5 -> tetramino := new TetraminoS(self),
+    6 -> tetramino := new TetraminoT(self),
+    7 -> tetramino := new TetraminoZ(self)
+   end;
+  )
+  pre id >= 1 and id <= 7;
+  
+    -- Generates a new random tetramino.
+  public newRandomTetramino: () ==> ()
+(*@
+\label{newRandomTetramino:68}
+@*)
+  newRandomTetramino() == 
+   newTetramino(MATH`rand(7) + 1);
+  
+    -- Tries to move the current tetramino down.
+  public down : () ==> bool
+(*@
+\label{down:73}
+@*)
+  down() ==
+   return tetramino.moveDown(board);
+   
+    -- Tries to move the current tetramino left.
+  public left : () ==> bool
+(*@
+\label{left:78}
+@*)
+  left() ==
+   return tetramino.moveLeft(board);
+
+    -- Tries to move the current tetramino right.
+  public right : () ==> bool
+(*@
+\label{right:83}
+@*)
+  right() ==
+   return tetramino.moveRight(board);
+   
+    -- Tries to rotate the current tetramino.
+  public rotate : () ==> bool
+(*@
+\label{rotate:88}
+@*)
+  rotate() ==
+   return tetramino.rotate(board);
+
+    -- Drops the current tetramino to the bottom of the board. 
+    -- Also updates the score, using the current level and the
+    -- total distance of the drop. 
+  public drop : () ==> nat
+(*@
+\label{drop:95}
+@*)
+  drop() == (
+   dcl dropDistance: nat := tetramino.drop(board);
+   score := score + dropDistance * level;
+   return dropDistance;
+  );
+  
+  -- Checks all game lines for completion and updates the game
+  -- score according to the number of completed lines and the
+  -- current game level.
+  public checkLines : () ==> nat
+(*@
+\label{checkLines:105}
+@*)
+  checkLines() == (
+   dcl newLines: nat := board.checkRows();
+   lines := lines + newLines;
+   if newLines > 0 then score := score + lineScores(newLines) * level;
+   level := 1 + (lines div 10);
+   return newLines
+  );
+
+  public getScore : () ==> nat
+(*@
+\label{getScore:114}
+@*)
+  getScore() == return score;
+   
+  public getLines : () ==> nat
+(*@
+\label{getLines:117}
+@*)
+  getLines() == return lines;
+
+  public getLevel : () ==> nat1
+(*@
+\label{getLevel:120}
+@*)
+  getLevel() == return level;
+  
+  -- Returns a printing string of the board.
+  -- If blackConsole is true, there are only three strings
+  -- possible, depending on whether the position is empty or filled
+  -- and diferentiating the invisible lines.
+  -- If blackConsole is false, each tetramino will have a different
+  -- print, according to its color.
+  public printBoard : bool * bool * bool ==> String
+(*@
+\label{printBoard:129}
+@*)
+  printBoard(printNow, blackConsole, testPrint) == 
+   return board.getBoardPrint(printNow, blackConsole, testPrint);
+   
+end Game
+\end{vdmpp}

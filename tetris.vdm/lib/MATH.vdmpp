@@ -10,7 +10,7 @@ class MATH
 -- time error. Signatures should not be changed, as well as name of
 -- module (VDM-SL) or class (VDM++). Pre/post conditions is 
 -- fully user customisable. 
--- Dont care's may NOT be used in the parameter lists.
+-- Dont caretetraminoess may NOT be used in the parameter lists.
 
   functions
 public static

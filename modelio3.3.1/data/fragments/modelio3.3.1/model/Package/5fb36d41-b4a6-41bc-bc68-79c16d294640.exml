@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="modelio3.3.1" version="3">
+  <DEPS>
+    <ID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+    <COMPID name="Basic VDM Types" mc="Package" uid="7c956006-f64a-4127-8a87-0b6062ce05a4"/>
+    <COMPID name="Binding classes" mc="Package" uid="1fa5d405-2b23-47cd-8177-0846cbb97e40"/>
+    <COMPID name="Board" mc="Class" uid="bc468092-0339-4240-97fb-b9bc5410d64f"/>
+    <COMPID name="Composite VDM Types" mc="Package" uid="200f23a3-da84-408a-ba51-a6be1a359a57"/>
+    <COMPID name="Game" mc="Class" uid="9959ae58-8f32-4210-b582-4f27b658f308"/>
+    <COMPID name="IO" mc="Class" uid="7e3e6e29-9fa2-435c-b876-2bd60ea573af"/>
+    <COMPID name="MATH" mc="Class" uid="b006b23c-a7ba-43b1-867d-557b9367da71"/>
+    <COMPID name="TestCaseExtra" mc="Class" uid="7fc5da58-346c-4a44-8d9a-be664868de35"/>
+    <COMPID name="TestTetris" mc="Class" uid="83343bfa-12c1-447d-8a7b-3c1d4bcd637d"/>
+    <COMPID name="Tetramino" mc="Class" uid="5ad6cc7e-d76e-4d6d-8833-b0edb9de8e9b"/>
+    <COMPID name="TetraminoI" mc="Class" uid="20e02319-758b-4958-8bc0-155cc46c4079"/>
+    <COMPID name="TetraminoJ" mc="Class" uid="137aaa37-870e-451c-88ec-e9ad7c5a6a6b"/>
+    <COMPID name="TetraminoL" mc="Class" uid="f9bf78c5-92f6-44c2-b3ce-e0b665b3be93"/>
+    <COMPID name="TetraminoO" mc="Class" uid="c3a80a86-a71a-465e-9631-539c0f122b64"/>
+    <COMPID name="TetraminoS" mc="Class" uid="cc1d0fef-e98d-4619-8ecf-b2ec47663445"/>
+    <COMPID name="TetraminoT" mc="Class" uid="ee5b37aa-d23a-40e4-9cea-c95f725ca32f"/>
+    <COMPID name="TetraminoZ" mc="Class" uid="98ff0f88-d143-4c93-a081-ad237529769b"/>
+    <COMPID name="overview diagram" mc="ClassDiagram" uid="c0166b5f-f5f6-4105-a95a-dad3f522c98b"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+    <PID name="modelio3.3.1" mc="Project" uid="6f153d55-07b5-4b06-93ba-5ea25ef5d98e"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[modelio3.3.1]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Composite VDM Types" mc="Package" uid="200f23a3-da84-408a-ba51-a6be1a359a57"/>
+        <COMPID name="Board" mc="Class" uid="bc468092-0339-4240-97fb-b9bc5410d64f"/>
+        <COMPID name="Game" mc="Class" uid="9959ae58-8f32-4210-b582-4f27b658f308"/>
+        <COMPID name="TestCaseExtra" mc="Class" uid="7fc5da58-346c-4a44-8d9a-be664868de35"/>
+        <COMPID name="TestTetris" mc="Class" uid="83343bfa-12c1-447d-8a7b-3c1d4bcd637d"/>
+        <COMPID name="Tetramino" mc="Class" uid="5ad6cc7e-d76e-4d6d-8833-b0edb9de8e9b"/>
+        <COMPID name="TetraminoI" mc="Class" uid="20e02319-758b-4958-8bc0-155cc46c4079"/>
+        <COMPID name="TetraminoJ" mc="Class" uid="137aaa37-870e-451c-88ec-e9ad7c5a6a6b"/>
+        <COMPID name="TetraminoL" mc="Class" uid="f9bf78c5-92f6-44c2-b3ce-e0b665b3be93"/>
+        <COMPID name="TetraminoO" mc="Class" uid="c3a80a86-a71a-465e-9631-539c0f122b64"/>
+        <COMPID name="TetraminoS" mc="Class" uid="cc1d0fef-e98d-4619-8ecf-b2ec47663445"/>
+        <COMPID name="TetraminoT" mc="Class" uid="ee5b37aa-d23a-40e4-9cea-c95f725ca32f"/>
+        <COMPID name="TetraminoZ" mc="Class" uid="98ff0f88-d143-4c93-a081-ad237529769b"/>
+        <COMPID name="IO" mc="Class" uid="7e3e6e29-9fa2-435c-b876-2bd60ea573af"/>
+        <COMPID name="MATH" mc="Class" uid="b006b23c-a7ba-43b1-867d-557b9367da71"/>
+        <COMPID name="Binding classes" mc="Package" uid="1fa5d405-2b23-47cd-8177-0846cbb97e40"/>
+        <COMPID name="Basic VDM Types" mc="Package" uid="7c956006-f64a-4127-8a87-0b6062ce05a4"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="overview diagram" mc="ClassDiagram" uid="c0166b5f-f5f6-4105-a95a-dad3f522c98b"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

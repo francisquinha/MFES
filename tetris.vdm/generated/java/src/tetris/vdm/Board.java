@@ -23,7 +23,7 @@ public class Board {
     cg_init_Board_1();
   }
 
-  public void initBoard() {
+  private void initBoard() {
 
     long toVar_2 = Board.maxRow.longValue();
 
@@ -150,7 +150,7 @@ public class Board {
     }
   }
 
-  public Boolean checkRow(final Number row) {
+  private Boolean checkRow(final Number row) {
 
     long toVar_5 = Board.maxColumn.longValue();
 

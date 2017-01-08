@@ -1,16 +1,24 @@
 \documentclass[a4paper]{article}
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{pmboxdraw}
 \usepackage{color}
 \usepackage{tocloft}
+\usepackage[color]{vdmlisting}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{geometry}
+\geometry{a4paper, total={160mm,220mm}, left=25mm, top=35mm}
+
 \definecolor{darkgray}{rgb}{0.41, 0.41, 0.41}
 \definecolor{green}{rgb}{0.0, 0.5, 0.0}
 
 \usepackage{listingsutf8}
-\lstset{language=Java, 
+\lstdefinestyle{JavaStyle}{
+	language=Java, 	
 	numbers=left,
 	stepnumber=5,
 	firstnumber=1,
@@ -21,19 +29,18 @@
     stringstyle=\color{red}\ttfamily,
     commentstyle=\color{green}\ttfamily,
 	identifierstyle=\color{darkgray}\ttfamily,
-	tabsize=1,
+	tabsize=4,
     breaklines=true,
     extendedchars=true,
 	inputencoding=utf8x,
     escapeinside={\%*}{*)},
 }
 
-
 \setlength{\tabcolsep}{6pt}
 \setlength\cftaftertoctitleskip{20pt}
 \begin{document}
-\setlength{\textwidth}{16cm}
-\setlength{\textheight}{22cm}
+%\setlength{\textwidth}{16cm}
+%\setlength{\textheight}{22cm}
 
 
 \title{\includegraphics[scale=0.15]{resources/img/feup_logo.png}
@@ -55,24 +62,28 @@ Nuno Valente - up200204376\\
 
 \thispagestyle{empty}
 \newpage
-\tableofcontents
+\tableofcontents 
 \newpage
 
-\section{Informal system description and list of requirements}
+\section{Informal System Description and List of Requirements}
 
-\subsection{Informal system description}
+\subsection{Informal System Description}
 \label{informal-rules}
 
-\paragraph{ }Tetris game it's a puzzle game and one of the most recognizable and influential video game brands in the world. It’s no wonder why there are hundreds of millions of Tetris products being played, worn, and enjoyed by fans in their everyday lives. The game was born in 1984 and it's living proof of a game that have truly transcended the barriers of culture and language.
+Tetris is a puzzle game and one of the most recognizable and influential video game brands in the world. It is no wonder why there are hundreds of millions of Tetris products being played, worn, and enjoyed by fans in their everyday lives. The game was born in 1984 and it is living proof of a game that has truly transcended the barriers of culture and language.
 
-\paragraph{ }A meritorious reference to Alexey Pajitnov because he his the person who developed this popular game. He is a russian video game designer and computer engineer and in his spare time, he drew inspiration from his favorite puzzle board game, pentominoes, and decided to create a computer game for himself. Pajitnov envisioned an electronic game that let players arrange puzzle pieces in real time as they fell from the top of the playing field. The resulting design was a game that used seven distinctive geometric playing pieces (appendix\ref{tetrominoes}), each made up of four squares. Pajitnov called this game “Tetris,” a combination of “tetra” (the Greek word meaning “four”) and “tennis” (his favorite sport).
+A meritorious reference to Alexey Pajitnov because he is the person who developed this popular game. He is a Russian video game designer and computer engineer and in his spare time, he drew inspiration from his favorite puzzle board game, pentominoes, and decided to create a computer game for himself. Pajitnov envisioned an electronic game that let players arrange puzzle pieces in real time as they fell from the top of the playing field. The resulting design was a game that used seven distinctive geometric playing pieces (appendix\ref{tetraminoes}), each made up of four squares. Pajitnov called this game “Tetris,” a combination of “tetra” (the Greek word meaning “four”) and “tennis” (his favorite sport).
 
-\paragraph{ }The rules to play the game are very simple. Tetris game requires players to strategically rotate and drop a chaining of tetrominoes that fall into the rectangular board at increasing speeds. Players attempt to clear as many lines as possible by completing horizontal rows of blocks without empty space, but if the tetrominoes surpass the skyline(top of the board) the game is over! Speed and consequent level advance can make the game ally to strategy more enthusiastic. Formal details about other rules are presented in appendix\ref{rules}.
+The rules to play the game are very simple. The players are required to strategically rotate and drop a chaining of tetraminoes that fall into the rectangular board at increasing speeds. Players attempt to clear as many lines as possible by completing horizontal rows of blocks without empty space, but if the tetraminoes surpass the skyline(top of the board) the game is over! Speed and consequent level advance can make the game ally to strategy more enthusiastic. Formal details about other rules are presented in appendix\ref{rules}.
 
-\textcolor{red}{put a game image here}
-\subsection{List of requirements}
+\begin{center}
+	\includegraphics[scale=0.7]{resources/img/game}
+	\label{use-cases}
+\end{center}
+
+\subsection{List of Requirements}
 \label{sec:requirements}
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	%\caption{My caption}
 	\label{tab:list-of-requirements}
@@ -80,25 +91,24 @@ Nuno Valente - up200204376\\
 		\hline
 		\textbf{Id} & \textbf{Priority} & \textbf{Description} \\ \hline
 		R1 & Mandatory         & The player can view his score and level \\ \hline
-		R2 & Mandatory         & The game allows two movements - rotation and drop \\ \hline
+		R2 & Mandatory         & The game allows five movements - rotation, left, right, down and drop \\ \hline
 		R3 & Opcional         & The player should be able to leave the game when he wants \\ \hline
-		R4 & Mandatory         & The player has access to a footnote where are the rules to play the game \\ \hline
-		R5 & Mandatory         & The spawns appears in a random order to be played\\ \hline
-		R6 & Mandatory         & When a row(s) is(are) full of blocks it(they) must be cleared \\ \hline
+		R4 & Mandatory         & The player has access to a footnote where the rules to play the game are displayed \\ \hline
+		R5 & Mandatory         & The tetraminoes are spawned in a random order to be played\\ \hline
+		R6 & Mandatory         & When one or more rows are full of blocks they must be cleared \\ \hline
 		R7 & Mandatory         & If tetraminoes surpass the skyline the game is over \\ \hline
-		R8 & Opcional          & Time to time the level advance one degree and the game became more difficult \\ \hline
-		R9 & Mandatory        & Each tetromino is formed by four squares named minos by us \\ \hline
-		R10 & Mandatory        & The player has access to his score and actual level where he is \\ \hline
+		R8 & Opcional          & Time to time the level advances and the game becomes more difficult \\ \hline
+		R9 & Mandatory        & Each tetramino is formed by four squares named minoes \\ \hline
 	\end{tabular}
 \end{table}
 
 These requirements are directly translated onto use cases as shown next.
-\section{Visual UML model} 
+\section{Visual UML Model} 
 
 
-\subsection{Use case model}
+\subsection{Use Case Model}
 
-In all use cases we've made an assumption that all keyboard game keys are functioning properly.
+In all use cases we have made an assumption that all keyboard game keys are functioning properly.
 
 \begin{center}
 	\includegraphics[scale=0.55]{resources/img/use_cases1}
@@ -111,7 +121,7 @@ In all use cases we've made an assumption that all keyboard game keys are functi
 
 The main use cases are described below: 
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	%	\caption{Use case board}
 	\label{use-case-board}
@@ -129,7 +139,7 @@ The main use cases are described below:
 	\end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	%	\caption{Use case gameover}
 	\label{use-case-gameover}
@@ -151,124 +161,389 @@ The main use cases are described below:
 	\end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 %	\caption{Use case rotation}
 	\label{use-case-rotation}
 	\begin{tabular}{|l| p{9cm}|}
 		\hline
 		\textbf{Scenario}        & \textbf{Rotation Move} \\ \hline
-		\textbf{Description}     &  Rotate a tetromino when is falling \\ \hline
+		\textbf{Description}     &  Rotate a tetramino when is falling \\ \hline
 		\textbf{Pre-conditions}  & 	
 			\begin{tabular}[c]{@{}l@{}}
-				 Tetromino must not be frozen in place
+				 Tetramino must not be frozen in place
 			 \end{tabular}  \\ \hline
-		\textbf{Post-conditions} &  Tetromino position has changed  \\ \hline
+		\textbf{Post-conditions} &  Tetramino position has changed  \\ \hline
 		\textbf{Steps}           &  The player must click on a key that allows rotation  \\ \hline
 		\textbf{Exceptions}      &  When, simultaneously, try to rotate and the spawn reached one final position or the skyline pf the board \\ \hline
 	\end{tabular}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
 	%	\caption{Use case drop}
 	\label{use-case-drop}
 	\begin{tabular}{|l| p{9cm}|}
 		\hline
 		\textbf{Scenario}        & \textbf{Drop Move} \\ \hline
-		\textbf{Description}     &  Accelerates the tetromino falling and position it as it was before reach the final position \\ \hline
+		\textbf{Description}     &  Accelerates the tetramino falling and position it as it was before reach the final position \\ \hline
 		\textbf{Pre-conditions}  & 	
 		\begin{tabular}[c]{@{}l@{}}
-			Tetromino must not be frozen in place
+			Tetramino must not be frozen in place
 		\end{tabular}  \\ \hline
-		\textbf{Post-conditions} &  Tetromino position has changed  \\ \hline
+		\textbf{Post-conditions} &  Tetramino position has changed  \\ \hline
 		\textbf{Steps}           &  The player must click on a key that allows falling spawn  \\ \hline
 		\textbf{Exceptions}      &  (none) \\ \hline
 	\end{tabular}
 \end{table}
 
-\subsection{Class model}
-
-\begin{center}
-	\includegraphics[scale=0.4]{resources/img/uml}
-	\label{uml}
-\end{center}
-
-\begin{table}[!h]
+\subsection{Class Model}
+\begin{table}[H]
 	\centering
 	\label{description-classes}
 	\begin{tabular}{|l|p{8cm}|}
 	\hline
 	\textbf{Class} 			   & \textbf{Description}	\\	\hline
 	Game		   			   &	Core model; defines the state variables and operations available to the players	\\	\hline
-	Board		   			   &	Defines a game environment for playing and where eachhpiece of tetraminoes can stay \\	\hline
-	Tetromino	   			   &	Defines one general piece to play with	\\	\hline
-	TetrominoI/J/L/O/S/T/Z	   &	Defines one specific piece and is a subclass of Tetromino \\	\hline
+	Board		   			   &	Defines a game environment for playing and where each piece of tetraminoes can stay \\	\hline
+	Tetramino	   			   &	Defines one general piece to play with	\\	\hline
+	TetraminoI/J/L/O/S/T/Z	   &	Defines one specific piece and is a subclass of Tetramino \\	\hline
 	TestCaseExtra  			   &	Superclass for test classes; defines assertEquals and assertTrue	\\	\hline
 	TestTetris	   			   &	Defines the test/usage scenarios and test cases for the tetris game	\\	\hline
 	\end{tabular}
 	\caption{Description of each class}
 \end{table}
+\newgeometry{left=2.2cm,top=2cm,bottom=2cm}
+\begin{center}
+	\includegraphics[scale=0.55]{resources/img/uml}
+	\label{uml}
+\end{center}
+\restoregeometry
 
-\section{Formal VDM++ model}
+\section{Formal VDM++ Model}
 
-\subsection{Class Game}
-
-\lstinputlisting{../tetris.vdm/Game.vdmpp}
-
-\subsection{Class Board}
-
+%\subsection{Class Game}
+%
+%\lstinputlisting{../tetris.vdm/Game.vdmpp}
+%
+%\subsection{Class Board}
+%
 %\lstinputlisting{../tetris.vdm/Board.vdmpp}
-
-\subsection{Class Tetromino}
-
-\lstinputlisting{../tetris.vdm/Tetramino.vdmpp}
-
-\subsubsection{Class TetrominoI}
-
-\lstinputlisting{../tetris.vdm/TetraminoI.vdmpp}
-
-\subsubsection{Class TetrominoJ}
-
-\lstinputlisting{../tetris.vdm/TetraminoJ.vdmpp}
-
-\subsubsection{Class TetrominoL}
-
-\lstinputlisting{../tetris.vdm/TetraminoL.vdmpp}
-
-\subsubsection{Class TetrominoO}
-
-\lstinputlisting{../tetris.vdm/TetraminoO.vdmpp}
-
-\subsubsection{Class TetrominoS}
-
-\lstinputlisting{../tetris.vdm/TetraminoS.vdmpp}
-
-\subsubsection{Class TetrominoT}
-
-\lstinputlisting{../tetris.vdm/TetraminoT.vdmpp}
-
-\subsubsection{Class TetrominoZ}
-
-\lstinputlisting{../tetris.vdm/TetraminoZ.vdmpp}
-
-\section{Model validation}
-
-\subsection{Class TestCaseExtra} 
-
-\lstinputlisting{../tetris.vdm/TestCaseExtra.vdmpp}
-
-\subsection{Class TestTetris} 
-
+%
+%\subsection{Class Tetramino}
+%
+%\lstinputlisting{../tetris.vdm/Tetramino.vdmpp}
+%
+%\subsubsection{Class TetraminoI}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoI.vdmpp}
+%
+%\subsubsection{Class TetraminoJ}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoJ.vdmpp}
+%
+%\subsubsection{Class TetraminoL}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoL.vdmpp}
+%
+%\subsubsection{Class TetraminoO}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoO.vdmpp}
+%
+%\subsubsection{Class TetraminoS}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoS.vdmpp}
+%
+%\subsubsection{Class TetraminoT}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoT.vdmpp}
+%
+%\subsubsection{Class TetraminoZ}
+%
+%\lstinputlisting{../tetris.vdm/TetraminoZ.vdmpp}
+%
+%\section{Model validation}
+%
+%\subsection{Class TestCaseExtra} 
+%
+%\lstinputlisting{../tetris.vdm/TestCaseExtra.vdmpp}
+%
+%\subsection{Class TestTetris} 
+%
 %\lstinputlisting{../tetris.vdm/TestTetris.vdmpp}
 
-\section{Model verification}
+\subsection{Game}
+\input{resources/vdmpp/Game.vdmpp.tex}
+\subsection{Board}
+\input{resources/vdmpp/Board.vdmpp.tex}
+\subsection{Tetramino}
+\input{resources/vdmpp/Tetramino.vdmpp.tex}
+\subsection{TetraminoI}
+\input{resources/vdmpp/TetraminoI.vdmpp.tex}
+\subsection{TetraminoJ}
+\input{resources/vdmpp/TetraminoJ.vdmpp.tex}
+\subsection{TetraminoL}
+\input{resources/vdmpp/TetraminoL.vdmpp.tex}
+\subsection{TetraminoO}
+\input{resources/vdmpp/TetraminoO.vdmpp.tex}
+\subsection{TetraminoS}
+\input{resources/vdmpp/TetraminoS.vdmpp.tex}
+\subsection{TetraminoT}
+\input{resources/vdmpp/TetraminoT.vdmpp.tex}
+\subsection{TetraminoZ}
+\input{resources/vdmpp/TetraminoZ.vdmpp.tex}
 
-\subsection{Example of domain verification} 
+\section{Model Validation}
+
+\subsection{TestCaseExtra}
+\input{resources/vdmpp/TestCaseExtra.vdmpp.tex}
+\subsection{TestTetris}
+\input{resources/vdmpp/TestTetris.vdmpp.tex}
+
+\subsection{Game Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Game:35]{Game} & 35&100.0\% & 1 \\
+\hline
+\hyperref[checkLines:104]{checkLines} & 104&100.0\% & 62 \\
+\hline
+\hyperref[down:72]{down} & 72&100.0\% & 96 \\
+\hline
+\hyperref[drop:94]{drop} & 94&100.0\% & 62 \\
+\hline
+\hyperref[getBoard:39]{getBoard} & 39&100.0\% & 309 \\
+\hline
+\hyperref[getGameOver:47]{getGameOver} & 47&100.0\% & 78 \\
+\hline
+\hyperref[getLevel:119]{getLevel} & 119&100.0\% & 2 \\
+\hline
+\hyperref[getLines:116]{getLines} & 116&100.0\% & 2 \\
+\hline
+\hyperref[getScore:113]{getScore} & 113&100.0\% & 12 \\
+\hline
+\hyperref[left:77]{left} & 77&100.0\% & 248 \\
+\hline
+\hyperref[newRandomTetramino:67]{newRandomTetramino} & 67&100.0\% & 14 \\
+\hline
+\hyperref[newTetramino:52]{newTetramino} & 52&100.0\% & 62 \\
+\hline
+\hyperref[printBoard:128]{printBoard} & 128&100.0\% & 654 \\
+\hline
+\hyperref[right:82]{right} & 82&100.0\% & 190 \\
+\hline
+\hyperref[rotate:87]{rotate} & 87&100.0\% & 70 \\
+\hline
+\hyperref[setGameOver:43]{setGameOver} & 43&100.0\% & 4 \\
+\hline
+\hline
+Game.vdmpp & & 100.0\% & 1866 \\
+\hline
+\end{longtable}
+
+\subsection{Board Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Board:39]{Board} & 39&100.0\% & 1 \\
+\hline
+\hyperref[checkRow:105]{checkRow} & 105&100.0\% & 1364 \\
+\hline
+\hyperref[checkRows:118]{checkRows} & 118&100.0\% & 62 \\
+\hline
+\hyperref[getBoardPrint:59]{getBoardPrint} & 59&100.0\% & 654 \\
+\hline
+\hyperref[getCellPrint:82]{getCellPrint} & 82&21.3\% & 143880 \\
+\hline
+\hyperref[getMatrixPosition:132]{getMatrixPosition} & 132&100.0\% & 6349 \\
+\hline
+\hyperref[initBoard:46]{initBoard} & 46&100.0\% & 1 \\
+\hline
+\hyperref[setMatrixPosition:127]{setMatrixPosition} & 127&100.0\% & 12924 \\
+\hline
+\hline
+Board.vdmpp & & 74.8\% & 165235 \\
+\hline
+\end{longtable}
+
+Note: The coverage for getCellPrint is not 100.0\% because part of that function is used for printing in color and that is not the print mode for tests.
+
+\subsection{Tetramino Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[addTetramino:147]{addTetramino} & 147&100.0\% & 1646 \\
+\hline
+\hyperref[checkMinoes:49]{checkMinoes} & 49&100.0\% & 8172 \\
+\hline
+\hyperref[checkPosition:39]{checkPosition} & 39&100.0\% & 145640 \\
+\hline
+\hyperref[drop:185]{drop} & 185&100.0\% & 62 \\
+\hline
+\hyperref[getNextMino:122]{getNextMino} & 122&100.0\% & 2 \\
+\hline
+\hyperref[getOrientation:65]{getOrientation} & 65&100.0\% & 6392 \\
+\hline
+\hyperref[getRotatedMino:128]{getRotatedMino} & 128&100.0\% & 2 \\
+\hline
+\hyperref[initialSetMinoes:98]{initialSetMinoes} & 98&100.0\% & 62 \\
+\hline
+\hyperref[moveDown:154]{moveDown} & 154&100.0\% & 1077 \\
+\hline
+\hyperref[moveLeft:161]{moveLeft} & 161&100.0\% & 248 \\
+\hline
+\hyperref[moveRight:168]{moveRight} & 168&100.0\% & 190 \\
+\hline
+\hyperref[removeTetramino:140]{removeTetramino} & 140&100.0\% & 1585 \\
+\hline
+\hyperref[rotate:175]{rotate} & 175&100.0\% & 70 \\
+\hline
+\hyperref[setColor:58]{setColor} & 58&100.0\% & 62 \\
+\hline
+\hyperref[setId:61]{setId} & 61&100.0\% & 62 \\
+\hline
+\hyperref[setMinoes:73]{setMinoes} & 73&100.0\% & 1585 \\
+\hline
+\hyperref[validPosition:134]{validPosition} & 134&100.0\% & 6428 \\
+\hline
+\hline
+Tetramino.vdmpp & & 100.0\% & 173285 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoI Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoI:12]{TetraminoI} & 12&100.0\% & 43 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 4971 \\
+\hline
+\hyperref[getRotatedMino:34]{getRotatedMino} & 34&100.0\% & 44 \\
+\hline
+\hline
+TetraminoI.vdmpp & & 100.0\% & 5058 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoJ Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoJ:12]{TetraminoJ} & 12&100.0\% & 4 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 258 \\
+\hline
+\hyperref[getRotatedMino:55]{getRotatedMino} & 55&100.0\% & 4 \\
+\hline
+\hline
+TetraminoJ.vdmpp & & 100.0\% & 266 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoL Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoL:12]{TetraminoL} & 12&100.0\% & 2 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 146 \\
+\hline
+\hyperref[getRotatedMino:55]{getRotatedMino} & 55&100.0\% & 4 \\
+\hline
+\hline
+TetraminoL.vdmpp & & 100.0\% & 152 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoO Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoO:11]{TetraminoO} & 11&100.0\% & 3 \\
+\hline
+\hyperref[getNextMino:19]{getNextMino} & 19&100.0\% & 250 \\
+\hline
+\hyperref[getRotatedMino:58]{getRotatedMino} & 58&100.0\% & 4 \\
+\hline
+\hline
+TetraminoO.vdmpp & & 100.0\% & 257 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoS Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoS:12]{TetraminoS} & 12&100.0\% & 6 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 416 \\
+\hline
+\hyperref[getRotatedMino:55]{getRotatedMino} & 55&100.0\% & 5 \\
+\hline
+\hline
+TetraminoS.vdmpp & & 100.0\% & 427 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoT Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoT:12]{TetraminoT} & 12&100.0\% & 2 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 157 \\
+\hline
+\hyperref[getRotatedMino:67]{getRotatedMino} & 67&100.0\% & 5 \\
+\hline
+\hline
+TetraminoT.vdmpp & & 100.0\% & 164 \\
+\hline
+\end{longtable}
+
+\subsection{TetraminoZ Coverage}
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoZ:12]{TetraminoZ} & 12&100.0\% & 2 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 124 \\
+\hline
+\hyperref[getRotatedMino:55]{getRotatedMino} & 55&100.0\% & 4 \\
+\hline
+\hline
+TetraminoZ.vdmpp & & 100.0\% & 130 \\
+\hline
+\end{longtable}
+
+
+\section{Model Verification}
+
+\subsection{Example of Domain Verification} 
 
 One of the proof obligations generated by Overture is:
 
-\begin{table}[!h]
+\begin{table}[H]
 	\centering
 	\label{domain-verification}
 	\begin{tabular}{|l|l|p{8.5cm}|}
@@ -290,11 +565,11 @@ where we can see that each values of i and j are in the domain of the matrix, an
  
 
 
-\subsection{Example of invariant verification} 
+\subsection{Example of Invariant Verification} 
 
 Another proof obligation generated by Overture is:
 
-\begin{table}[!h]
+\begin{table}[H]
 	\centering
 	\label{invariant-verification}
 	\begin{tabular}{|l|l|p{8.5cm}|}
@@ -313,6 +588,13 @@ The code under analysis, with the relevant map application, are in line 1:
 \begin{center}
 	exists position:Position \& ((len position) = 2)
 \end{center}
+
+\section{Code Generation}
+
+We used Overture to generate java code for our model. After that, we made a simple java Main module that allows for basic game playing or test running. Although with some limitations, due to the use of the console, that game can be played well.
+
+\subsection{Java Main Class}
+\lstinputlisting[style=JavaStyle]{../tetris.app/src/Main.java}
 
 \section{Conclusions} 
 
@@ -336,15 +618,13 @@ In addition it is noticed that all the elements of the group have already had co
 
 \newpage
 \appendix
-\section{Source Code}
-\textcolor{red}{maybe not necessary because of section3}
 
 \section{Indispensable formal rules}\label{rules}
 In this section we present the formal rules that Tetris game must follow. We already present other rules, named informal and in a player view way in section \ref{informal-rules}.
 
 \begin{itemize}
 	\item Playfield is 10 cells wide and at least 22 cells tall, where rows above 20 are hidden or obstructed by the field frame. We follow in our case 10 cells wide and 22 cells tall where the player can see the first 20 rows and the 2 last cells are invisible to the player. 
-	\item The tetromino colors are:
+	\item The tetramino colors are:
 	
 	\begin{tabular}{l}
 		Cyan I;\\
@@ -356,92 +636,80 @@ In this section we present the formal rules that Tetris game must follow. We alr
 		Orange L.\\
 	\end{tabular}
 	
-	\item Each tetromino appear on these exactly locations:
+	\item Each tetramino appear on these exactly locations:
 	
 	\begin{tabular}{l}
 		The I and O spawn in the middle columns;\\
 		The rest spawn in the left-middle columns;\\
-		The tetrominoes spawn horizontally and with their flat side pointed down.\\
+		The tetraminoes spawn horizontally and with their flat side pointed down.\\
 	\end{tabular}
 	
-	\item Super Rotation System (SRS) specifies tetromino rotation.
+	\item Super Rotation System (SRS) specifies tetramino rotation.
 	
 	\item Standard mappings for console and handheld gamepads:
 	Up, Down, Left, Right on joystick perform locking hard drop, non-locking soft drop (except first frame locking in some games), left shift, and right shift respectively.
 	Left fire button rotates 90 degrees counterclockwise, and right fire button rotates 90 degrees clockwise.
-	
-	\item Standard mappings different from console/handheld gamepads for computer keyboards
-	
-	\item So-called Random Generator (also called "random bag" or "7 system")
-	
-	\item "Hold piece": The player can press a button to send the falling tetromino to the hold box, and any tetromino that had been in the hold box moves to the top of the screen and begins falling. Hold cannot be used again until after the piece locks down. Games on platforms with fewer than eight usable buttons (such as the version on iPod) may skip this feature. The combination of hold piece and Random Generator would appear to allow the player to play forever.
-	
-	\item Game must have ghost piece function.
-	
-	\item Terms used in the user manual: "Tetriminos" not "tetrominoes" or "tetrads" or "pieces", letter names not "square" or "stick", etc.
-	
-	\item Designated soft drop speed. Details vary between guideline versions.
-	
-	\item Player may only level up by clearing lines or performing T-Spin. Required lines depends in the game.
-	
-	\item The game must use a variant of Roger Dean's Tetris logo, although this was true from around 2000 - before the guidelines emerged.
-	
-	\item Game must include a song called Korobeiniki. (Guideline 2005~)
-	
+		
+	\item So-called Random Generator (also called ``random bag'' or ``7 system'')
+					
+	\item Player may only level up by clearing lines. Required lines depends in the game.
+			
 	\item The player tops out when a piece is spawned overlapping at least one block, or a piece locks completely above the visible portion of the playfield.
 	
 \end{itemize}
 
 
-\section{The 7 tetrominoes}
+\section{The 7 tetraminoes}
 
 	\parbox[]{0.8\textwidth}{
 	\centering
-	\includegraphics[scale=0.5]{resources/img/tetrominoes}
-	\label{tetrominoes}
+	\includegraphics[scale=0.5]{resources/img/tetraminoes}
+	\label{tetraminoes}
 	}
 
-\section{The position of each mino inside respective tetromino}
+\section{Spawn Position for Each Tetramino}
 
 	\centering
-	\begin{minipage}{0.2\textwidth}
+	\begin{minipage}{0.25\textwidth}
 		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_cyan}
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_cyan}
 		\label{fig:mino-cyan}
 	\end{minipage}%
-	\begin{minipage}{0.2\textwidth}
+	\begin{minipage}{0.25\textwidth}
 		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_yellow}
-		\label{fig:mino-yellow}
-	\end{minipage}%
-	\begin{minipage}{0.2\textwidth}
-		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_purple}
-		\label{fig:mino-purple}
-	\end{minipage}%
-	\begin{minipage}{0.2\textwidth}
-		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_green}
-		\label{fig:mino-green}
-	\end{minipage}
-	\begin{minipage}{0.26\textwidth}
-		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_red}
-		\label{fig:mino-red}
-	\end{minipage}%
-	\begin{minipage}{0.26\textwidth}
-		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_blue}
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_blue}
 		\label{fig:mino-blue}
 	\end{minipage}%
-	\begin{minipage}{0.26\textwidth}
+	\begin{minipage}{0.25\textwidth}
 		\centering
-		\includegraphics[scale=0.4]{resources/img/minos/mino_orange}
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_orange}
 		\label{fig:mino-orange}
 	\end{minipage}%
+	\begin{minipage}{0.25\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_yellow}
+		\label{fig:mino-yellow}
+	\end{minipage}%
+	
+	\begin{minipage}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_green}
+		\label{fig:mino-green}
+	\end{minipage}
+	\begin{minipage}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_purple}
+		\label{fig:mino-purple}
+	\end{minipage}%
+	\begin{minipage}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.4]{resources/img/minoes/mino_red}
+		\label{fig:mino-red}
+	\end{minipage}%
 
+Note: The numbers 1, 2, 3 and 4 inside the tetraminoes indicate each mino.
 
-\section{All possible orientations of each tetromino}
+\section{All Possible Orientations of Each Tetramino}
 	
 	\begin{center}
 
@@ -449,24 +717,24 @@ In this section we present the formal rules that Tetris game must follow. We alr
 	\includegraphics[scale=0.7]{resources/img/orientations/cyan}
 	\label{img:cyan}
 
-	\includegraphics[scale=0.7]{resources/img/orientations/yellow}
-	\label{img:yellow}
-
-	\includegraphics[scale=0.7]{resources/img/orientations/purple}
-	\label{img:purple}
-
-	\includegraphics[scale=0.7]{resources/img/orientations/green}
-	\label{img:green}
-
-	\includegraphics[scale=0.7]{resources/img/orientations/red}
-	\label{img:red}
-
 	\includegraphics[scale=0.7]{resources/img/orientations/blue}
 	\label{img:blue}
 
 	\includegraphics[scale=0.7]{resources/img/orientations/orange}
 	\label{img:orange}
 	
+	\includegraphics[scale=0.7]{resources/img/orientations/yellow}
+	\label{img:yellow}
+
+	\includegraphics[scale=0.7]{resources/img/orientations/green}
+	\label{img:green}
+
+	\includegraphics[scale=0.7]{resources/img/orientations/purple}
+	\label{img:purple}
+
+	\includegraphics[scale=0.7]{resources/img/orientations/red}
+	\label{img:red}
+
 	\end{center}
 	
 \end{document}

@@ -1,9 +1,8 @@
 class Game
 
-	/*
-	Represents the whole game, and provides all the necessary
-	operations for playing it.
-	*/
+	-- Represents the whole game, and provides all the necessary
+	-- operations for playing it.
+	
 	
 	types
 	

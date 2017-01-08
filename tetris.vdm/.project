@@ -22,11 +22,4 @@
 	<natures>
 		<nature>org.overture.ide.vdmpp.core.nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>generatedModelioUML/tetris.uml</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/tetris.uml/XMI/tetris.uml</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

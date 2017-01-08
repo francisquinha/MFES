@@ -1,8 +1,7 @@
 class Board
 
-	/*
-	Represents the game board, with its matrix.
-	*/
+	-- Represents the game board, with its matrix.
+
 
 	types
 		
@@ -44,7 +43,7 @@ class Board
 		
 		-- Initiates the board matrix with all positions empty,
 		-- that is, with zeros.
-		public initBoard : () ==> ()
+		private initBoard : () ==> ()
 		initBoard() == (		
 			for i = 1 to maxRow do
 				for j = 1 to maxColumn do
@@ -103,7 +102,7 @@ class Board
 		-- Checks a board row to determine if it is completely filled
 		-- with tetramino cells. In affirmative case, the row is removed
 		-- from the board and the rows above it are shifted down.
-		public checkRow : int ==> bool
+		private checkRow : int ==> bool
 		checkRow(row) == (
 			for column = 1 to maxColumn do
 				if (matrix([row, column]) = 0) then return false;

@@ -1,8 +1,7 @@
 class TestCaseExtra
 
-	/*
-	Class obtained from the Vending Machine example of MFES
-	*/
+	-- Class obtained from the Vending Machine example of MFES
+	
 	
 	operations
 	-- Simulates assertion checking by reducing it to pre-condition checking.

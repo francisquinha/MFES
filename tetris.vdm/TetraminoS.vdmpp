@@ -1,15 +1,12 @@
 class TetraminoS is subclass of Tetramino
 		
-	/*
+	-- Tetramino of the type J:  xx
+	--							 xx
+	--
+	-- Minoes:	 				 21
+	--							 43
 	
-	Tetramino of the type J:  xx
-							 xx
 	
-	Minoes: 				  21
-							 43
-	
-	*/
-
 	operations
 	
 		public TetraminoS : (Game) ==> TetraminoS
@@ -20,7 +17,7 @@ class TetraminoS is subclass of Tetramino
 			return self
 		);
 			
-		public getNextMino: Board`Position * nat ==> Board`Position
+		protected getNextMino: Board`Position * nat ==> Board`Position
 		getNextMino(position, index) == (
 			dcl result : Board`Position := position;
 			cases Tetramino`getOrientation():
@@ -55,8 +52,7 @@ class TetraminoS is subclass of Tetramino
 			and Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
 		post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
 			
-		
-		public getRotatedMino: Board`Position ==> Board`Position
+		protected getRotatedMino: Board`Position ==> Board`Position
 		getRotatedMino(position) == (
 			dcl result : Board`Position := position;
 			cases Tetramino`getOrientation():

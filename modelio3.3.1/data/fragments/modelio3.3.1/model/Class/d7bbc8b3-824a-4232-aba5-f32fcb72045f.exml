@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Optional&lt;p&gt;" version="3">
+  <DEPS>
+    <ID name="Optional&lt;p&gt;" mc="Class" uid="d7bbc8b3-824a-4232-aba5-f32fcb72045f"/>
+    <EXTID name="Optional&lt;T&gt;" mc="Class" uid="75120826-f04c-41b7-b892-e17c3f5d7fbe"/>
+    <EXTID name="p" mc="Class" uid="85cf2ba3-e48e-40ef-8b7e-1e6dd6cc5d10"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Optional&lt;p&gt;" mc="Class" uid="d7bbc8b3-824a-4232-aba5-f32fcb72045f"/>
+    <PID name="Binding classes" mc="Package" uid="1fa5d405-2b23-47cd-8177-0846cbb97e40"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Optional<p>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="edd32baf-419e-4ef3-8263-5fcfe3d6bbfa"/>
+          <PID name="Optional&lt;p&gt;" mc="Class" uid="d7bbc8b3-824a-4232-aba5-f32fcb72045f"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="4711ecd9-f06a-4aa9-93a6-bcffded7809b"/>
+                <PID name="Optional&lt;p&gt;" mc="Class" uid="d7bbc8b3-824a-4232-aba5-f32fcb72045f"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="p" mc="Class" uid="85cf2ba3-e48e-40ef-8b7e-1e6dd6cc5d10"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="6f720ce3-9671-4040-86dd-3c491f4bbe6a"/>
+                      <PID name="Optional&lt;T&gt;" mc="Class" uid="75120826-f04c-41b7-b892-e17c3f5d7fbe"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
