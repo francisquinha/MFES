@@ -1,0 +1,694 @@
+\begin{vdmpp}[breaklines=true]
+class TestTetris is subclass of TestCaseExtra
+
+ instance variables
+ 
+  private printBoard : Game`String := "";
+   
+
+ operations
+ 
+  -- Prints the initial board matrix and checks it is as should be for tests.
+(*@
+\label{initalMatrix:test:11}
+@*)
+  private initalMatrix_test: Game * bool * bool * bool ==> ()
+  initalMatrix_test(game, printNow, blackConsole, testPrint) == (
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕          ▏" ^
+    "\n▕          ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  ); 
+
+  -- Adds a tetramino of type I to the board and checks it is in the right position.
+(*@
+\label{addTetramino1:test:41}
+@*)
+  private addTetramino1_test: Game * bool * bool * bool ==> ()
+  addTetramino1_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(1);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕          ▏" ^
+    "\n▕   ████   ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+
+  -- Adds a tetramino of type J to the board and checks it is in the right position.
+(*@
+\label{addTetramino2:test:72}
+@*)
+  private addTetramino2_test: Game * bool * bool * bool ==> ()
+  addTetramino2_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(2);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕   █      ▏" ^
+    "\n▕   ███    ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░████░░░▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+
+  -- Adds a tetramino of type L to the board and checks it is in the right position.
+(*@
+\label{addTetramino3:test:103}
+@*)
+  private addTetramino3_test: Game * bool * bool * bool ==> ()
+  addTetramino3_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(3);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕     █    ▏" ^
+    "\n▕   ███    ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕█░░░░░░░░░▏" ^
+    "\n▕███████░░░▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+
+  -- Adds a tetramino of type O to the board and checks it is in the right position.
+(*@
+\label{addTetramino4:test:134}
+@*)
+  private addTetramino4_test: Game * bool * bool * bool ==> ()
+  addTetramino4_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(4);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕    ██    ▏" ^
+    "\n▕    ██    ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕█░░░░░░░░█▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+
+  -- Adds a tetramino of type S to the board and checks it is in the right position.
+(*@
+\label{addTetramino5:test:165}
+@*)
+  private addTetramino5_test: Game * bool * bool * bool ==> ()
+  addTetramino5_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(5);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕    ██    ▏" ^
+    "\n▕   ██     ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░██░░░░▏" ^
+    "\n▕█░░░██░░░█▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+
+  -- Adds a tetramino of type T to the board and checks it is in the right position.
+(*@
+\label{addTetramino6:test:196}
+@*)
+  private addTetramino6_test: Game * bool * bool * bool ==> ()
+  addTetramino6_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(6);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕    █     ▏" ^
+    "\n▕   ███    ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░██░░██▏" ^
+    "\n▕█░░░██░███▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+
+  -- Adds a tetramino of type Z to the board and checks it is in the right position.
+(*@
+\label{addTetramino7:test:227}
+@*)
+  private addTetramino7_test: Game * bool * bool * bool ==> ()
+  addTetramino7_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(7);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕   ██     ▏" ^
+    "\n▕    ██    ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░█░░░▏" ^
+    "\n▕░░░░██████▏" ^
+    "\n▕█░░░██████▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+  
+  -- Adds another tetramino of type S to the board and checks it is in the right position.
+(*@
+\label{addTetramino8:test:258}
+@*)
+  private addTetramino8_test: Game * bool * bool * bool ==> ()
+  addTetramino8_test(game, printNow, blackConsole, testPrint) == (  
+   game.newTetramino(5);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(printBoard, 
+    "\n▕    ██    ▏" ^
+    "\n▕   ██     ▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░░░░░▏" ^
+    "\n▕░░░░░░█░░░▏" ^
+    "\n▕██░░██████▏" ^
+    "\n▕███░██████▏" ^
+    "\n ▔▔▔▔▔▔▔▔▔▔")
+  );
+  
+  -- Moves the first tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino1:test:290}
+@*)
+  private moveTetramino1_test: Game * bool * bool * bool ==> ()
+  moveTetramino1_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 18);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 18);
+   assertEqual(game.checkLines(), 0);
+  );
+  
+  -- Moves the second tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino2:test:312}
+@*)
+  private moveTetramino2_test: Game * bool * bool * bool ==> ()
+  moveTetramino2_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 18);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 36);
+   assertEqual(game.checkLines(), 0);
+  );
+  
+  -- Moves the third tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino3:test:340}
+@*)
+  private moveTetramino3_test: Game * bool * bool * bool ==> ()
+  moveTetramino3_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 18);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 54);
+   assertEqual(game.checkLines(), 1);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 154);
+  );
+  
+  -- Moves the fourth tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino4:test:372}
+@*)
+  private moveTetramino4_test: Game * bool * bool * bool ==> ()
+  moveTetramino4_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 18);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 172);
+   assertEqual(game.checkLines(), 0);
+  );
+  
+  -- Moves the fifth tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino5:test:394}
+@*)
+  private moveTetramino5_test: Game * bool * bool * bool ==> ()
+  moveTetramino5_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 18);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 190);
+   assertEqual(game.checkLines(), 0);
+  );
+  
+  -- Moves the sixed tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino6:test:424}
+@*)
+  private moveTetramino6_test: Game * bool * bool * bool ==> ()
+  moveTetramino6_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.right());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 17);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 207);
+   assertEqual(game.checkLines(), 0);
+  );
+  
+  -- Moves the seventh tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino7:test:452}
+@*)
+  private moveTetramino7_test: Game * bool * bool * bool ==> ()
+  moveTetramino7_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 18);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 225);
+   assertEqual(game.checkLines(), 0);
+  );
+  
+  -- Moves the eighted tetramino several times and in several ways and checks the drop
+  -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino8:test:480}
+@*)
+  private moveTetramino8_test: Game * bool * bool * bool ==> ()
+  moveTetramino8_test(game, printNow, blackConsole, testPrint) == (
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.down());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.rotate());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertTrue(game.left());
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.drop(), 17);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 242);
+   assertEqual(game.checkLines(), 2);
+   printBoard := game.printBoard(printNow, blackConsole, testPrint);
+   assertEqual(game.getScore(), 542);
+  );
+
+  -- Plays the game for a while, using only I tetraminoes, to test the number of lines
+  -- completed, as well as the score and level increments.
+(*@
+\label{play:test:502}
+@*)
+  private play_test: Game * bool * bool * bool ==> ()
+  play_test(game, printNow, blackConsole, testPrint) == (
+   dcl column: nat := 0;
+   for i = 1 to 40 do (
+    game.newTetramino(1);
+    assertTrue(game.down());
+    printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    assertTrue(game.down());
+    printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    assertTrue(game.rotate());
+    printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    while game.left() do
+     printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    for j = 1 to column do
+     if game.right() then
+      printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    if column = 2 or column = 6 then assertEqual(game.drop(), 15)
+    else assertEqual(game.drop(), 16);
+    printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    if column = 9 then (
+     assertEqual(game.checkLines(), 4);
+     printBoard := game.printBoard(true, true, true)
+    )
+    else assertEqual(game.checkLines(), 0);
+    column := (column + 1) mod 10;
+    if i = 20 then (
+     assertEqual(game.getLines(), 11);
+     assertEqual(game.getLevel(), 2);
+     assertEqual(game.getScore(), 542 + 16 * 16 + 15 * 4 + 800 * 2);
+    )
+   );
+   assertEqual(game.getLines(), 19);
+   assertEqual(game.getLevel(), 2);
+   assertEqual(game.getScore(), 2458 + 16 * 16 * 2 + 15 * 4 * 2 + 800 * 2 * 2);
+  ); 
+  
+  -- Randomly generates tetraminoes and drops them, in order to test that the game
+  -- ends correctly.
+(*@
+\label{gameOver:test:540}
+@*)
+  private gameOver_test: Game * bool * bool * bool ==> ()
+  gameOver_test(game, printNow, blackConsole, testPrint) == (
+  
+   while not game.getGameOver() do (
+    game.newRandomTetramino();
+    printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    if game.drop() > 0 
+    then printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    if game.checkLines() > 0
+    then (*@\vdmnotcovered{printBoard}@*) := (*@\vdmnotcovered{game}@*).(*@\vdmnotcovered{printBoard}@*)((*@\vdmnotcovered{printNow}@*), (*@\vdmnotcovered{blackConsole}@*), (*@\vdmnotcovered{testPrint}@*));
+   );
+   assertTrue(game.getGameOver());
+  );
+
+  -- Runs all the tests, printing the board for further visual 
+  -- confirmation of the results.
+(*@
+\label{main:556}
+@*)
+  public static main: bool * bool * bool ==> ()
+  main(printNow, blackConsole, testPrint) == (
+   dcl game: Game := new Game();
+   IO`print("\n##### TESTS #####\n");
+   new TestTetris().initalMatrix_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino1_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino1_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino2_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino2_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino3_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino3_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino4_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino4_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino5_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino5_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino6_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino6_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino7_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino7_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().addTetramino8_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().moveTetramino8_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().play_test(game, printNow, blackConsole, testPrint);
+   new TestTetris().gameOver_test(game, printNow, blackConsole, testPrint);
+  );
+  
+end TestTetris
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[addTetramino1:test:41]{addTetramino1\_test} & 41&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino2:test:72]{addTetramino2\_test} & 72&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino3:test:103]{addTetramino3\_test} & 103&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino4:test:134]{addTetramino4\_test} & 134&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino5:test:165]{addTetramino5\_test} & 165&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino6:test:196]{addTetramino6\_test} & 196&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino7:test:227]{addTetramino7\_test} & 227&100.0\% & 1 \\
+\hline
+\hyperref[addTetramino8:test:258]{addTetramino8\_test} & 258&100.0\% & 1 \\
+\hline
+\hyperref[gameOver:test:540]{gameOver\_test} & 540&84.2\% & 1 \\
+\hline
+\hyperref[initalMatrix:test:11]{initalMatrix\_test} & 11&100.0\% & 1 \\
+\hline
+\hyperref[main:556]{main} & 556&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino1:test:290]{moveTetramino1\_test} & 290&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino2:test:312]{moveTetramino2\_test} & 312&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino3:test:340]{moveTetramino3\_test} & 340&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino4:test:372]{moveTetramino4\_test} & 372&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino5:test:394]{moveTetramino5\_test} & 394&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino6:test:424]{moveTetramino6\_test} & 424&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino7:test:452]{moveTetramino7\_test} & 452&100.0\% & 1 \\
+\hline
+\hyperref[moveTetramino8:test:480]{moveTetramino8\_test} & 480&100.0\% & 1 \\
+\hline
+\hyperref[play:test:502]{play\_test} & 502&100.0\% & 1 \\
+\hline
+\hline
+TestTetris.vdmpp & & 99.6\% & 20 \\
+\hline
+\end{longtable}
+

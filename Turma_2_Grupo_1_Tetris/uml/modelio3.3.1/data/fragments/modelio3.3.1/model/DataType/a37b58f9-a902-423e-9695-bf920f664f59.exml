@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="rat" version="3">
+  <DEPS>
+    <ID name="rat" mc="DataType" uid="a37b58f9-a902-423e-9695-bf920f664f59"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="rat" mc="DataType" uid="a37b58f9-a902-423e-9695-bf920f664f59"/>
+    <PID name="Basic VDM Types" mc="Package" uid="7c956006-f64a-4127-8a87-0b6062ce05a4"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">true</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[rat]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

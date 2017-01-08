@@ -1,0 +1,294 @@
+\begin{vdmpp}[breaklines=true]
+class Tetramino
+
+ -- Defines a tetris piece, with all its relevant attributes.
+ -- The position of the tetramino is represented by the position of 
+ -- its minoes, which are the four cells composing the tetramino.
+
+
+ types
+
+  public Color = <Cyan> | <Blue> | <Orange> 
+   | <Yellow> | <Green> | <Purple> | <Red>;
+  public Minoes = seq of Board`Position
+  -- There are always 4 minoes in each tetramino.
+  inv minoes == len minoes = 4 
+
+
+ instance variables
+ 
+  -- Color of the piece, to aid in visualization
+  private color  : Color  := <Cyan>;
+  -- Id of the piece, to simplify its representation in the board
+  private id   : nat1   := 1;
+  -- The current orientation of the tetramino, since it can rotate
+  private orientation : nat   := 0;
+  -- The positions of each of the individual cells of the tetramino
+  private minoes  : Minoes := [[1, 1], [1, 2], [1, 3], [1, 4]];
+ 
+  -- The id is a natural number between 1 and 7,
+  -- because there are 7 different types of tetraminoes
+  -- The orientation is a number between 0 and 3,
+  -- because there are at most 4 different orientations,
+  -- depending on the tetramino type.
+  inv id <= 7 and orientation < 4
+  
+ 
+ functions
+ 
+  -- Checks if a given position is contained within the expected parameters.
+(*@
+\label{checkPosition:39}
+@*)
+  public checkPosition : Board`Position * int * int * int * int -> bool
+  checkPosition(position, min1, max1, min2, max2) == 
+   position(1) >= min1
+   and position(1) <= max1 
+   and position(2) >= min2
+   and position(2) <= max2;
+  
+  -- Checks that all the tetramino cells have different positions,
+  -- and that those positions are inside the expected parameters,
+  -- which will be the board limits 
+(*@
+\label{checkMinoes:49}
+@*)
+  public checkMinoes: Minoes * int * int * int * int -> bool
+  checkMinoes(minoes, min1, max1, min2, max2) ==
+   card elems minoes = 4 
+   and forall mino in set elems minoes & 
+    checkPosition(mino, min1, max1, min2, max2)
+ 
+ 
+ operations
+  
+(*@
+\label{setColor:58}
+@*)
+  protected setColor : Color ==> ()
+  setColor(c) == color := c;
+  
+(*@
+\label{setId:61}
+@*)
+  protected setId : nat ==> ()
+  setId(i) == id := i
+  pre i >= 1 and i <= 7;
+  
+(*@
+\label{getOrientation:65}
+@*)
+  public getOrientation : () ==> nat
+  getOrientation() == return orientation
+  post RESULT < 4;
+
+  -- Given the position of the first of the four minoes, this operation
+  -- sets the position of remaining three minoes. It also places the tetramino
+  -- on the board if all positions are valid, otherwise, the tetramino remains
+  -- in its original position.
+(*@
+\label{setMinoes:73}
+@*)
+  private setMinoes : Board * Board`Position ==> bool
+  setMinoes(board, position) == (
+   dcl tempMinoes : Minoes := minoes;
+   dcl tempPosition : Board`Position := position;
+   removeTetramino(board);
+   for i = 1 to 4 do (
+    if (validPosition(board, tempPosition)) 
+    then tempMinoes(i) := tempPosition
+    else (
+     addTetramino(board);
+     return false
+    );
+    tempPosition := getNextMino(tempPosition, i);
+   );    
+   minoes := tempMinoes;
+   addTetramino(board);
+   return true
+  )
+  pre checkPosition(position, -1, Board`maxRow + 2, -1, Board`maxColumn + 2)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+  
+  -- Very similar to the previous operation, but this one is used only when a 
+  -- tetramino is generated. It does not remove the tetramino from its previous
+  -- position on the board (since it was never placed) and if at least one of the
+  -- positions of the minoes is invalid, it declares the game over.
+(*@
+\label{initialSetMinoes:98}
+@*)
+  protected initialSetMinoes : Game * Board`Position ==> ()
+  initialSetMinoes(game, position) == (
+   dcl tempPosition : Board`Position := position;
+   dcl tempMinoes : Minoes := minoes;
+   for i = 1 to 4 do (
+    if (validPosition(game.getBoard(), tempPosition)) 
+    then (
+     tempMinoes(i) := tempPosition;
+     tempPosition := getNextMino(tempPosition, i)
+    ) 
+    else game.setGameOver()
+   );   
+   if not game.getGameOver() then (
+    minoes := tempMinoes;
+    addTetramino(game.getBoard())
+   )
+  )
+  pre checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+  
+  -- Given the position of one mino it computes the position of the next mino
+  -- in the tetramino. The current mino is identified by its index within the
+  -- tetramino. This is highly dependent on the type of tetramino, so can 
+  -- only be defined in each subclass.
+(*@
+\label{getNextMino:122}
+@*)
+  protected getNextMino: Board`Position * nat ==> Board`Position
+  getNextMino(position, index) ==
+   is subclass responsibility;
+   
+  -- Given the current position of the first mino of a tetramino, determines
+  -- the position of that mino after the tetramino is rotated.
+(*@
+\label{getRotatedMino:128}
+@*)
+  protected getRotatedMino: Board`Position ==> Board`Position
+  getRotatedMino(position) ==
+   is subclass responsibility;
+
+  -- Checks if a given position on the board is valid for occupation, that is, 
+  -- if it is inside the board limits and not currently occupied by some mino
+(*@
+\label{validPosition:134}
+@*)
+  protected validPosition : Board * Board`Position ==> bool
+  validPosition(board, position) == 
+   return checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn) 
+    and board.getMatrixPosition(position) = 0;
+
+  -- Removes the tetramino from the board.
+(*@
+\label{removeTetramino:140}
+@*)
+  protected removeTetramino : Board ==> ()
+  removeTetramino(board) ==
+   for mino in minoes do
+    board.setMatrixPosition(mino, 0)
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+
+  -- Places the tetramino in the board.
+(*@
+\label{addTetramino:147}
+@*)
+  protected addTetramino : Board ==> ()
+  addTetramino(board) ==
+   for mino in minoes do
+    board.setMatrixPosition(mino, id)
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+
+  -- Moves the tetramino down in the board.
+(*@
+\label{moveDown:154}
+@*)
+  public moveDown : Board ==> bool
+  moveDown(board) == 
+   return setMinoes(board, [minoes(1)(1) + 1, minoes(1)(2)])
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+     
+  -- Moves the tetramino left in the board.
+(*@
+\label{moveLeft:161}
+@*)
+  public moveLeft : Board ==> bool
+  moveLeft(board) == 
+   return setMinoes(board, [minoes(1)(1), minoes(1)(2) - 1])
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+  
+  -- Moves the tetramino right in the board.
+(*@
+\label{moveRight:168}
+@*)
+  public moveRight : Board ==> bool
+  moveRight(board) == 
+   return setMinoes(board, [minoes(1)(1), minoes(1)(2) + 1])
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+
+  -- Rotates the tetramino in the board.
+(*@
+\label{rotate:175}
+@*)
+  public rotate : Board ==> bool
+  rotate(board) == (
+   dcl position : Board`Position := getRotatedMino(minoes(1));
+   orientation := (orientation + 1) mod 4;
+   return setMinoes(board, position)
+  )
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
+  
+  -- Drops the tetramino to the lowest available position in the board.
+(*@
+\label{drop:185}
+@*)
+  public drop : Board ==> nat
+  drop(board) == (
+   dcl result : nat := 0;
+   while moveDown(board) do 
+    result := result + 1;
+   return result
+  )
+  pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
+  post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn) 
+   and RESULT < Board`maxRow;
+  
+end Tetramino
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[addTetramino:147]{addTetramino} & 147&100.0\% & 1646 \\
+\hline
+\hyperref[checkMinoes:49]{checkMinoes} & 49&100.0\% & 8172 \\
+\hline
+\hyperref[checkPosition:39]{checkPosition} & 39&100.0\% & 145640 \\
+\hline
+\hyperref[drop:185]{drop} & 185&100.0\% & 62 \\
+\hline
+\hyperref[getNextMino:122]{getNextMino} & 122&100.0\% & 2 \\
+\hline
+\hyperref[getOrientation:65]{getOrientation} & 65&100.0\% & 6392 \\
+\hline
+\hyperref[getRotatedMino:128]{getRotatedMino} & 128&100.0\% & 2 \\
+\hline
+\hyperref[initialSetMinoes:98]{initialSetMinoes} & 98&100.0\% & 62 \\
+\hline
+\hyperref[moveDown:154]{moveDown} & 154&100.0\% & 1077 \\
+\hline
+\hyperref[moveLeft:161]{moveLeft} & 161&100.0\% & 248 \\
+\hline
+\hyperref[moveRight:168]{moveRight} & 168&100.0\% & 190 \\
+\hline
+\hyperref[removeTetramino:140]{removeTetramino} & 140&100.0\% & 1585 \\
+\hline
+\hyperref[rotate:175]{rotate} & 175&100.0\% & 70 \\
+\hline
+\hyperref[setColor:58]{setColor} & 58&100.0\% & 62 \\
+\hline
+\hyperref[setId:61]{setId} & 61&100.0\% & 62 \\
+\hline
+\hyperref[setMinoes:73]{setMinoes} & 73&100.0\% & 1585 \\
+\hline
+\hyperref[validPosition:134]{validPosition} & 134&100.0\% & 6428 \\
+\hline
+\hline
+Tetramino.vdmpp & & 100.0\% & 173285 \\
+\hline
+\end{longtable}
+

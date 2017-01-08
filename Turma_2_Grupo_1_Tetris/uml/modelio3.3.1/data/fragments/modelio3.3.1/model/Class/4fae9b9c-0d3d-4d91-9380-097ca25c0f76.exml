@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Matrix" version="3">
+  <DEPS>
+    <ID name="Matrix" mc="Class" uid="4fae9b9c-0d3d-4d91-9380-097ca25c0f76"/>
+    <EXTID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Matrix" mc="Class" uid="4fae9b9c-0d3d-4d91-9380-097ca25c0f76"/>
+    <PID name="Board" mc="Class" uid="bc468092-0339-4240-97fb-b9bc5410d64f"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Matrix]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Parent">
+        <OBJECT>
+          <ID name="" mc="Generalization" uid="b241d63b-7f8c-4afb-98a5-4ee2eb9df716"/>
+          <PID name="Matrix" mc="Class" uid="4fae9b9c-0d3d-4d91-9380-097ca25c0f76"/>
+          <ATTRIBUTES>
+            <ATT name="Discriminator"></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="SuperType">
+              <ID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Basic VDM Types" version="3">
+  <DEPS>
+    <ID name="Basic VDM Types" mc="Package" uid="7c956006-f64a-4127-8a87-0b6062ce05a4"/>
+    <COMPID name="&lt;Blue&gt;" mc="DataType" uid="40d6d3b2-558e-4d48-980a-638a1c786505"/>
+    <COMPID name="&lt;Cyan&gt;" mc="DataType" uid="e2577dbb-b4d3-4b95-8a43-2f67ca18dd9b"/>
+    <COMPID name="&lt;Green&gt;" mc="DataType" uid="8e7fb3d2-61ef-4b79-9a3c-0b9b8a64e95d"/>
+    <COMPID name="&lt;Orange&gt;" mc="DataType" uid="1248acfe-4de7-4219-9426-2fbc971a7c7e"/>
+    <COMPID name="&lt;Purple&gt;" mc="DataType" uid="6936a800-49cd-4ea7-93b9-0c1d9b7a4e95"/>
+    <COMPID name="&lt;Red&gt;" mc="DataType" uid="f4908132-f240-4661-b8e4-8224a6d3458e"/>
+    <COMPID name="&lt;Yellow&gt;" mc="DataType" uid="81026f74-682a-4dfe-a141-2eddc691360f"/>
+    <COMPID name="&lt;append&gt;" mc="DataType" uid="a7e20c22-98b1-4dfd-af1d-54ccaf377a55"/>
+    <COMPID name="&lt;start&gt;" mc="DataType" uid="02ae625f-9513-4975-b31c-83b15298e4bd"/>
+    <COMPID name="Any" mc="DataType" uid="d6442300-a897-48bb-b417-e156a135977b"/>
+    <COMPID name="Void" mc="DataType" uid="4a54a707-aa7c-4519-b261-b304b8c716b3"/>
+    <COMPID name="bool" mc="DataType" uid="1213970b-f7fa-467f-ab50-018ca1477d35"/>
+    <COMPID name="int" mc="DataType" uid="b10ef922-5a84-4660-8188-1ee96ae3ffd9"/>
+    <COMPID name="nat" mc="DataType" uid="97a314f0-3e58-49cd-85c3-29457a777b12"/>
+    <COMPID name="nat1" mc="DataType" uid="4d7b2a1d-0edb-4487-b338-fed82801c423"/>
+    <COMPID name="rat" mc="DataType" uid="a37b58f9-a902-423e-9695-bf920f664f59"/>
+    <COMPID name="real" mc="DataType" uid="e2b0f277-ca3d-46b6-a97b-ecdb10deb742"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Basic VDM Types" mc="Package" uid="7c956006-f64a-4127-8a87-0b6062ce05a4"/>
+    <PID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Basic VDM Types]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="int" mc="DataType" uid="b10ef922-5a84-4660-8188-1ee96ae3ffd9"/>
+        <COMPID name="nat" mc="DataType" uid="97a314f0-3e58-49cd-85c3-29457a777b12"/>
+        <COMPID name="&lt;Blue&gt;" mc="DataType" uid="40d6d3b2-558e-4d48-980a-638a1c786505"/>
+        <COMPID name="&lt;Cyan&gt;" mc="DataType" uid="e2577dbb-b4d3-4b95-8a43-2f67ca18dd9b"/>
+        <COMPID name="&lt;Green&gt;" mc="DataType" uid="8e7fb3d2-61ef-4b79-9a3c-0b9b8a64e95d"/>
+        <COMPID name="&lt;Orange&gt;" mc="DataType" uid="1248acfe-4de7-4219-9426-2fbc971a7c7e"/>
+        <COMPID name="&lt;Purple&gt;" mc="DataType" uid="6936a800-49cd-4ea7-93b9-0c1d9b7a4e95"/>
+        <COMPID name="&lt;Red&gt;" mc="DataType" uid="f4908132-f240-4661-b8e4-8224a6d3458e"/>
+        <COMPID name="&lt;Yellow&gt;" mc="DataType" uid="81026f74-682a-4dfe-a141-2eddc691360f"/>
+        <COMPID name="&lt;append&gt;" mc="DataType" uid="a7e20c22-98b1-4dfd-af1d-54ccaf377a55"/>
+        <COMPID name="&lt;start&gt;" mc="DataType" uid="02ae625f-9513-4975-b31c-83b15298e4bd"/>
+        <COMPID name="nat1" mc="DataType" uid="4d7b2a1d-0edb-4487-b338-fed82801c423"/>
+        <COMPID name="Void" mc="DataType" uid="4a54a707-aa7c-4519-b261-b304b8c716b3"/>
+        <COMPID name="bool" mc="DataType" uid="1213970b-f7fa-467f-ab50-018ca1477d35"/>
+        <COMPID name="Any" mc="DataType" uid="d6442300-a897-48bb-b417-e156a135977b"/>
+        <COMPID name="real" mc="DataType" uid="e2b0f277-ca3d-46b6-a97b-ecdb10deb742"/>
+        <COMPID name="rat" mc="DataType" uid="a37b58f9-a902-423e-9695-bf920f664f59"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

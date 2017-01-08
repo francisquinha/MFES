@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Composite VDM Types" version="3">
+  <DEPS>
+    <ID name="Composite VDM Types" mc="Package" uid="200f23a3-da84-408a-ba51-a6be1a359a57"/>
+    <COMPID name="Map&lt;D,R&gt;" mc="Class" uid="4250eca1-0d07-4347-ab0a-21caf475c4cc"/>
+    <COMPID name="Optional&lt;T&gt;" mc="Class" uid="75120826-f04c-41b7-b892-e17c3f5d7fbe"/>
+    <COMPID name="Product&lt;A,B&gt;" mc="Class" uid="1e37846f-acc3-4e5f-b107-3563ff1b24cd"/>
+    <COMPID name="Seq&lt;T&gt;" mc="Class" uid="e294dd19-ef16-4195-8e3a-8e7b276ae78d"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Composite VDM Types" mc="Package" uid="200f23a3-da84-408a-ba51-a6be1a359a57"/>
+    <PID name="modelio3.3.1" mc="Package" uid="5fb36d41-b4a6-41bc-bc68-79c16d294640"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Composite VDM Types]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Seq&lt;T&gt;" mc="Class" uid="e294dd19-ef16-4195-8e3a-8e7b276ae78d"/>
+        <COMPID name="Map&lt;D,R&gt;" mc="Class" uid="4250eca1-0d07-4347-ab0a-21caf475c4cc"/>
+        <COMPID name="Product&lt;A,B&gt;" mc="Class" uid="1e37846f-acc3-4e5f-b107-3563ff1b24cd"/>
+        <COMPID name="Optional&lt;T&gt;" mc="Class" uid="75120826-f04c-41b7-b892-e17c3f5d7fbe"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

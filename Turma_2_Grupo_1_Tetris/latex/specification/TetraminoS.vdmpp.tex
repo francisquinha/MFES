@@ -1,0 +1,97 @@
+\begin{vdmpp}[breaklines=true]
+class TetraminoS is subclass of Tetramino
+  
+ -- Tetramino of the type J:  xx
+ --        xx
+ --
+ -- Minoes:       21
+ --        43
+ 
+ 
+ operations
+ 
+(*@
+\label{TetraminoS:12}
+@*)
+  public TetraminoS : (Game) ==> TetraminoS
+  TetraminoS(game) == (
+   Tetramino`setColor(<Green>);
+   Tetramino`setId(5);
+   Tetramino`initialSetMinoes(game, [1, 6]);
+   return self
+  );
+   
+(*@
+\label{getNextMino:20}
+@*)
+  protected getNextMino: Board`Position * nat ==> Board`Position
+  getNextMino(position, index) == (
+   dcl result : Board`Position := position;
+   cases Tetramino`getOrientation():
+    0 -> (
+     cases index:
+      2 -> result(1) := position(1) + 1,
+      others -> result(2) := position(2) - 1
+     end
+    ),
+    1 -> (
+     cases index:
+      2 -> result(2) := position(2) - 1,
+      others -> result(1) := position(1) - 1
+     end
+    ),
+    2 -> (
+     cases index:
+      2 -> result(1) := position(1) - 1,
+      others -> result(2) := position(2) + 1
+     end
+    ),
+    3 -> (
+     cases index:
+      2 -> result(2) := position(2) + 1,
+      others -> result(1) := position(1) + 1
+     end
+    )
+   end;
+   return result
+  )
+  pre index in set {1, ..., 4} 
+   and Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
+   
+(*@
+\label{getRotatedMino:55}
+@*)
+  protected getRotatedMino: Board`Position ==> Board`Position
+  getRotatedMino(position) == (
+   dcl result : Board`Position := position;
+   cases Tetramino`getOrientation():
+    0 -> result(1) := position(1) + 2,
+    1 -> result(2) := position(2) - 2,
+    2 -> result(1) := position(1) - 2,
+    3 -> result(2) := position(2) + 2
+   end;
+   return result
+  )
+  pre Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+  post Tetramino`checkPosition(RESULT, -1, Board`maxRow + 2, -1, Board`maxColumn + 2);
+
+end TetraminoS
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[TetraminoS:12]{TetraminoS} & 12&100.0\% & 6 \\
+\hline
+\hyperref[getNextMino:20]{getNextMino} & 20&100.0\% & 416 \\
+\hline
+\hyperref[getRotatedMino:55]{getRotatedMino} & 55&100.0\% & 5 \\
+\hline
+\hline
+TetraminoS.vdmpp & & 100.0\% & 427 \\
+\hline
+\end{longtable}
+

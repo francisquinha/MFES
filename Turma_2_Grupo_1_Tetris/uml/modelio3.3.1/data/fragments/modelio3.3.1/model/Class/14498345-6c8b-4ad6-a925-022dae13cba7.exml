@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Map&lt;Board::Position,nat&gt;" version="3">
+  <DEPS>
+    <ID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+    <EXTID name="Map&lt;D,R&gt;" mc="Class" uid="4250eca1-0d07-4347-ab0a-21caf475c4cc"/>
+    <EXTID name="Position" mc="Class" uid="8a0102ea-44ce-4bcf-9dc3-7d1d39197cc9"/>
+    <EXTID name="nat" mc="DataType" uid="97a314f0-3e58-49cd-85c3-29457a777b12"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+    <PID name="Binding classes" mc="Package" uid="1fa5d405-2b23-47cd-8177-0846cbb97e40"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Map<Board::Position,nat>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="56b45eb6-d26a-443a-a8bb-7204eca2f228"/>
+          <PID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="47877172-ecc2-4f88-89df-e89a633b363b"/>
+                <PID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="Position" mc="Class" uid="8a0102ea-44ce-4bcf-9dc3-7d1d39197cc9"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="841c25be-e1a9-4d01-a7a5-e5f70c8a47cd"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="4250eca1-0d07-4347-ab0a-21caf475c4cc"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="769ef912-59cc-4ad6-90fc-0380d8fbafdb"/>
+                <PID name="Map&lt;Board::Position,nat&gt;" mc="Class" uid="14498345-6c8b-4ad6-a925-022dae13cba7"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="nat" mc="DataType" uid="97a314f0-3e58-49cd-85c3-29457a777b12"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="cf422f14-6793-48cd-aa15-6fd92d5e91d8"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="4250eca1-0d07-4347-ab0a-21caf475c4cc"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
