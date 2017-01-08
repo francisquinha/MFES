@@ -37,20 +37,20 @@ class Board
                                                       
  operations
  
-  public Board : () ==> Board
 (*@
-\label{Board:40}
+\label{Board:39}
 @*)
+  public Board : () ==> Board
   Board() == ( 
    initBoard();
   );
   
   -- Initiates the board matrix with all positions empty,
   -- that is, with zeros.
-  private initBoard : () ==> ()
 (*@
-\label{initBoard:47}
+\label{initBoard:46}
 @*)
+  private initBoard : () ==> ()
   initBoard() == (  
    for i = 1 to maxRow do
     for j = 1 to maxColumn do
@@ -63,10 +63,10 @@ class Board
   -- immediately printed. If the boolean blackConsole is true, the
   -- matrix is printed without using colors. If the boolean testPrint
   -- is true, the invisible lines are printed for test purposes.
-  public getBoardPrint : bool * bool * bool ==> Game`String
 (*@
-\label{getBoardPrint:60}
+\label{getBoardPrint:59}
 @*)
+  public getBoardPrint : bool * bool * bool ==> Game`String
   getBoardPrint(printNow, blackConsole, testPrint) == ( 
    dcl print_board : Game`String := "\n";
    dcl start_row : nat1 := 3;
@@ -89,10 +89,10 @@ class Board
   -- and diferentiating the invisible lines.
   -- If blackConsole is false, each tetramino will have a different
   -- print, according to its color.
-  private getCellPrint: nat * nat * bool ==> Game`String
 (*@
-\label{getCellPrint:83}
+\label{getCellPrint:82}
 @*)
+  private getCellPrint: nat * nat * bool ==> Game`String
   getCellPrint(id, row, blackConsole) == (
    if blackConsole then
     cases id:
@@ -100,25 +100,25 @@ class Board
      others -> return "*"
     end
    else
-    cases id:
-     0 -> if row < 3 then return " " else return "#",
-     1 -> return "\u001B[38;5;51m" ^ "*" ^ "\u001B[0m",
-     2 -> return "\u001B[38;5;21m" ^ "*" ^ "\u001B[0m",
-     3 -> return "\u001B[38;5;208m" ^ "*" ^ "\u001B[0m",
-     4 -> return "\u001B[38;5;226m" ^ "*" ^ "\u001B[0m",
-     5 -> return "\u001B[38;5;34m" ^ "*" ^ "\u001B[0m",
-     6 -> return "\u001B[38;5;165m" ^ "*" ^ "\u001B[0m",
-     others -> return "\u001B[38;5;196m" ^ "*" ^ "\u001B[0m"    
+    (*@\vdmnotcovered{cases}@*) (*@\vdmnotcovered{id}@*):
+     (*@\vdmnotcovered{0}@*) -> (*@\vdmnotcovered{if}@*) (*@\vdmnotcovered{row}@*) (*@\vdmnotcovered{<}@*) (*@\vdmnotcovered{3}@*) then (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{" "}@*) else (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{" "}@*),
+     (*@\vdmnotcovered{1}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;51m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{2}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;21m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{3}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;208m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{4}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;226m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{5}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;34m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     (*@\vdmnotcovered{6}@*) -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;165m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*),
+     others -> (*@\vdmnotcovered{return}@*) (*@\vdmnotcovered{"\textbackslash u001B[38;5;196m"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"*"}@*) (*@\vdmnotcovered{\^{}}@*) (*@\vdmnotcovered{"\textbackslash u001B[0m"}@*)    
     end
   );
   
   -- Checks a board row to determine if it is completely filled
   -- with tetramino cells. In affirmative case, the row is removed
   -- from the board and the rows above it are shifted down.
-  private checkRow : int ==> bool
 (*@
-\label{checkRow:106}
+\label{checkRow:105}
 @*)
+  private checkRow : int ==> bool
   checkRow(row) == (
    for column = 1 to maxColumn do
     if (matrix([row, column]) = 0) then return false;
@@ -131,10 +131,10 @@ class Board
   
   -- Checks all the rows of the board and returns the number of rows
   -- that where removed.
-  public checkRows : () ==> nat
 (*@
-\label{checkRows:119}
+\label{checkRows:118}
 @*)
+  public checkRows : () ==> nat
   checkRows() == (
    dcl result : nat := 0;
    for row = 1 to maxRow do
@@ -143,18 +143,18 @@ class Board
   )
   post RESULT <= maxRow;
   
-  public setMatrixPosition : Position * nat ==> ()
 (*@
-\label{setMatrixPosition:128}
+\label{setMatrixPosition:127}
 @*)
+  public setMatrixPosition : Position * nat ==> ()
   setMatrixPosition(position, value) ==
    matrix(position) := value
   pre Tetramino`checkPosition(position, 1, maxRow, 1, maxColumn);
   
-  public getMatrixPosition : Position ==> nat
 (*@
-\label{getMatrixPosition:133}
+\label{getMatrixPosition:132}
 @*)
+  public getMatrixPosition : Position ==> nat
   getMatrixPosition(position) ==
    return matrix(position)  
   pre Tetramino`checkPosition(position, 1, maxRow, 1, maxColumn);

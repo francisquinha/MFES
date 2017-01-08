@@ -10,23 +10,23 @@ class TetraminoS is subclass of Tetramino
  
  operations
  
+(*@
+\label{TetraminoS:12}
+@*)
   public TetraminoS : (Game) ==> TetraminoS
   TetraminoS(game) == (
    Tetramino`setColor(<Green>);
-(*@
-\label{TetraminoS:15}
-@*)
    Tetramino`setId(5);
    Tetramino`initialSetMinoes(game, [1, 6]);
    return self
   );
    
+(*@
+\label{getNextMino:20}
+@*)
   protected getNextMino: Board`Position * nat ==> Board`Position
   getNextMino(position, index) == (
    dcl result : Board`Position := position;
-(*@
-\label{getNextMino:23}
-@*)
    cases Tetramino`getOrientation():
     0 -> (
      cases index:
@@ -59,13 +59,13 @@ class TetraminoS is subclass of Tetramino
    and Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
   post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
    
+(*@
+\label{getRotatedMino:55}
+@*)
   protected getRotatedMino: Board`Position ==> Board`Position
   getRotatedMino(position) == (
    dcl result : Board`Position := position;
    cases Tetramino`getOrientation():
-(*@
-\label{getRotatedMino:59}
-@*)
     0 -> result(1) := position(1) + 2,
     1 -> result(2) := position(2) - 2,
     2 -> result(1) := position(1) - 2,

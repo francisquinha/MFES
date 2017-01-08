@@ -8,19 +8,16 @@ class TestTetris is subclass of TestCaseExtra
 
  operations
  
-(*@
-\label{print:test:10}
-@*)
   -- Prints the initial board matrix and checks it is as should be for tests.
+(*@
+\label{initalMatrix:test:11}
+@*)
   private initalMatrix_test: Game * bool * bool * bool ==> ()
   initalMatrix_test(game, printNow, blackConsole, testPrint) == (
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertEqual(printBoard, 
     "\n|          |" ^
     "\n|          |" ^
-(*@
-\label{initalMatrix:test:17}
-@*)
     "\n|##########|" ^
     "\n|##########|" ^
     "\n|##########|" ^
@@ -45,6 +42,9 @@ class TestTetris is subclass of TestCaseExtra
   ); 
 
   -- Adds a tetramino of type I to the board and checks it is in the right position.
+(*@
+\label{addTetramino1:test:41}
+@*)
   private addTetramino1_test: Game * bool * bool * bool ==> ()
   addTetramino1_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(1);
@@ -52,9 +52,6 @@ class TestTetris is subclass of TestCaseExtra
    assertEqual(printBoard, 
     "\n|          |" ^
     "\n|   ****   |" ^
-(*@
-\label{addTetramino1:test:48}
-@*)
     "\n|##########|" ^
     "\n|##########|" ^
     "\n|##########|" ^
@@ -79,14 +76,14 @@ class TestTetris is subclass of TestCaseExtra
   );
 
   -- Adds a tetramino of type J to the board and checks it is in the right position.
+(*@
+\label{addTetramino2:test:72}
+@*)
   private addTetramino2_test: Game * bool * bool * bool ==> ()
   addTetramino2_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(2);
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertEqual(printBoard, 
-(*@
-\label{addTetramino2:test:77}
-@*)
     "\n|   *      |" ^
     "\n|   ***    |" ^
     "\n|##########|" ^
@@ -113,12 +110,12 @@ class TestTetris is subclass of TestCaseExtra
   );
 
   -- Adds a tetramino of type L to the board and checks it is in the right position.
+(*@
+\label{addTetramino3:test:103}
+@*)
   private addTetramino3_test: Game * bool * bool * bool ==> ()
   addTetramino3_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(3);
-(*@
-\label{addTetramino3:test:106}
-@*)
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertEqual(printBoard, 
     "\n|     *    |" ^
@@ -147,10 +144,10 @@ class TestTetris is subclass of TestCaseExtra
   );
 
   -- Adds a tetramino of type O to the board and checks it is in the right position.
-  private addTetramino4_test: Game * bool * bool * bool ==> ()
 (*@
-\label{addTetramino4:test:135}
+\label{addTetramino4:test:134}
 @*)
+  private addTetramino4_test: Game * bool * bool * bool ==> ()
   addTetramino4_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(4);
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
@@ -180,10 +177,10 @@ class TestTetris is subclass of TestCaseExtra
     "\n ----------")
   );
 
-(*@
-\label{addTetramino5:test:164}
-@*)
   -- Adds a tetramino of type S to the board and checks it is in the right position.
+(*@
+\label{addTetramino5:test:165}
+@*)
   private addTetramino5_test: Game * bool * bool * bool ==> ()
   addTetramino5_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(5);
@@ -212,12 +209,12 @@ class TestTetris is subclass of TestCaseExtra
     "\n|####**####|" ^
     "\n|*###**###*|" ^
     "\n ----------")
-(*@
-\label{addTetramino6:test:193}
-@*)
   );
 
   -- Adds a tetramino of type T to the board and checks it is in the right position.
+(*@
+\label{addTetramino6:test:196}
+@*)
   private addTetramino6_test: Game * bool * bool * bool ==> ()
   addTetramino6_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(6);
@@ -244,14 +241,14 @@ class TestTetris is subclass of TestCaseExtra
     "\n|##########|" ^
     "\n|##########|" ^
     "\n|####**##**|" ^
-(*@
-\label{addTetramino7:test:222}
-@*)
     "\n|*###**#***|" ^
     "\n ----------")
   );
 
   -- Adds a tetramino of type Z to the board and checks it is in the right position.
+(*@
+\label{addTetramino7:test:227}
+@*)
   private addTetramino7_test: Game * bool * bool * bool ==> ()
   addTetramino7_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(7);
@@ -276,9 +273,6 @@ class TestTetris is subclass of TestCaseExtra
     "\n|##########|" ^
     "\n|##########|" ^
     "\n|##########|" ^
-(*@
-\label{addTetramino8:test:251}
-@*)
     "\n|######*###|" ^
     "\n|####******|" ^
     "\n|*###******|" ^
@@ -286,6 +280,9 @@ class TestTetris is subclass of TestCaseExtra
   );
   
   -- Adds another tetramino of type S to the board and checks it is in the right position.
+(*@
+\label{addTetramino8:test:258}
+@*)
   private addTetramino8_test: Game * bool * bool * bool ==> ()
   addTetramino8_test(game, printNow, blackConsole, testPrint) == (  
    game.newTetramino(5);
@@ -310,9 +307,6 @@ class TestTetris is subclass of TestCaseExtra
     "\n|##########|" ^
     "\n|##########|" ^
     "\n|##########|" ^
-(*@
-\label{moveTetramino1:test:282}
-@*)
     "\n|######*###|" ^
     "\n|**##******|" ^
     "\n|***#******|" ^
@@ -321,6 +315,9 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the first tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino1:test:290}
+@*)
   private moveTetramino1_test: Game * bool * bool * bool ==> ()
   moveTetramino1_test(game, printNow, blackConsole, testPrint) == (
    assertTrue(game.down());
@@ -332,9 +329,6 @@ class TestTetris is subclass of TestCaseExtra
    assertTrue(game.rotate());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.rotate());
-(*@
-\label{moveTetramino2:test:301}
-@*)
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.rotate());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
@@ -346,6 +340,9 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the second tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino2:test:312}
+@*)
   private moveTetramino2_test: Game * bool * bool * bool ==> ()
   moveTetramino2_test(game, printNow, blackConsole, testPrint) == (
    assertTrue(game.down());
@@ -360,9 +357,6 @@ class TestTetris is subclass of TestCaseExtra
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.rotate());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
-(*@
-\label{moveTetramino3:test:326}
-@*)
    assertTrue(game.left());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.left());
@@ -377,6 +371,9 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the third tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino3:test:340}
+@*)
   private moveTetramino3_test: Game * bool * bool * bool ==> ()
   moveTetramino3_test(game, printNow, blackConsole, testPrint) == (
    assertTrue(game.down());
@@ -392,9 +389,6 @@ class TestTetris is subclass of TestCaseExtra
    assertTrue(game.rotate());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.right());
-(*@
-\label{moveTetramino4:test:355}
-@*)
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.right());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
@@ -412,11 +406,11 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the fourth tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino4:test:372}
+@*)
   private moveTetramino4_test: Game * bool * bool * bool ==> ()
   moveTetramino4_test(game, printNow, blackConsole, testPrint) == (
-(*@
-\label{moveTetramino5:test:374}
-@*)
    assertTrue(game.down());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.down());
@@ -437,6 +431,9 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the fifth tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino5:test:394}
+@*)
   private moveTetramino5_test: Game * bool * bool * bool ==> ()
   moveTetramino5_test(game, printNow, blackConsole, testPrint) == (
    assertTrue(game.down());
@@ -444,9 +441,6 @@ class TestTetris is subclass of TestCaseExtra
    assertTrue(game.down());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.rotate());
-(*@
-\label{moveTetramino6:test:401}
-@*)
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.rotate());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
@@ -470,11 +464,11 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the sixed tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino6:test:424}
+@*)
   private moveTetramino6_test: Game * bool * bool * bool ==> ()
   moveTetramino6_test(game, printNow, blackConsole, testPrint) == (
-(*@
-\label{moveTetramino7:test:426}
-@*)
    assertTrue(game.down());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.down());
@@ -500,10 +494,10 @@ class TestTetris is subclass of TestCaseExtra
   );
   
   -- Moves the seventh tetramino several times and in several ways and checks the drop
-(*@
-\label{moveTetramino8:test:451}
-@*)
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino7:test:452}
+@*)
   private moveTetramino7_test: Game * bool * bool * bool ==> ()
   moveTetramino7_test(game, printNow, blackConsole, testPrint) == (
    assertTrue(game.down());
@@ -524,9 +518,6 @@ class TestTetris is subclass of TestCaseExtra
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertTrue(game.left());
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
-(*@
-\label{play:test:472}
-@*)
    assertEqual(game.drop(), 18);
    printBoard := game.printBoard(printNow, blackConsole, testPrint);
    assertEqual(game.getScore(), 225);
@@ -535,6 +526,9 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Moves the eighted tetramino several times and in several ways and checks the drop
   -- amount as well as the score and the lines.
+(*@
+\label{moveTetramino8:test:480}
+@*)
   private moveTetramino8_test: Game * bool * bool * bool ==> ()
   moveTetramino8_test(game, printNow, blackConsole, testPrint) == (
    assertTrue(game.down());
@@ -557,6 +551,9 @@ class TestTetris is subclass of TestCaseExtra
 
   -- Plays the game for a while, using only I tetraminoes, to test the number of lines
   -- completed, as well as the score and level increments.
+(*@
+\label{play:test:502}
+@*)
   private play_test: Game * bool * bool * bool ==> ()
   play_test(game, printNow, blackConsole, testPrint) == (
    dcl column: nat := 0;
@@ -565,9 +562,6 @@ class TestTetris is subclass of TestCaseExtra
     assertTrue(game.down());
     printBoard := game.printBoard(printNow, blackConsole, testPrint);
     assertTrue(game.down());
-(*@
-\label{gameOver:test:510}
-@*)
     printBoard := game.printBoard(printNow, blackConsole, testPrint);
     assertTrue(game.rotate());
     printBoard := game.printBoard(printNow, blackConsole, testPrint);
@@ -583,9 +577,6 @@ class TestTetris is subclass of TestCaseExtra
      assertEqual(game.checkLines(), 4);
      printBoard := game.printBoard(true, true, true)
     )
-(*@
-\label{main:525}
-@*)
     else assertEqual(game.checkLines(), 0);
     column := (column + 1) mod 10;
     if i = 20 then (
@@ -601,6 +592,9 @@ class TestTetris is subclass of TestCaseExtra
   
   -- Randomly generates tetraminoes and drops them, in order to test that the game
   -- ends correctly.
+(*@
+\label{gameOver:test:540}
+@*)
   private gameOver_test: Game * bool * bool * bool ==> ()
   gameOver_test(game, printNow, blackConsole, testPrint) == (
   
@@ -610,13 +604,16 @@ class TestTetris is subclass of TestCaseExtra
     if game.drop() > 0 
     then printBoard := game.printBoard(printNow, blackConsole, testPrint);
     if game.checkLines() > 0
-    then printBoard := game.printBoard(printNow, blackConsole, testPrint);
+    then (*@\vdmnotcovered{printBoard}@*) := (*@\vdmnotcovered{game}@*).(*@\vdmnotcovered{printBoard}@*)((*@\vdmnotcovered{printNow}@*), (*@\vdmnotcovered{blackConsole}@*), (*@\vdmnotcovered{testPrint}@*));
    );
    assertTrue(game.getGameOver());
   );
 
   -- Runs all the tests, printing the board for further visual 
   -- confirmation of the results.
+(*@
+\label{main:556}
+@*)
   public static main: bool * bool * bool ==> ()
   main(printNow, blackConsole, testPrint) == (
    dcl game: Game := new Game();

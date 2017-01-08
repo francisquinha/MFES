@@ -10,10 +10,10 @@ class TetraminoI is subclass of Tetramino
   
  operations
  
-  public TetraminoI : Game ==> TetraminoI
 (*@
-\label{TetraminoI:13}
+\label{TetraminoI:12}
 @*)
+  public TetraminoI : Game ==> TetraminoI
   TetraminoI(game) == (
    Tetramino`setColor(<Cyan>);
    Tetramino`setId(1);
@@ -21,10 +21,10 @@ class TetraminoI is subclass of Tetramino
    return self
   );
   
-  protected getNextMino: Board`Position * nat ==> Board`Position
 (*@
-\label{getNextMino:21}
+\label{getNextMino:20}
 @*)
+  protected getNextMino: Board`Position * nat ==> Board`Position
   getNextMino(position, index) == (
    dcl result : Board`Position := position;
    cases Tetramino`getOrientation():
@@ -38,10 +38,10 @@ class TetraminoI is subclass of Tetramino
   pre Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
   post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
   
-  protected getRotatedMino: Board`Position ==> Board`Position
 (*@
-\label{getRotatedMino:35}
+\label{getRotatedMino:34}
 @*)
+  protected getRotatedMino: Board`Position ==> Board`Position
   getRotatedMino(position) == (
    dcl result : Board`Position := position;
    cases Tetramino`getOrientation():

@@ -33,39 +33,39 @@ class Game
   
  operations
  
-  public Game : () ==> Game
 (*@
-\label{Game:36}
+\label{Game:35}
 @*)
+  public Game : () ==> Game
   Game() ==
    board := new Board();
     
-    public getBoard: () ==> Board
 (*@
-\label{getBoard:40}
+\label{getBoard:39}
 @*)
+    public getBoard: () ==> Board
     getBoard() ==
      return board;
         
-  public setGameOver : () ==> ()
 (*@
-\label{setGameOver:44}
+\label{setGameOver:43}
 @*)
+  public setGameOver : () ==> ()
   setGameOver() ==
    gameOver := true;
    
-  public getGameOver : () ==> bool
 (*@
-\label{getGameOver:48}
+\label{getGameOver:47}
 @*)
+  public getGameOver : () ==> bool
   getGameOver() ==
    return gameOver;
        
     -- Generates a new tetramino of the specified type.
-  public newTetramino : nat1 ==> ()
 (*@
-\label{newTetramino:53}
+\label{newTetramino:52}
 @*)
+  public newTetramino : nat1 ==> ()
   newTetramino(id) == (  
    cases id:
     1 -> tetramino := new TetraminoI(self),
@@ -80,52 +80,52 @@ class Game
   pre id >= 1 and id <= 7;
   
     -- Generates a new random tetramino.
-  public newRandomTetramino: () ==> ()
 (*@
-\label{newRandomTetramino:68}
+\label{newRandomTetramino:67}
 @*)
+  public newRandomTetramino: () ==> ()
   newRandomTetramino() == 
    newTetramino(MATH`rand(7) + 1);
   
     -- Tries to move the current tetramino down.
-  public down : () ==> bool
 (*@
-\label{down:73}
+\label{down:72}
 @*)
+  public down : () ==> bool
   down() ==
    return tetramino.moveDown(board);
    
     -- Tries to move the current tetramino left.
-  public left : () ==> bool
 (*@
-\label{left:78}
+\label{left:77}
 @*)
+  public left : () ==> bool
   left() ==
    return tetramino.moveLeft(board);
 
     -- Tries to move the current tetramino right.
-  public right : () ==> bool
 (*@
-\label{right:83}
+\label{right:82}
 @*)
+  public right : () ==> bool
   right() ==
    return tetramino.moveRight(board);
    
     -- Tries to rotate the current tetramino.
-  public rotate : () ==> bool
 (*@
-\label{rotate:88}
+\label{rotate:87}
 @*)
+  public rotate : () ==> bool
   rotate() ==
    return tetramino.rotate(board);
 
     -- Drops the current tetramino to the bottom of the board. 
     -- Also updates the score, using the current level and the
     -- total distance of the drop. 
-  public drop : () ==> nat
 (*@
-\label{drop:95}
+\label{drop:94}
 @*)
+  public drop : () ==> nat
   drop() == (
    dcl dropDistance: nat := tetramino.drop(board);
    score := score + dropDistance * level;
@@ -135,10 +135,10 @@ class Game
   -- Checks all game lines for completion and updates the game
   -- score according to the number of completed lines and the
   -- current game level.
-  public checkLines : () ==> nat
 (*@
-\label{checkLines:105}
+\label{checkLines:104}
 @*)
+  public checkLines : () ==> nat
   checkLines() == (
    dcl newLines: nat := board.checkRows();
    lines := lines + newLines;
@@ -147,22 +147,22 @@ class Game
    return newLines
   );
 
-  public getScore : () ==> nat
 (*@
-\label{getScore:114}
+\label{getScore:113}
 @*)
+  public getScore : () ==> nat
   getScore() == return score;
    
-  public getLines : () ==> nat
 (*@
-\label{getLines:117}
+\label{getLines:116}
 @*)
+  public getLines : () ==> nat
   getLines() == return lines;
 
-  public getLevel : () ==> nat1
 (*@
-\label{getLevel:120}
+\label{getLevel:119}
 @*)
+  public getLevel : () ==> nat1
   getLevel() == return level;
   
   -- Returns a printing string of the board.
@@ -171,10 +171,10 @@ class Game
   -- and diferentiating the invisible lines.
   -- If blackConsole is false, each tetramino will have a different
   -- print, according to its color.
-  public printBoard : bool * bool * bool ==> String
 (*@
-\label{printBoard:129}
+\label{printBoard:128}
 @*)
+  public printBoard : bool * bool * bool ==> String
   printBoard(printNow, blackConsole, testPrint) == 
    return board.getBoardPrint(printNow, blackConsole, testPrint);
    
