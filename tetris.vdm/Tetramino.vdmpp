@@ -1,33 +1,53 @@
 class Tetramino
 
-	types 
-	
+	/*
+	Defines a tetris piece, with all its relevant atributes.
+	The position of the tetramino is represented by the position of 
+	its minoes, which are the four cells composing the tetramino.
+	*/
+
+	types
+
 		public Color = <Cyan> | <Blue> | <Orange> 
 			| <Yellow> | <Green> | <Purple> | <Red>;
 		public Minoes = seq of Board`Position
-		inv minoes == len minoes = 4
+		-- There are always 4 minoes in each tetramino.
+		inv minoes == len minoes = 4 
 
 
 	instance variables
 	
-		private color				: Color  	:= <Cyan>;
-		private id					: nat 	 	:= 0;
-		private orientation			: nat 	 	:= 0;
-		private minoes				: Minoes	:= [[1, 1], [1, 2], [1, 3], [1, 4]];
+		-- Color of the piece, to aid in visualization
+		private color		: Color  := <Cyan>;
+		-- Id of the piece, to simplify its representation in the board
+		private id			: nat1 	 := 1;
+		-- The current orientation of the tetramino, since it can rotate
+		private orientation	: nat 	 := 0;
+		-- The positions of each of the tetramino's individual cells
+		private minoes		: Minoes := [[1, 1], [1, 2], [1, 3], [1, 4]];
 	
+		-- The id is a natural number between 1 and 7,
+		-- because there are 7 different types of tetraminos
+		-- The orientation is a number between 0 and 3,
+		-- because there are at most 4 diffenrent orientations,
+		-- depending on the tetramino type.
 		inv id <= 7 and orientation < 4
 		
 	
 	functions
 	
-		private checkPosition : Board`Position * int * int * int * int -> bool
+		-- Checks if a given position is contained within the expected parameters.
+		public checkPosition : Board`Position * int * int * int * int -> bool
 		checkPosition(position, min1, max1, min2, max2) == 
 			position(1) >= min1
 			and position(1) <= max1 
 			and position(2) >= min2
 			and position(2) <= max2;
-			
-		private checkMinoes: Minoes * int * int * int * int -> bool
+		
+		-- Checks that all the tetramino cells have different positions,
+		-- and that those positions are inside the expected parameters,
+		-- which will be the board limits 
+		public checkMinoes: Minoes * int * int * int * int -> bool
 		checkMinoes(minoes, min1, max1, min2, max2) ==
 			card elems minoes = 4 
 			and forall mino in set elems minoes & 
@@ -46,10 +66,11 @@ class Tetramino
 		public getOrientation : () ==> nat
 		getOrientation() == return orientation
 		post RESULT < 4;
-		
-		public getMinoes : () ==> Minoes
-		getMinoes() == return minoes;
 
+		-- Given the position of the first of the four minoes, this operation
+		-- sets the position of remaining three minoes. It also places the tetramino
+		-- on the board if all positions are valid, otherwise, the tetramino remains
+		-- in its original position.
 		public setMinoes : Board * Board`Position ==> bool
 		setMinoes(board, position) == (
 			dcl tempMinoes : Minoes := minoes;
@@ -71,6 +92,10 @@ class Tetramino
 		pre checkPosition(position, -1, Board`maxRow + 2, -1, Board`maxColumn + 2)
 		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 		
+		-- Very similar to the previous operation, but this one is used only when a 
+		-- tetramino is generated. It does not remove the tetramino from its previous
+		-- position on the board (since it was never placed) and if at least one of the
+		-- positions of the minoes is invalid, it declares the game over.
 		public initialSetMinoes : Game * Board`Position ==> ()
 		initialSetMinoes(game, position) == (
 			dcl tempPosition : Board`Position := position;
@@ -91,54 +116,63 @@ class Tetramino
 		pre checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
 		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 		
+		-- Given the position of one mino it computes the position of the next mino
+		-- in the tetramino. The current mino is identified by its index within the
+		-- tetramino. This is highly dependent on the type of tetramino, so can 
+		-- only be defined in each subclass.
 		public getNextMino: Board`Position * nat ==> Board`Position
 		getNextMino(position, index) ==
-			is subclass responsibility
-		pre index in set {1, ..., 4} 
-			and checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
-		post checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
+			is subclass responsibility;
 			
+		-- Given the current position of the first mino of a tetramino, determines
+		-- the position of that mino after the tetramino is rotated.
 		public getRotatedMino: Board`Position ==> Board`Position
 		getRotatedMino(position) ==
-			is subclass responsibility
-		pre checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
-		post checkPosition(RESULT, -1, Board`maxRow + 2, -1, Board`maxColumn + 2); 
+			is subclass responsibility;
 
+		-- Checks if a given position on the board is valid for occupation, that is, 
+		-- if it is inside the board limits and not currently occupied by some mino
 		public validPosition : Board * Board`Position ==> bool
 		validPosition(board, position) == 
 			return checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn) 
 				and board.getMatrixPosition(position) = 0;
 
+		-- Removes the tetramino from the board.
 		public removeTetramino : Board ==> ()
 		removeTetramino(board) ==
 			for mino in minoes do
 				board.setMatrixPosition(mino, 0)
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 
+		-- Places the tetramino in the board.
 		public addTetramino : Board ==> ()
 		addTetramino(board) ==
 			for mino in minoes do
 				board.setMatrixPosition(mino, id)
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 
+		-- Moves the tetramino down in the board.
 		public moveDown : Board ==> bool
 		moveDown(board) == 
 			return setMinoes(board, [minoes(1)(1) + 1, minoes(1)(2)])
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
 		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 					
+		-- Moves the tetramino left in the board.
 		public moveLeft : Board ==> bool
 		moveLeft(board) == 
 			return setMinoes(board, [minoes(1)(1), minoes(1)(2) - 1])
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
 		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 		
+		-- Moves the tetramino right in the board.
 		public moveRight : Board ==> bool
 		moveRight(board) == 
 			return setMinoes(board, [minoes(1)(1), minoes(1)(2) + 1])
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
 		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 
+		-- Rotates the tetramino in the board.
 		public rotate : Board ==> bool
 		rotate(board) == (
 			dcl position : Board`Position := getRotatedMino(minoes(1));
@@ -148,6 +182,7 @@ class Tetramino
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
 		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn);
 		
+		-- Drops the tetramino to the lowest available position in the board.
 		public drop : Board ==> nat
 		drop(board) == (
 			dcl result : nat := 0;
@@ -156,6 +191,7 @@ class Tetramino
 			return result
 		)
 		pre checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn)
-		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn) and RESULT < Board`maxRow;
+		post checkMinoes(minoes, 1, Board`maxRow, 1, Board`maxColumn) 
+			and RESULT < Board`maxRow;
 		
 end Tetramino

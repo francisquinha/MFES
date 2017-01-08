@@ -11,7 +11,7 @@ public class Game {
   private Number score = 0L;
   private Number lines = 0L;
   private Number level = 1L;
-  private VDMSeq lineScores = SeqUtil.seq(100L, 300L, 400L, 800L);
+  private static VDMSeq lineScores = SeqUtil.seq(100L, 300L, 400L, 800L);
 
   public void cg_init_Game_1() {
 
@@ -99,11 +99,6 @@ public class Game {
   public void newRandomTetramino() {
 
     newTetramino(MATH.rand(7L).longValue() + 1L);
-  }
-
-  private void incScore(final Number inc) {
-
-    score = score.longValue() + inc.longValue();
   }
 
   public Boolean down() {

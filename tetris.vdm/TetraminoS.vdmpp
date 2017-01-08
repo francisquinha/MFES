@@ -1,6 +1,17 @@
 class TetraminoS is subclass of Tetramino
 		
+	/*
+	
+	Tetramino of the type J:  xx
+							 xx
+	
+	Minoes: 				  21
+							 43
+	
+	*/
+
 	operations
+	
 		public TetraminoS : (Game) ==> TetraminoS
 		TetraminoS(game) == (
 			Tetramino`setColor(<Green>);
@@ -39,7 +50,11 @@ class TetraminoS is subclass of Tetramino
 				)
 			end;
 			return result
-		);	
+		)
+		pre index in set {1, ..., 4} 
+			and Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+		post Tetramino`checkPosition(RESULT, 0, Board`maxRow + 1, 0, Board`maxColumn + 1);
+			
 		
 		public getRotatedMino: Board`Position ==> Board`Position
 		getRotatedMino(position) == (
@@ -51,6 +66,8 @@ class TetraminoS is subclass of Tetramino
 				3 -> result(2) := position(2) + 2
 			end;
 			return result
-		);	
+		)
+		pre Tetramino`checkPosition(position, 1, Board`maxRow, 1, Board`maxColumn)
+		post Tetramino`checkPosition(RESULT, -1, Board`maxRow + 2, -1, Board`maxColumn + 2);
 
 end TetraminoS

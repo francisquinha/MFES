@@ -6,7 +6,7 @@ import org.overture.codegen.runtime.*;
 @SuppressWarnings("all")
 abstract public class Tetramino {
   private Object color = tetris.vdm.quotes.CyanQuote.getInstance();
-  private Number id = 0L;
+  private Number id = 1L;
   private Number orientation = 0L;
   private VDMSeq minoes =
       SeqUtil.seq(
@@ -25,11 +25,6 @@ abstract public class Tetramino {
   public Number getOrientation() {
 
     return orientation;
-  }
-
-  public VDMSeq getMinoes() {
-
-    return Utils.copy(minoes);
   }
 
   public Boolean setMinoes(final Board board, final VDMSeq position) {
@@ -81,15 +76,15 @@ abstract public class Tetramino {
 
   public Boolean validPosition(final Board board, final VDMSeq position) {
 
-    Boolean andResult_12 = false;
+    Boolean andResult_5 = false;
 
     if (checkPosition(Utils.copy(position), 1L, Board.maxRow, 1L, Board.maxColumn)) {
       if (Utils.equals(board.getMatrixPosition(Utils.copy(position)), 0L)) {
-        andResult_12 = true;
+        andResult_5 = true;
       }
     }
 
-    return andResult_12;
+    return andResult_5;
   }
 
   public void removeTetramino(final Board board) {
@@ -145,10 +140,10 @@ abstract public class Tetramino {
   public Number drop(final Board board) {
 
     Number result = 0L;
-    Boolean whileCond_2 = true;
-    while (whileCond_2) {
-      whileCond_2 = moveDown(board);
-      if (!(whileCond_2)) {
+    Boolean whileCond_3 = true;
+    while (whileCond_3) {
+      whileCond_3 = moveDown(board);
+      if (!(whileCond_3)) {
         break;
       }
 
@@ -160,48 +155,48 @@ abstract public class Tetramino {
 
   public Tetramino() {}
 
-  private static Boolean checkPosition(
+  public static Boolean checkPosition(
       final VDMSeq position,
       final Number min1,
       final Number max1,
       final Number min2,
       final Number max2) {
 
-    Boolean andResult_14 = false;
+    Boolean andResult_7 = false;
 
     if (((Number) Utils.get(position, 1L)).longValue() >= min1.longValue()) {
-      Boolean andResult_15 = false;
+      Boolean andResult_8 = false;
 
       if (((Number) Utils.get(position, 1L)).longValue() <= max1.longValue()) {
-        Boolean andResult_16 = false;
+        Boolean andResult_9 = false;
 
         if (((Number) Utils.get(position, 2L)).longValue() >= min2.longValue()) {
           if (((Number) Utils.get(position, 2L)).longValue() <= max2.longValue()) {
-            andResult_16 = true;
+            andResult_9 = true;
           }
         }
 
-        if (andResult_16) {
-          andResult_15 = true;
+        if (andResult_9) {
+          andResult_8 = true;
         }
       }
 
-      if (andResult_15) {
-        andResult_14 = true;
+      if (andResult_8) {
+        andResult_7 = true;
       }
     }
 
-    return andResult_14;
+    return andResult_7;
   }
 
-  private static Boolean checkMinoes(
+  public static Boolean checkMinoes(
       final VDMSeq minoes_1,
       final Number min1,
       final Number max1,
       final Number min2,
       final Number max2) {
 
-    Boolean andResult_17 = false;
+    Boolean andResult_10 = false;
 
     if (Utils.equals(SeqUtil.elems(Utils.copy(minoes_1)).size(), 4L)) {
       Boolean forAllExpResult_1 = true;
@@ -211,11 +206,11 @@ abstract public class Tetramino {
         forAllExpResult_1 = checkPosition(Utils.copy(mino), min1, max1, min2, max2);
       }
       if (forAllExpResult_1) {
-        andResult_17 = true;
+        andResult_10 = true;
       }
     }
 
-    return andResult_17;
+    return andResult_10;
   }
 
   public String toString() {

@@ -1,4 +1,9 @@
 class Game
+
+	/*
+	Represents the whole game, and provides all the necessary
+	operations for playing it.
+	*/
 	
 	types
 	
@@ -7,21 +12,31 @@ class Game
 
 	instance variables
 		
+		-- The game board.
 		private board		: Board;
+		-- The current game tetramino.
 		private tetramino	: Tetramino;
-		private gameOver	: bool			:= false;		
+		-- Indicates if the game is finished.
+		private gameOver	: bool			:= false;	
+		-- The game score.	
 		private score		: nat			:= 0;
-		private lines		: nat			:= 0;		
+		-- The number of completed lines in the game.
+		private lines		: nat			:= 0;
+		-- The level of the game.	
 		private level		: nat1			:= 1;
-		private lineScores	: seq of nat	:= [100, 300, 400, 800];
+		
+		-- The scores that lines make, according to the number of lines 
+		-- made at once (1, 2, 3 or 4).
+		private static lineScores	: seq of nat
+			:= [100, 300, 400, 800];
 		
 		
 	operations
 	
 		public Game : () ==> Game
 		Game() ==
-			board := new Board();	-- startGame
-	  		
+			board := new Board();
+	  	
 	  	public getBoard: () ==> Board
 	  	getBoard() ==
 	  		return board;
@@ -34,6 +49,7 @@ class Game
 		getGameOver() ==
 			return gameOver;
 	  				
+	  	-- Generates a new tetramino of the specified type.
 		public newTetramino : nat1 ==> ()
 		newTetramino(id) == (		
 			cases id:
@@ -48,30 +64,34 @@ class Game
 		)
 		pre id >= 1 and id <= 7;
 		
+	  	-- Generates a new random tetramino.
 		public newRandomTetramino: () ==> ()
 		newRandomTetramino() == 
 			newTetramino(MATH`rand(7) + 1);
 		
-		private incScore : nat ==> ()
-		incScore(inc) ==
-			score := score + inc;
-		
+	  	-- Tries to move the current tetramino down.
 		public down : () ==> bool
 		down() ==
 			return tetramino.moveDown(board);
 			
+	  	-- Tries to move the current tetramino left.
 		public left : () ==> bool
 		left() ==
 			return tetramino.moveLeft(board);
 
+	  	-- Tries to move the current tetramino right.
 		public right : () ==> bool
 		right() ==
 			return tetramino.moveRight(board);
 			
+	  	-- Tries to rotate the current tetramino.
 		public rotate : () ==> bool
 		rotate() ==
 			return tetramino.rotate(board);
 
+	  	-- Drops the current tetramino to the bottom of the board. 
+	  	-- Also updates the score, using the current level and the
+	  	-- total distance of the drop. 
 		public drop : () ==> nat
 		drop() == (
 			dcl dropDistance: nat := tetramino.drop(board);
@@ -79,6 +99,9 @@ class Game
 			return dropDistance;
 		);
 		
+		-- Checks all game lines for completion and updates the game
+		-- score according to the number of completed lines and the
+		-- current game level.
 		public checkLines : () ==> nat
 		checkLines() == (
 			dcl newLines: nat := board.checkRows();
@@ -97,6 +120,12 @@ class Game
 		public getLevel : () ==> nat1
 		getLevel() == return level;
 		
+		-- Returns a printing string of the board.
+		-- If blackConsole is true, there are only three strings
+		-- possible, depending on whether the position is empty or filled
+		-- and diferentiating the invisible lines.
+		-- If blackConsole is false, each tetramino will have a different
+		-- print, according to its color.
 		public printBoard : bool * bool * bool ==> String
 		printBoard(printNow, blackConsole, testPrint) == 
 			return board.getBoardPrint(printNow, blackConsole, testPrint);

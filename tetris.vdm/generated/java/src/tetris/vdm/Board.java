@@ -15,7 +15,7 @@ public class Board {
 
   public void cg_init_Board_1() {
 
-    this.initBoard();
+    initBoard();
   }
 
   public Board() {
