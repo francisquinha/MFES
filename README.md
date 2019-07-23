@@ -1,2 +1,2 @@
 # MFES
-MFES 2016 - tetris
+Tetris game implemented using VDM++, in order to obtain a formal model with high integrity.
